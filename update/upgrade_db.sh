@@ -4,8 +4,8 @@
 SRCDB=qwat
 TESTDB=qwat_test
 TESTCONFORMDB=qwat_test_conform
-USER=test
-HOST=localhost
+USER=postgres
+HOST=postgis2.pully.ch
 QWATSERVICE=qwat
 QWATSERVICETEST=qwat_test
 QWATSERVICETESTCONFORM=qwat_test_conform
@@ -40,7 +40,7 @@ export PGPASSWORD="$pwd"
 echo ""
 
 echo "Getting current num version"
-NUMVERSION=\"$(/usr/bin/psql --host $HOST --port 5432 --username "$USER" --no-password -d "$SRCDB" -c "COPY(SELECT version FROM qwat_sys.versions WHERE module='model.core') TO STDOUT")\"
+NUMVERSION=\"$(/usr/bin/psql --host $HOST --port 5432 --username "$USER" -d "$SRCDB" -c "COPY(SELECT version FROM qwat_sys.versions WHERE module='model.core') TO STDOUT")\"
 printf "You are currently using qWat v${GREEN}$NUMVERSION${NC}\n"
 
 
@@ -57,7 +57,7 @@ if [[ $UPGRADE_REAL_DB =~ ^[Yy] ]]; then
                 CURRENT_DELTA_NUM_VERSION=$(echo $CURRENT_DELTA| cut -d'_' -f 2)
                 if [[ $CURRENT_DELTA_NUM_VERSION > $NUMVERSION ]]; then
                     printf "    Processing ${GREEN}$CURRENT_DELTA${NC}, num version = $CURRENT_DELTA_NUM_VERSION\n"
-                    /usr/bin/psql --host $HOST --port 5432 --username "$USER" --no-password -q -d "$SRCDB" -f $f
+                    /usr/bin/psql --host $HOST --port 5432 --username "$USER" -q -d "$SRCDB" -f $f
                 else
                     printf "    Bypassing  ${RED}$CURRENT_DELTA${NC}, num version = $CURRENT_DELTA_NUM_VERSION\n"
                 fi
@@ -76,15 +76,15 @@ TODAY=`date '+%Y%m%d'`
 #/usr/bin/pg_dump -d "service=$QWATSERVICE" --format custom --file "$TODAY""_current_qwat.backup"
 
 echo "Droping existing qwat_test"
-/usr/bin/dropdb "$TESTDB" --host $HOST --port 5432 --username "$USER" --no-password
+/usr/bin/dropdb "$TESTDB" --host $HOST --port 5432 --username "$USER"
 #/usr/bin/dropdb -d "service=$QWATSERVICETEST"
 
 echo "Creating DB (qwat_test)"
-/usr/bin/createdb "$TESTDB" --host $HOST --port 5432 --username "$USER" --no-password
+/usr/bin/createdb "$TESTDB" --host $HOST --port 5432 --username "$USER"
 #/usr/bin/createdb -d "service=$QWATSERVICETEST"
 
 echo "Restoring in test DB"
-/usr/bin/pg_restore --host $HOST --port 5432 --username "$USER" --dbname "$TESTDB" --no-password --single-transaction --exit-on-error "$TODAY""_current_qwat.backup"
+/usr/bin/pg_restore --host $HOST --port 5432 --username "$USER" --dbname "$TESTDB" "$TODAY""_current_qwat.backup"
 #/usr/bin/pg_restore -d "service=$QWATSERVICETEST" --single-transaction --exit-on-error "$TODAY""_current_qwat.backup"
 
 echo "Applying deltas on $TESTDB:"
@@ -94,18 +94,18 @@ do
     CURRENT_DELTA_NUM_VERSION=$(echo $CURRENT_DELTA| cut -d'_' -f 2)
     if [[ $CURRENT_DELTA_NUM_VERSION > $NUMVERSION ]]; then
         printf "    Processing ${GREEN}$CURRENT_DELTA${NC}, num version = $CURRENT_DELTA_NUM_VERSION\n"
-        /usr/bin/psql --host $HOST --port 5432 --username "$USER" --no-password -q -d "$TESTDB" -f $f
+        /usr/bin/psql --host $HOST --port 5432 --username "$USER" -q -d "$TESTDB" -f $f
     else
         printf "    Bypassing  ${RED}$CURRENT_DELTA${NC}, num version = $CURRENT_DELTA_NUM_VERSION\n"
     fi
 done
 
 echo "Droping DB (qwat_test_conform)"
-/usr/bin/dropdb "$TESTCONFORMDB" --host $HOST --port 5432 --username "$USER" --no-password
+/usr/bin/dropdb "$TESTCONFORMDB" --host $HOST --port 5432 --username "$USER"
 #/usr/bin/createdb -d "service=$QWATSERVICETEST"
 
 echo "Creating DB (qwat_test_conform)"
-/usr/bin/createdb "$TESTCONFORMDB" --host $HOST --port 5432 --username "$USER" --no-password
+/usr/bin/createdb "$TESTCONFORMDB" --host $HOST --port 5432 --username "$USER"
 #/usr/bin/createdb -d "service=$QWATSERVICETEST"
 
 echo "Initializing qwat DB in qwat_test_conform"
@@ -114,7 +114,7 @@ cd ..
 cd update
 
 echo "Producing referential file for current qWat version (from $QWATSERVICETESTCONFORM)"
-/usr/bin/psql --host $HOST --port 5432 --username "$USER" --no-password -d "$QWATSERVICETESTCONFORM" -f test_migration.sql > test_migration.expected.sql
+/usr/bin/psql --host $HOST --port 5432 --username "$USER" -d "$QWATSERVICETESTCONFORM" -f test_migration.sql > test_migration.expected.sql
 
 echo "Performing conformity test"
 STATUS=$(python test_migration.py --pg_service $QWATSERVICETEST)

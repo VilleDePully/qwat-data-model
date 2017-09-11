@@ -45,7 +45,6 @@
 "qwat_od","vw_element_part"
 "qwat_od","vw_element_samplingpoint"
 "qwat_od","vw_element_subscriber"
-"qwat_od","vw_element_valve"
 "qwat_od","vw_export_hydrant"
 "qwat_od","vw_export_installation"
 "qwat_od","vw_export_leak"
@@ -53,7 +52,6 @@
 "qwat_od","vw_export_part"
 "qwat_od","vw_export_pipe"
 "qwat_od","vw_export_subscriber"
-"qwat_od","vw_export_valve"
 "qwat_od","vw_installation_chamber"
 "qwat_od","vw_installation_pressurecontrol"
 "qwat_od","vw_installation_pump"
@@ -72,9 +70,7 @@
 "qwat_od","vw_qwat_network_element"
 "qwat_od","vw_qwat_node"
 "qwat_od","vw_remote"
-"qwat_od","vw_search_view"
 "qwat_od","vw_subscriber_pipe_relation"
-"qwat_od","vw_valve_lines"
 "qwat_od","worker"
 "qwat_sys","logged_actions"
 "qwat_sys","settings"
@@ -182,15 +178,15 @@
 "qwat_od","cover","label_2_y",,"YES","double precision",,"53","2",
 "qwat_od","cover","remark",,"YES","text",,,,
 "qwat_od","cover","year",,"YES","smallint",,"16","2",
+"qwat_od","crossing","_pipe1_angle",,"YES","double precision",,"53","2",
+"qwat_od","crossing","_pipe1_id",,"YES","integer",,"32","2",
+"qwat_od","crossing","_pipe2_angle",,"YES","double precision",,"53","2",
+"qwat_od","crossing","_pipe2_id",,"YES","integer",,"32","2",
 "qwat_od","crossing","controled","false","NO","boolean",,,,
 "qwat_od","crossing","disabled","false","NO","boolean",,,,
 "qwat_od","crossing","geometry",,"NO","USER-DEFINED",,,,
 "qwat_od","crossing","hide_pipe","1","NO","smallint",,"16","2",
 "qwat_od","crossing","id","nextval('qwat_od.crossing_id_seq'::regclass)","NO","integer",,"32","2",
-"qwat_od","crossing","_pipe1_angle",,"YES","double precision",,"53","2",
-"qwat_od","crossing","_pipe1_id",,"YES","integer",,"32","2",
-"qwat_od","crossing","_pipe2_angle",,"YES","double precision",,"53","2",
-"qwat_od","crossing","_pipe2_id",,"YES","integer",,"32","2",
 "qwat_od","distributor","id","nextval('qwat_od.distributor_id_seq'::regclass)","NO","integer",,"32","2",
 "qwat_od","distributor","name",,"YES","character varying","30",,,
 "qwat_od","district","colorcode","1","YES","smallint",,"16","2",
@@ -240,6 +236,7 @@
 "qwat_od","installation","name",,"YES","character varying","60",,,
 "qwat_od","installation","open_water_surface","false","YES","boolean",,,,
 "qwat_od","installation","parcel",,"YES","character varying","30",,,
+"qwat_od","leak","_repaired",,"YES","boolean",,,,
 "qwat_od","leak","address",,"YES","text",,,,
 "qwat_od","leak","description",,"YES","text",,,,
 "qwat_od","leak","detection_date",,"YES","date",,,,"0"
@@ -260,7 +257,6 @@
 "qwat_od","leak","pipe_replaced",,"YES","boolean",,,,
 "qwat_od","leak","repair",,"YES","text",,,,
 "qwat_od","leak","repair_date",,"YES","date",,,,"0"
-"qwat_od","leak","_repaired",,"YES","boolean",,,,
 "qwat_od","leak","widespread_damage",,"NO","boolean",,,,
 "qwat_od","meter","fk_pipe",,"YES","integer",,"32","2",
 "qwat_od","meter","id",,"NO","integer",,"32","2",
@@ -293,25 +289,32 @@
 "qwat_od","network_element","schema_force_visible",,"YES","boolean",,,,
 "qwat_od","network_element","year",,"YES","smallint",,"16","2",
 "qwat_od","network_element","year_end",,"YES","smallint",,"16","2",
+"qwat_od","node","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","node","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","node","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","node","_pipe_orientation","0","YES","double precision",,"53","2",
+"qwat_od","node","_pipe_schema_visible","false","YES","boolean",,,,
+"qwat_od","node","_printmaps",,"YES","text",,,,
 "qwat_od","node","fk_district",,"YES","integer",,"32","2",
 "qwat_od","node","fk_pressurezone",,"YES","integer",,"32","2",
 "qwat_od","node","fk_printmap",,"YES","ARRAY",,,,
 "qwat_od","node","geometry",,"NO","USER-DEFINED",,,,
 "qwat_od","node","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","node","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","node","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","node","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","node","id","nextval('qwat_od.node_id_seq'::regclass)","NO","integer",,"32","2",
-"qwat_od","node","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","node","_pipe_orientation","0","YES","double precision",,"53","2",
-"qwat_od","node","_pipe_schema_visible","false","YES","boolean",,,,
-"qwat_od","node","_printmaps",,"YES","text",,,,
 "qwat_od","node","update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","node","update_geometry_alt2",,"YES","boolean",,,,
 "qwat_od","part","fk_part_type",,"NO","integer",,"32","2",
 "qwat_od","part","fk_pipe",,"YES","integer",,"32","2",
 "qwat_od","part","id",,"NO","integer",,"32","2",
 "qwat_od","pipe","_diff_elevation",,"YES","numeric",,"8","10",
+"qwat_od","pipe","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","pipe","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","pipe","_length2d",,"YES","numeric",,"8","10",
+"qwat_od","pipe","_length3d",,"YES","numeric",,"8","10",
+"qwat_od","pipe","_printmaps",,"YES","character varying","100",,,
+"qwat_od","pipe","_valve_closed",,"YES","boolean",,,,
+"qwat_od","pipe","_valve_count",,"YES","smallint",,"16","2",
 "qwat_od","pipe","fk_bedding",,"NO","integer",,"32","2",
 "qwat_od","pipe","fk_distributor",,"NO","integer",,"32","2",
 "qwat_od","pipe","fk_district",,"YES","integer",,"32","2",
@@ -331,38 +334,31 @@
 "qwat_od","pipe","fk_watertype",,"NO","integer",,"32","2",
 "qwat_od","pipe","geometry",,"NO","USER-DEFINED",,,,
 "qwat_od","pipe","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","pipe","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","pipe","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","pipe","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","pipe","id","nextval('qwat_od.pipe_id_seq'::regclass)","NO","integer",,"32","2",
 "qwat_od","pipe","label_1_text",,"YES","character varying","120",,,
 "qwat_od","pipe","label_1_visible","1","YES","smallint",,"16","2",
 "qwat_od","pipe","label_2_text",,"YES","character varying","120",,,
 "qwat_od","pipe","label_2_visible","1","YES","smallint",,"16","2",
-"qwat_od","pipe","_length2d",,"YES","numeric",,"8","10",
-"qwat_od","pipe","_length3d",,"YES","numeric",,"8","10",
 "qwat_od","pipe","pressure_nominal","16","YES","smallint",,"16","2",
-"qwat_od","pipe","_printmaps",,"YES","character varying","100",,,
 "qwat_od","pipe","remark",,"YES","text",,,,
 "qwat_od","pipe","schema_force_visible",,"YES","boolean",,,,
 "qwat_od","pipe","tunnel_or_bridge","false","YES","boolean",,,,
 "qwat_od","pipe","update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","pipe","update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","pipe","_valve_closed",,"YES","boolean",,,,
-"qwat_od","pipe","_valve_count",,"YES","smallint",,"16","2",
 "qwat_od","pipe","year",,"YES","smallint",,"16","2",
 "qwat_od","pipe","year_end",,"YES","smallint",,"16","2",
 "qwat_od","pipe","year_rehabilitation",,"YES","smallint",,"16","2",
 "qwat_od","pressurecontrol","fk_pressurecontrol_type",,"NO","integer",,"32","2",
 "qwat_od","pressurecontrol","id",,"NO","integer",,"32","2",
+"qwat_od","pressurezone","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","pressurezone","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","pressurezone","colorcode",,"YES","smallint",,"16","2",
 "qwat_od","pressurezone","fk_consumptionzone",,"YES","integer",,"32","2",
 "qwat_od","pressurezone","fk_distributor",,"NO","integer",,"32","2",
 "qwat_od","pressurezone","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","pressurezone","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","pressurezone","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","pressurezone","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","pressurezone","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","pressurezone","id","nextval('qwat_od.pressurezone_id_seq'::regclass)","NO","integer",,"32","2",
 "qwat_od","pressurezone","label_1_rotation",,"YES","double precision",,"53","2",
 "qwat_od","pressurezone","label_1_text",,"YES","character varying","120",,,
@@ -414,6 +410,8 @@
 "qwat_od","pump","manometric_height",,"YES","numeric",,"10","10",
 "qwat_od","pump","no_pumps",,"YES","smallint",,"16","2",
 "qwat_od","pump","rejected_flow",,"YES","numeric",,"10","10",
+"qwat_od","remote","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","remote","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","remote","destination",,"YES","character varying","150",,,
 "qwat_od","remote","fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","remote","fk_material",,"YES","integer",,"32","2",
@@ -422,9 +420,7 @@
 "qwat_od","remote","folder",,"YES","character varying","50",,,
 "qwat_od","remote","geometry",,"NO","USER-DEFINED",,,,
 "qwat_od","remote","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","remote","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","remote","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","remote","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","remote","id","nextval('qwat_od.remote_id_seq'::regclass)","NO","integer",,"32","2",
 "qwat_od","remote","identification",,"YES","character varying","15",,,
 "qwat_od","remote","label_1_rotation",,"YES","double precision",,"53","2",
@@ -470,17 +466,18 @@
 "qwat_od","surveypoint","fk_worker",,"YES","integer",,"32","2",
 "qwat_od","surveypoint","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","surveypoint","id",,"NO","integer",,"32","2",
+"qwat_od","tank","_cistern1_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","tank","_cistern2_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","tank","_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","tank","altitude_apron",,"YES","numeric",,"7","10",
 "qwat_od","tank","altitude_overflow",,"YES","numeric",,"7","10",
 "qwat_od","tank","cistern1_dimension_1",,"YES","numeric",,"10","10",
 "qwat_od","tank","cistern1_dimension_2",,"YES","numeric",,"10","10",
 "qwat_od","tank","cistern1_fk_type",,"YES","integer",,"32","2",
-"qwat_od","tank","_cistern1_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","tank","cistern1_storage",,"YES","numeric",,"10","10",
 "qwat_od","tank","cistern2_dimension_1",,"YES","numeric",,"10","10",
 "qwat_od","tank","cistern2_dimension_2",,"YES","numeric",,"10","10",
 "qwat_od","tank","cistern2_fk_type",,"YES","integer",,"32","2",
-"qwat_od","tank","_cistern2_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","tank","cistern2_storage",,"YES","numeric",,"10","10",
 "qwat_od","tank","fire_remote",,"YES","boolean",,,,
 "qwat_od","tank","fire_valve",,"YES","boolean",,,,
@@ -488,7 +485,6 @@
 "qwat_od","tank","fk_tank_firestorage",,"YES","integer",,"32","2",
 "qwat_od","tank","height_max",,"YES","numeric",,"7","10",
 "qwat_od","tank","id",,"NO","integer",,"32","2",
-"qwat_od","tank","_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","tank","storage_fire",,"YES","numeric",,"10","10",
 "qwat_od","tank","storage_supply",,"YES","numeric",,"10","10",
 "qwat_od","tank","storage_total",,"YES","numeric",,"10","10",
@@ -503,26 +499,70 @@
 "qwat_od","treatment","sanitization_uv",,"YES","boolean",,,,
 "qwat_od","treatment","settling",,"YES","boolean",,,,
 "qwat_od","treatment","treatment_capacity",,"YES","numeric",,"10","10",
+"qwat_od","valve","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","valve","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","valve","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","valve","_pipe_orientation","0","YES","double precision",,"53","2",
+"qwat_od","valve","_pipe_schema_visible","false","YES","boolean",,,,
+"qwat_od","valve","_printmaps",,"YES","text",,,,
+"qwat_od","valve","altitude","NULL::numeric","YES","numeric",,"10","10",
 "qwat_od","valve","closed","false","YES","boolean",,,,
 "qwat_od","valve","diameter_nominal",,"YES","character varying","10",,,
+"qwat_od","valve","fk_distributor",,"NO","integer",,"32","2",
+"qwat_od","valve","fk_district",,"YES","integer",,"32","2",
+"qwat_od","valve","fk_folder",,"YES","integer",,"32","2",
 "qwat_od","valve","fk_handle_precision",,"YES","integer",,"32","2",
 "qwat_od","valve","fk_handle_precisionalti",,"YES","integer",,"32","2",
+"qwat_od","valve","fk_locationtype",,"YES","ARRAY",,,,
 "qwat_od","valve","fk_maintenance",,"YES","ARRAY",,,,
+"qwat_od","valve","fk_object_reference",,"YES","integer",,"32","2",
 "qwat_od","valve","fk_pipe",,"YES","integer",,"32","2",
+"qwat_od","valve","fk_precision",,"NO","integer",,"32","2",
+"qwat_od","valve","fk_precisionalti",,"YES","integer",,"32","2",
+"qwat_od","valve","fk_pressurezone",,"YES","integer",,"32","2",
+"qwat_od","valve","fk_printmap",,"YES","ARRAY",,,,
+"qwat_od","valve","fk_status",,"NO","integer",,"32","2",
 "qwat_od","valve","fk_valve_actuation",,"NO","integer",,"32","2",
 "qwat_od","valve","fk_valve_function",,"NO","integer",,"32","2",
 "qwat_od","valve","fk_valve_type",,"NO","integer",,"32","2",
+"qwat_od","valve","geometry",,"NO","USER-DEFINED",,,,
+"qwat_od","valve","geometry_alt1",,"YES","USER-DEFINED",,,,
+"qwat_od","valve","geometry_alt2",,"YES","USER-DEFINED",,,,
 "qwat_od","valve","handle_altitude",,"YES","numeric",,"10","10",
 "qwat_od","valve","handle_geometry",,"YES","USER-DEFINED",,,,
-"qwat_od","valve","id",,"NO","integer",,"32","2",
+"qwat_od","valve","id","nextval('qwat_od.valve_id_seq'::regclass)","NO","integer",,"32","2",
+"qwat_od","valve","identification",,"YES","character varying","50",,,
+"qwat_od","valve","label_1_rotation",,"YES","double precision",,"53","2",
+"qwat_od","valve","label_1_text",,"YES","character varying","120",,,
+"qwat_od","valve","label_1_visible","1","YES","smallint",,"16","2",
+"qwat_od","valve","label_1_x",,"YES","double precision",,"53","2",
+"qwat_od","valve","label_1_y",,"YES","double precision",,"53","2",
+"qwat_od","valve","label_2_rotation",,"YES","double precision",,"53","2",
+"qwat_od","valve","label_2_text",,"YES","character varying","120",,,
+"qwat_od","valve","label_2_visible","1","YES","smallint",,"16","2",
+"qwat_od","valve","label_2_x",,"YES","double precision",,"53","2",
+"qwat_od","valve","label_2_y",,"YES","double precision",,"53","2",
 "qwat_od","valve","networkseparation","false","YES","boolean",,,,
+"qwat_od","valve","orientation",,"YES","double precision",,"53","2",
+"qwat_od","valve","remark",,"YES","text",,,,
+"qwat_od","valve","schema_force_visible",,"YES","boolean",,,,
+"qwat_od","valve","update_geometry_alt1",,"YES","boolean",,,,
+"qwat_od","valve","update_geometry_alt2",,"YES","boolean",,,,
+"qwat_od","valve","year",,"YES","smallint",,"16","2",
+"qwat_od","valve","year_end",,"YES","smallint",,"16","2",
+"qwat_od","vw_consumptionzone","_sum_population",,"YES","bigint",,"64","2",
+"qwat_od","vw_consumptionzone","_sum_subscriber",,"YES","bigint",,"64","2",
 "qwat_od","vw_consumptionzone","colorcode",,"YES","smallint",,"16","2",
 "qwat_od","vw_consumptionzone","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_consumptionzone","id",,"YES","integer",,"32","2",
 "qwat_od","vw_consumptionzone","name",,"YES","character varying","50",,,
 "qwat_od","vw_consumptionzone","population",,"YES","integer",,"32","2",
-"qwat_od","vw_consumptionzone","_sum_population",,"YES","bigint",,"64","2",
-"qwat_od","vw_consumptionzone","_sum_subscriber",,"YES","bigint",,"64","2",
+"qwat_od","vw_element_hydrant","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_element_hydrant","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_element_hydrant","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_element_hydrant","_pipe_orientation",,"YES","double precision",,"53","2",
+"qwat_od","vw_element_hydrant","_pipe_schema_visible",,"YES","boolean",,,,
+"qwat_od","vw_element_hydrant","_printmaps",,"YES","text",,,,
 "qwat_od","vw_element_hydrant","altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_element_hydrant","fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_element_hydrant","fk_district",,"YES","integer",,"32","2",
@@ -542,9 +582,7 @@
 "qwat_od","vw_element_hydrant","flow",,"YES","numeric",,"8","10",
 "qwat_od","vw_element_hydrant","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_element_hydrant","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_hydrant","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_element_hydrant","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_hydrant","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_element_hydrant","id",,"YES","integer",,"32","2",
 "qwat_od","vw_element_hydrant","identification",,"YES","character varying","50",,,
 "qwat_od","vw_element_hydrant","label_1_rotation",,"YES","double precision",,"53","2",
@@ -561,12 +599,8 @@
 "qwat_od","vw_element_hydrant","observation_date",,"YES","date",,,,"0"
 "qwat_od","vw_element_hydrant","observation_source",,"YES","character varying","45",,,
 "qwat_od","vw_element_hydrant","orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_hydrant","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_hydrant","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_hydrant","_pipe_schema_visible",,"YES","boolean",,,,
 "qwat_od","vw_element_hydrant","pressure_dynamic",,"YES","numeric",,"5","10",
 "qwat_od","vw_element_hydrant","pressure_static",,"YES","numeric",,"5","10",
-"qwat_od","vw_element_hydrant","_printmaps",,"YES","text",,,,
 "qwat_od","vw_element_hydrant","remark",,"YES","text",,,,
 "qwat_od","vw_element_hydrant","schema_force_visible",,"YES","boolean",,,,
 "qwat_od","vw_element_hydrant","underground",,"YES","boolean",,,,
@@ -574,6 +608,15 @@
 "qwat_od","vw_element_hydrant","update_geometry_alt2",,"YES","boolean",,,,
 "qwat_od","vw_element_hydrant","year",,"YES","smallint",,"16","2",
 "qwat_od","vw_element_hydrant","year_end",,"YES","smallint",,"16","2",
+"qwat_od","vw_element_installation","_cistern1_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","vw_element_installation","_cistern2_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","vw_element_installation","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_element_installation","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_element_installation","_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","vw_element_installation","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_element_installation","_pipe_orientation",,"YES","double precision",,"53","2",
+"qwat_od","vw_element_installation","_pipe_schema_visible",,"YES","boolean",,,,
+"qwat_od","vw_element_installation","_printmaps",,"YES","text",,,,
 "qwat_od","vw_element_installation","activatedcharcoal",,"YES","boolean",,,,
 "qwat_od","vw_element_installation","altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_element_installation","altitude_apron",,"YES","numeric",,"7","10",
@@ -581,12 +624,10 @@
 "qwat_od","vw_element_installation","cistern1_dimension_1",,"YES","numeric",,"10","10",
 "qwat_od","vw_element_installation","cistern1_dimension_2",,"YES","numeric",,"10","10",
 "qwat_od","vw_element_installation","cistern1_fk_type",,"YES","integer",,"32","2",
-"qwat_od","vw_element_installation","_cistern1_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_element_installation","cistern1_storage",,"YES","numeric",,"10","10",
 "qwat_od","vw_element_installation","cistern2_dimension_1",,"YES","numeric",,"10","10",
 "qwat_od","vw_element_installation","cistern2_dimension_2",,"YES","numeric",,"10","10",
 "qwat_od","vw_element_installation","cistern2_fk_type",,"YES","integer",,"32","2",
-"qwat_od","vw_element_installation","_cistern2_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_element_installation","cistern2_storage",,"YES","numeric",,"10","10",
 "qwat_od","vw_element_installation","contract_end",,"YES","date",,,,"0"
 "qwat_od","vw_element_installation","depth",,"YES","numeric",,"10","10",
@@ -625,9 +666,7 @@
 "qwat_od","vw_element_installation","gathering_chamber",,"YES","boolean",,,,
 "qwat_od","vw_element_installation","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_element_installation","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_installation","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_element_installation","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_installation","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_element_installation","geometry_polygon",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_element_installation","height_max",,"YES","numeric",,"7","10",
 "qwat_od","vw_element_installation","id",,"YES","integer",,"32","2",
@@ -643,7 +682,6 @@
 "qwat_od","vw_element_installation","label_2_visible",,"YES","smallint",,"16","2",
 "qwat_od","vw_element_installation","label_2_x",,"YES","double precision",,"53","2",
 "qwat_od","vw_element_installation","label_2_y",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_installation","_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_element_installation","manometer",,"YES","boolean",,,,
 "qwat_od","vw_element_installation","manometric_height",,"YES","numeric",,"10","10",
 "qwat_od","vw_element_installation","name",,"YES","character varying","60",,,
@@ -653,10 +691,6 @@
 "qwat_od","vw_element_installation","open_water_surface",,"YES","boolean",,,,
 "qwat_od","vw_element_installation","orientation",,"YES","double precision",,"53","2",
 "qwat_od","vw_element_installation","parcel",,"YES","character varying","30",,,
-"qwat_od","vw_element_installation","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_installation","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_installation","_pipe_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_element_installation","_printmaps",,"YES","text",,,,
 "qwat_od","vw_element_installation","rejected_flow",,"YES","numeric",,"10","10",
 "qwat_od","vw_element_installation","remark",,"YES","text",,,,
 "qwat_od","vw_element_installation","sanitization_chlorine_gazeous",,"YES","boolean",,,,
@@ -674,6 +708,12 @@
 "qwat_od","vw_element_installation","water_meter",,"YES","boolean",,,,
 "qwat_od","vw_element_installation","year",,"YES","smallint",,"16","2",
 "qwat_od","vw_element_installation","year_end",,"YES","smallint",,"16","2",
+"qwat_od","vw_element_meter","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_element_meter","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_element_meter","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_element_meter","_pipe_orientation",,"YES","double precision",,"53","2",
+"qwat_od","vw_element_meter","_pipe_schema_visible",,"YES","boolean",,,,
+"qwat_od","vw_element_meter","_printmaps",,"YES","text",,,,
 "qwat_od","vw_element_meter","altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_element_meter","fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_element_meter","fk_district",,"YES","integer",,"32","2",
@@ -688,9 +728,7 @@
 "qwat_od","vw_element_meter","fk_status",,"YES","integer",,"32","2",
 "qwat_od","vw_element_meter","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_element_meter","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_meter","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_element_meter","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_meter","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_element_meter","id",,"YES","integer",,"32","2",
 "qwat_od","vw_element_meter","identification",,"YES","character varying","50",,,
 "qwat_od","vw_element_meter","label_1_rotation",,"YES","double precision",,"53","2",
@@ -705,16 +743,18 @@
 "qwat_od","vw_element_meter","label_2_y",,"YES","double precision",,"53","2",
 "qwat_od","vw_element_meter","orientation",,"YES","double precision",,"53","2",
 "qwat_od","vw_element_meter","parcel",,"YES","character varying","50",,,
-"qwat_od","vw_element_meter","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_meter","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_meter","_pipe_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_element_meter","_printmaps",,"YES","text",,,,
 "qwat_od","vw_element_meter","remark",,"YES","text",,,,
 "qwat_od","vw_element_meter","schema_force_visible",,"YES","boolean",,,,
 "qwat_od","vw_element_meter","update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_element_meter","update_geometry_alt2",,"YES","boolean",,,,
 "qwat_od","vw_element_meter","year",,"YES","smallint",,"16","2",
 "qwat_od","vw_element_meter","year_end",,"YES","smallint",,"16","2",
+"qwat_od","vw_element_part","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_element_part","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_element_part","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_element_part","_pipe_orientation",,"YES","double precision",,"53","2",
+"qwat_od","vw_element_part","_pipe_schema_visible",,"YES","boolean",,,,
+"qwat_od","vw_element_part","_printmaps",,"YES","text",,,,
 "qwat_od","vw_element_part","altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_element_part","fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_element_part","fk_district",,"YES","integer",,"32","2",
@@ -730,9 +770,7 @@
 "qwat_od","vw_element_part","fk_status",,"YES","integer",,"32","2",
 "qwat_od","vw_element_part","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_element_part","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_part","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_element_part","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_part","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_element_part","id",,"YES","integer",,"32","2",
 "qwat_od","vw_element_part","identification",,"YES","character varying","50",,,
 "qwat_od","vw_element_part","label_1_rotation",,"YES","double precision",,"53","2",
@@ -746,16 +784,18 @@
 "qwat_od","vw_element_part","label_2_x",,"YES","double precision",,"53","2",
 "qwat_od","vw_element_part","label_2_y",,"YES","double precision",,"53","2",
 "qwat_od","vw_element_part","orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_part","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_part","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_part","_pipe_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_element_part","_printmaps",,"YES","text",,,,
 "qwat_od","vw_element_part","remark",,"YES","text",,,,
 "qwat_od","vw_element_part","schema_force_visible",,"YES","boolean",,,,
 "qwat_od","vw_element_part","update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_element_part","update_geometry_alt2",,"YES","boolean",,,,
 "qwat_od","vw_element_part","year",,"YES","smallint",,"16","2",
 "qwat_od","vw_element_part","year_end",,"YES","smallint",,"16","2",
+"qwat_od","vw_element_samplingpoint","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_element_samplingpoint","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_element_samplingpoint","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_element_samplingpoint","_pipe_orientation",,"YES","double precision",,"53","2",
+"qwat_od","vw_element_samplingpoint","_pipe_schema_visible",,"YES","boolean",,,,
+"qwat_od","vw_element_samplingpoint","_printmaps",,"YES","text",,,,
 "qwat_od","vw_element_samplingpoint","altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_element_samplingpoint","fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_element_samplingpoint","fk_district",,"YES","integer",,"32","2",
@@ -769,9 +809,7 @@
 "qwat_od","vw_element_samplingpoint","fk_status",,"YES","integer",,"32","2",
 "qwat_od","vw_element_samplingpoint","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_element_samplingpoint","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_samplingpoint","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_element_samplingpoint","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_samplingpoint","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_element_samplingpoint","id",,"YES","integer",,"32","2",
 "qwat_od","vw_element_samplingpoint","identification",,"YES","character varying","50",,,
 "qwat_od","vw_element_samplingpoint","label_1_rotation",,"YES","double precision",,"53","2",
@@ -785,16 +823,18 @@
 "qwat_od","vw_element_samplingpoint","label_2_x",,"YES","double precision",,"53","2",
 "qwat_od","vw_element_samplingpoint","label_2_y",,"YES","double precision",,"53","2",
 "qwat_od","vw_element_samplingpoint","orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_samplingpoint","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_samplingpoint","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_samplingpoint","_pipe_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_element_samplingpoint","_printmaps",,"YES","text",,,,
 "qwat_od","vw_element_samplingpoint","remark",,"YES","text",,,,
 "qwat_od","vw_element_samplingpoint","schema_force_visible",,"YES","boolean",,,,
 "qwat_od","vw_element_samplingpoint","update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_element_samplingpoint","update_geometry_alt2",,"YES","boolean",,,,
 "qwat_od","vw_element_samplingpoint","year",,"YES","smallint",,"16","2",
 "qwat_od","vw_element_samplingpoint","year_end",,"YES","smallint",,"16","2",
+"qwat_od","vw_element_subscriber","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_element_subscriber","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_element_subscriber","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_element_subscriber","_pipe_orientation",,"YES","double precision",,"53","2",
+"qwat_od","vw_element_subscriber","_pipe_schema_visible",,"YES","boolean",,,,
+"qwat_od","vw_element_subscriber","_printmaps",,"YES","text",,,,
 "qwat_od","vw_element_subscriber","altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_element_subscriber","fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_element_subscriber","fk_district",,"YES","integer",,"32","2",
@@ -812,9 +852,7 @@
 "qwat_od","vw_element_subscriber","flow_planned",,"YES","numeric",,"8","10",
 "qwat_od","vw_element_subscriber","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_element_subscriber","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_subscriber","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_element_subscriber","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_subscriber","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_element_subscriber","id",,"YES","integer",,"32","2",
 "qwat_od","vw_element_subscriber","identification",,"YES","character varying","50",,,
 "qwat_od","vw_element_subscriber","label_1_rotation",,"YES","double precision",,"53","2",
@@ -829,67 +867,18 @@
 "qwat_od","vw_element_subscriber","label_2_y",,"YES","double precision",,"53","2",
 "qwat_od","vw_element_subscriber","orientation",,"YES","double precision",,"53","2",
 "qwat_od","vw_element_subscriber","parcel",,"YES","character varying","12",,,
-"qwat_od","vw_element_subscriber","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_subscriber","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_subscriber","_pipe_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_element_subscriber","_printmaps",,"YES","text",,,,
 "qwat_od","vw_element_subscriber","remark",,"YES","text",,,,
 "qwat_od","vw_element_subscriber","schema_force_visible",,"YES","boolean",,,,
 "qwat_od","vw_element_subscriber","update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_element_subscriber","update_geometry_alt2",,"YES","boolean",,,,
 "qwat_od","vw_element_subscriber","year",,"YES","smallint",,"16","2",
 "qwat_od","vw_element_subscriber","year_end",,"YES","smallint",,"16","2",
-"qwat_od","vw_element_valve","altitude",,"YES","numeric",,"10","10",
-"qwat_od","vw_element_valve","closed",,"YES","boolean",,,,
-"qwat_od","vw_element_valve","diameter_nominal",,"YES","character varying","10",,,
-"qwat_od","vw_element_valve","fk_distributor",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","fk_district",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","fk_folder",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","fk_handle_precision",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","fk_handle_precisionalti",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","fk_locationtype",,"YES","ARRAY",,,,
-"qwat_od","vw_element_valve","fk_maintenance",,"YES","ARRAY",,,,
-"qwat_od","vw_element_valve","fk_object_reference",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","fk_pipe",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","fk_precision",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","fk_precisionalti",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","fk_pressurezone",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","fk_printmap",,"YES","ARRAY",,,,
-"qwat_od","vw_element_valve","fk_status",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","fk_valve_actuation",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","fk_valve_function",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","fk_valve_type",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","geometry",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_valve","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_valve","_geometry_alt1_used",,"YES","boolean",,,,
-"qwat_od","vw_element_valve","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_valve","_geometry_alt2_used",,"YES","boolean",,,,
-"qwat_od","vw_element_valve","handle_altitude",,"YES","numeric",,"10","10",
-"qwat_od","vw_element_valve","handle_geometry",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_valve","id",,"YES","integer",,"32","2",
-"qwat_od","vw_element_valve","identification",,"YES","character varying","50",,,
-"qwat_od","vw_element_valve","label_1_rotation",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_valve","label_1_text",,"YES","character varying","120",,,
-"qwat_od","vw_element_valve","label_1_visible",,"YES","smallint",,"16","2",
-"qwat_od","vw_element_valve","label_1_x",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_valve","label_1_y",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_valve","label_2_rotation",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_valve","label_2_text",,"YES","character varying","120",,,
-"qwat_od","vw_element_valve","label_2_visible",,"YES","smallint",,"16","2",
-"qwat_od","vw_element_valve","label_2_x",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_valve","label_2_y",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_valve","networkseparation",,"YES","boolean",,,,
-"qwat_od","vw_element_valve","orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_valve","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_element_valve","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_element_valve","_pipe_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_element_valve","_printmaps",,"YES","text",,,,
-"qwat_od","vw_element_valve","remark",,"YES","text",,,,
-"qwat_od","vw_element_valve","schema_force_visible",,"YES","boolean",,,,
-"qwat_od","vw_element_valve","update_geometry_alt1",,"YES","boolean",,,,
-"qwat_od","vw_element_valve","update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","vw_element_valve","year",,"YES","smallint",,"16","2",
-"qwat_od","vw_element_valve","year_end",,"YES","smallint",,"16","2",
+"qwat_od","vw_export_hydrant","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_export_hydrant","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_export_hydrant","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_export_hydrant","_pipe_orientation",,"YES","double precision",,"53","2",
+"qwat_od","vw_export_hydrant","_pipe_schema_visible",,"YES","boolean",,,,
+"qwat_od","vw_export_hydrant","_printmaps",,"YES","text",,,,
 "qwat_od","vw_export_hydrant","altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_export_hydrant","distributor_name",,"YES","character varying","30",,,
 "qwat_od","vw_export_hydrant","district_colorcode",,"YES","smallint",,"16","2",
@@ -933,9 +922,7 @@
 "qwat_od","vw_export_hydrant","folder_identification",,"YES","character varying","50",,,
 "qwat_od","vw_export_hydrant","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_hydrant","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_hydrant","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_export_hydrant","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_hydrant","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_hydrant","id",,"YES","integer",,"32","2",
 "qwat_od","vw_export_hydrant","identification",,"YES","character varying","50",,,
 "qwat_od","vw_export_hydrant","label_1_rotation",,"YES","double precision",,"53","2",
@@ -1003,20 +990,6 @@
 "qwat_od","vw_export_hydrant","output_value_fr",,"YES","character varying","50",,,
 "qwat_od","vw_export_hydrant","output_value_ro",,"YES","character varying","50",,,
 "qwat_od","vw_export_hydrant","output_vl_active",,"YES","boolean",,,,
-"qwat_od","vw_export_hydrant","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_hydrant","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_hydrant","_pipe_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_export_hydrant","precisionalti_code_sire",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_hydrant","precisionalti_description_en",,"YES","text",,,,
-"qwat_od","vw_export_hydrant","precisionalti_description_fr",,"YES","text",,,,
-"qwat_od","vw_export_hydrant","precisionalti_description_ro",,"YES","text",,,,
-"qwat_od","vw_export_hydrant","precisionalti_short_en",,"YES","character varying","10",,,
-"qwat_od","vw_export_hydrant","precisionalti_short_fr",,"YES","character varying","10",,,
-"qwat_od","vw_export_hydrant","precisionalti_short_ro",,"YES","character varying","10",,,
-"qwat_od","vw_export_hydrant","precisionalti_value_en",,"YES","character varying","50",,,
-"qwat_od","vw_export_hydrant","precisionalti_value_fr",,"YES","character varying","50",,,
-"qwat_od","vw_export_hydrant","precisionalti_value_ro",,"YES","character varying","50",,,
-"qwat_od","vw_export_hydrant","precisionalti_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_hydrant","precision_code_sire",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_hydrant","precision_description_en",,"YES","text",,,,
 "qwat_od","vw_export_hydrant","precision_description_fr",,"YES","text",,,,
@@ -1028,16 +1001,27 @@
 "qwat_od","vw_export_hydrant","precision_value_fr",,"YES","character varying","50",,,
 "qwat_od","vw_export_hydrant","precision_value_ro",,"YES","character varying","50",,,
 "qwat_od","vw_export_hydrant","precision_vl_active",,"YES","boolean",,,,
+"qwat_od","vw_export_hydrant","precisionalti_code_sire",,"YES","smallint",,"16","2",
+"qwat_od","vw_export_hydrant","precisionalti_description_en",,"YES","text",,,,
+"qwat_od","vw_export_hydrant","precisionalti_description_fr",,"YES","text",,,,
+"qwat_od","vw_export_hydrant","precisionalti_description_ro",,"YES","text",,,,
+"qwat_od","vw_export_hydrant","precisionalti_short_en",,"YES","character varying","10",,,
+"qwat_od","vw_export_hydrant","precisionalti_short_fr",,"YES","character varying","10",,,
+"qwat_od","vw_export_hydrant","precisionalti_short_ro",,"YES","character varying","10",,,
+"qwat_od","vw_export_hydrant","precisionalti_value_en",,"YES","character varying","50",,,
+"qwat_od","vw_export_hydrant","precisionalti_value_fr",,"YES","character varying","50",,,
+"qwat_od","vw_export_hydrant","precisionalti_value_ro",,"YES","character varying","50",,,
+"qwat_od","vw_export_hydrant","precisionalti_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_hydrant","pressure_dynamic",,"YES","numeric",,"5","10",
 "qwat_od","vw_export_hydrant","pressure_static",,"YES","numeric",,"5","10",
+"qwat_od","vw_export_hydrant","pressurezone__geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_export_hydrant","pressurezone__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_hydrant","pressurezone_colorcode",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_hydrant","pressurezone_fk_consumptionzone",,"YES","integer",,"32","2",
 "qwat_od","vw_export_hydrant","pressurezone_fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_export_hydrant","pressurezone_geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_hydrant","pressurezone_geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_hydrant","pressurezone__geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_export_hydrant","pressurezone_geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_hydrant","pressurezone__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_hydrant","pressurezone_label_1_rotation",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_hydrant","pressurezone_label_1_text",,"YES","character varying","120",,,
 "qwat_od","vw_export_hydrant","pressurezone_label_1_visible",,"YES","smallint",,"16","2",
@@ -1053,7 +1037,6 @@
 "qwat_od","vw_export_hydrant","pressurezone_subscriber",,"YES","integer",,"32","2",
 "qwat_od","vw_export_hydrant","pressurezone_update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_export_hydrant","pressurezone_update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","vw_export_hydrant","_printmaps",,"YES","text",,,,
 "qwat_od","vw_export_hydrant","provider_description_en",,"YES","text",,,,
 "qwat_od","vw_export_hydrant","provider_description_fr",,"YES","text",,,,
 "qwat_od","vw_export_hydrant","provider_description_ro",,"YES","text",,,,
@@ -1083,6 +1066,15 @@
 "qwat_od","vw_export_hydrant","update_geometry_alt2",,"YES","boolean",,,,
 "qwat_od","vw_export_hydrant","year",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_hydrant","year_end",,"YES","smallint",,"16","2",
+"qwat_od","vw_export_installation","_cistern1_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","vw_export_installation","_cistern2_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","vw_export_installation","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_export_installation","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_export_installation","_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","vw_export_installation","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_export_installation","_pipe_orientation",,"YES","double precision",,"53","2",
+"qwat_od","vw_export_installation","_pipe_schema_visible",,"YES","boolean",,,,
+"qwat_od","vw_export_installation","_printmaps",,"YES","text",,,,
 "qwat_od","vw_export_installation","activatedcharcoal",,"YES","boolean",,,,
 "qwat_od","vw_export_installation","altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_export_installation","altitude_apron",,"YES","numeric",,"7","10",
@@ -1093,7 +1085,6 @@
 "qwat_od","vw_export_installation","cistern1_dimension_1",,"YES","numeric",,"10","10",
 "qwat_od","vw_export_installation","cistern1_dimension_2",,"YES","numeric",,"10","10",
 "qwat_od","vw_export_installation","cistern1_fk_type",,"YES","integer",,"32","2",
-"qwat_od","vw_export_installation","_cistern1_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_export_installation","cistern1_short_en",,"YES","character varying","10",,,
 "qwat_od","vw_export_installation","cistern1_short_fr",,"YES","character varying","10",,,
 "qwat_od","vw_export_installation","cistern1_short_ro",,"YES","character varying","10",,,
@@ -1108,7 +1099,6 @@
 "qwat_od","vw_export_installation","cistern2_dimension_1",,"YES","numeric",,"10","10",
 "qwat_od","vw_export_installation","cistern2_dimension_2",,"YES","numeric",,"10","10",
 "qwat_od","vw_export_installation","cistern2_fk_type",,"YES","integer",,"32","2",
-"qwat_od","vw_export_installation","_cistern2_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_export_installation","cistern2_short_en",,"YES","character varying","10",,,
 "qwat_od","vw_export_installation","cistern2_short_fr",,"YES","character varying","10",,,
 "qwat_od","vw_export_installation","cistern2_short_ro",,"YES","character varying","10",,,
@@ -1178,9 +1168,7 @@
 "qwat_od","vw_export_installation","gathering_chamber",,"YES","boolean",,,,
 "qwat_od","vw_export_installation","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_installation","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_installation","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_export_installation","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_installation","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_installation","geometry_polygon",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_installation","height_max",,"YES","numeric",,"7","10",
 "qwat_od","vw_export_installation","id",,"YES","integer",,"32","2",
@@ -1196,7 +1184,6 @@
 "qwat_od","vw_export_installation","label_2_visible",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_installation","label_2_x",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_installation","label_2_y",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_installation","_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_export_installation","manometer",,"YES","boolean",,,,
 "qwat_od","vw_export_installation","manometric_height",,"YES","numeric",,"10","10",
 "qwat_od","vw_export_installation","name",,"YES","character varying","60",,,
@@ -1226,20 +1213,6 @@
 "qwat_od","vw_export_installation","overflow_value_ro",,"YES","character varying","50",,,
 "qwat_od","vw_export_installation","overflow_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_installation","parcel",,"YES","character varying","30",,,
-"qwat_od","vw_export_installation","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_installation","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_installation","_pipe_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_export_installation","precisionalti_code_sire",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_installation","precisionalti_description_en",,"YES","text",,,,
-"qwat_od","vw_export_installation","precisionalti_description_fr",,"YES","text",,,,
-"qwat_od","vw_export_installation","precisionalti_description_ro",,"YES","text",,,,
-"qwat_od","vw_export_installation","precisionalti_short_en",,"YES","character varying","10",,,
-"qwat_od","vw_export_installation","precisionalti_short_fr",,"YES","character varying","10",,,
-"qwat_od","vw_export_installation","precisionalti_short_ro",,"YES","character varying","10",,,
-"qwat_od","vw_export_installation","precisionalti_value_en",,"YES","character varying","50",,,
-"qwat_od","vw_export_installation","precisionalti_value_fr",,"YES","character varying","50",,,
-"qwat_od","vw_export_installation","precisionalti_value_ro",,"YES","character varying","50",,,
-"qwat_od","vw_export_installation","precisionalti_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_installation","precision_code_sire",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_installation","precision_description_en",,"YES","text",,,,
 "qwat_od","vw_export_installation","precision_description_fr",,"YES","text",,,,
@@ -1251,6 +1224,17 @@
 "qwat_od","vw_export_installation","precision_value_fr",,"YES","character varying","50",,,
 "qwat_od","vw_export_installation","precision_value_ro",,"YES","character varying","50",,,
 "qwat_od","vw_export_installation","precision_vl_active",,"YES","boolean",,,,
+"qwat_od","vw_export_installation","precisionalti_code_sire",,"YES","smallint",,"16","2",
+"qwat_od","vw_export_installation","precisionalti_description_en",,"YES","text",,,,
+"qwat_od","vw_export_installation","precisionalti_description_fr",,"YES","text",,,,
+"qwat_od","vw_export_installation","precisionalti_description_ro",,"YES","text",,,,
+"qwat_od","vw_export_installation","precisionalti_short_en",,"YES","character varying","10",,,
+"qwat_od","vw_export_installation","precisionalti_short_fr",,"YES","character varying","10",,,
+"qwat_od","vw_export_installation","precisionalti_short_ro",,"YES","character varying","10",,,
+"qwat_od","vw_export_installation","precisionalti_value_en",,"YES","character varying","50",,,
+"qwat_od","vw_export_installation","precisionalti_value_fr",,"YES","character varying","50",,,
+"qwat_od","vw_export_installation","precisionalti_value_ro",,"YES","character varying","50",,,
+"qwat_od","vw_export_installation","precisionalti_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_installation","pressurecontrol_type_description_en",,"YES","text",,,,
 "qwat_od","vw_export_installation","pressurecontrol_type_description_fr",,"YES","text",,,,
 "qwat_od","vw_export_installation","pressurecontrol_type_description_ro",,"YES","text",,,,
@@ -1261,14 +1245,14 @@
 "qwat_od","vw_export_installation","pressurecontrol_type_value_fr",,"YES","character varying","50",,,
 "qwat_od","vw_export_installation","pressurecontrol_type_value_ro",,"YES","character varying","50",,,
 "qwat_od","vw_export_installation","pressurecontrol_type_vl_active",,"YES","boolean",,,,
+"qwat_od","vw_export_installation","pressurezone__geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_export_installation","pressurezone__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_installation","pressurezone_colorcode",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_installation","pressurezone_fk_consumptionzone",,"YES","integer",,"32","2",
 "qwat_od","vw_export_installation","pressurezone_fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_export_installation","pressurezone_geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_installation","pressurezone_geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_installation","pressurezone__geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_export_installation","pressurezone_geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_installation","pressurezone__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_installation","pressurezone_label_1_rotation",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_installation","pressurezone_label_1_text",,"YES","character varying","120",,,
 "qwat_od","vw_export_installation","pressurezone_label_1_visible",,"YES","smallint",,"16","2",
@@ -1284,7 +1268,6 @@
 "qwat_od","vw_export_installation","pressurezone_subscriber",,"YES","integer",,"32","2",
 "qwat_od","vw_export_installation","pressurezone_update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_export_installation","pressurezone_update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","vw_export_installation","_printmaps",,"YES","text",,,,
 "qwat_od","vw_export_installation","pump_operating_code_sire",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_installation","pump_operating_description_en",,"YES","text",,,,
 "qwat_od","vw_export_installation","pump_operating_description_fr",,"YES","text",,,,
@@ -1389,6 +1372,7 @@
 "qwat_od","vw_export_installation","watertype_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_installation","year",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_installation","year_end",,"YES","smallint",,"16","2",
+"qwat_od","vw_export_leak","_repaired",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","address",,"YES","text",,,,
 "qwat_od","vw_export_leak","cause_description_en",,"YES","text",,,,
 "qwat_od","vw_export_leak","cause_description_fr",,"YES","text",,,,
@@ -1417,6 +1401,13 @@
 "qwat_od","vw_export_leak","label_2_x",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_leak","label_2_y",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_leak","pipe__diff_elevation",,"YES","numeric",,"8","10",
+"qwat_od","vw_export_leak","pipe__geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_export_leak","pipe__geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_export_leak","pipe__length2d",,"YES","numeric",,"8","10",
+"qwat_od","vw_export_leak","pipe__length3d",,"YES","numeric",,"8","10",
+"qwat_od","vw_export_leak","pipe__printmaps",,"YES","character varying","100",,,
+"qwat_od","vw_export_leak","pipe__valve_closed",,"YES","boolean",,,,
+"qwat_od","vw_export_leak","pipe__valve_count",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_leak","pipe_distributor_name",,"YES","character varying","30",,,
 "qwat_od","vw_export_leak","pipe_district_colorcode",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_leak","pipe_district_geometry",,"YES","USER-DEFINED",,,,
@@ -1473,9 +1464,7 @@
 "qwat_od","vw_export_leak","pipe_function_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_leak","pipe_geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_leak","pipe__geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_leak","pipe__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_installmethod_description_en",,"YES","text",,,,
 "qwat_od","vw_export_leak","pipe_installmethod_description_fr",,"YES","text",,,,
 "qwat_od","vw_export_leak","pipe_installmethod_description_ro",,"YES","text",,,,
@@ -1490,8 +1479,9 @@
 "qwat_od","vw_export_leak","pipe_label_1_visible",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_leak","pipe_label_2_text",,"YES","character varying","120",,,
 "qwat_od","vw_export_leak","pipe_label_2_visible",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_leak","pipe__length2d",,"YES","numeric",,"8","10",
-"qwat_od","vw_export_leak","pipe__length3d",,"YES","numeric",,"8","10",
+"qwat_od","vw_export_leak","pipe_material__displayname_en",,"YES","character varying","30",,,
+"qwat_od","vw_export_leak","pipe_material__displayname_fr",,"YES","character varying","30",,,
+"qwat_od","vw_export_leak","pipe_material__displayname_ro",,"YES","character varying","30",,,
 "qwat_od","vw_export_leak","pipe_material_code_sire",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_leak","pipe_material_description_en",,"YES","text",,,,
 "qwat_od","vw_export_leak","pipe_material_description_fr",,"YES","text",,,,
@@ -1500,9 +1490,6 @@
 "qwat_od","vw_export_leak","pipe_material_diameter_external",,"YES","numeric",,"7","10",
 "qwat_od","vw_export_leak","pipe_material_diameter_internal",,"YES","numeric",,"7","10",
 "qwat_od","vw_export_leak","pipe_material_diameter_nominal",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_leak","pipe_material__displayname_en",,"YES","character varying","30",,,
-"qwat_od","vw_export_leak","pipe_material__displayname_fr",,"YES","character varying","30",,,
-"qwat_od","vw_export_leak","pipe_material__displayname_ro",,"YES","character varying","30",,,
 "qwat_od","vw_export_leak","pipe_material_pressure_nominal",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_leak","pipe_material_sdr",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_leak","pipe_material_short_en",,"YES","character varying","10",,,
@@ -1514,32 +1501,32 @@
 "qwat_od","vw_export_leak","pipe_material_value_ro",,"YES","character varying","50",,,
 "qwat_od","vw_export_leak","pipe_material_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_material_wall_thickness",,"YES","numeric",,"4","10",
-"qwat_od","vw_export_leak","pipe_node_a_fk_district",,"YES","integer",,"32","2",
-"qwat_od","vw_export_leak","pipe_node_a_fk_pressurezone",,"YES","integer",,"32","2",
-"qwat_od","vw_export_leak","pipe_node_a_fk_printmap",,"YES","ARRAY",,,,
-"qwat_od","vw_export_leak","pipe_node_a_geometry",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_leak","pipe_node_a_geometry_alt1",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_leak","pipe_node_a__geometry_alt1_used",,"YES","boolean",,,,
-"qwat_od","vw_export_leak","pipe_node_a_geometry_alt2",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_leak","pipe_node_a__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_node_a__pipe_node_type",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_leak","pipe_node_a__pipe_orientation",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_leak","pipe_node_a__pipe_schema_visible",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_node_a__printmaps",,"YES","text",,,,
+"qwat_od","vw_export_leak","pipe_node_a_fk_district",,"YES","integer",,"32","2",
+"qwat_od","vw_export_leak","pipe_node_a_fk_pressurezone",,"YES","integer",,"32","2",
+"qwat_od","vw_export_leak","pipe_node_a_fk_printmap",,"YES","ARRAY",,,,
+"qwat_od","vw_export_leak","pipe_node_a_geometry",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_export_leak","pipe_node_a_geometry_alt1",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_export_leak","pipe_node_a_geometry_alt2",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_leak","pipe_node_a_update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_node_a_update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","vw_export_leak","pipe_node_b_fk_district",,"YES","integer",,"32","2",
-"qwat_od","vw_export_leak","pipe_node_b_fk_pressurezone",,"YES","integer",,"32","2",
-"qwat_od","vw_export_leak","pipe_node_b_fk_printmap",,"YES","ARRAY",,,,
-"qwat_od","vw_export_leak","pipe_node_b_geometry",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_leak","pipe_node_b_geometry_alt1",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_leak","pipe_node_b__geometry_alt1_used",,"YES","boolean",,,,
-"qwat_od","vw_export_leak","pipe_node_b_geometry_alt2",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_leak","pipe_node_b__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_node_b__pipe_node_type",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_leak","pipe_node_b__pipe_orientation",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_leak","pipe_node_b__pipe_schema_visible",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_node_b__printmaps",,"YES","text",,,,
+"qwat_od","vw_export_leak","pipe_node_b_fk_district",,"YES","integer",,"32","2",
+"qwat_od","vw_export_leak","pipe_node_b_fk_pressurezone",,"YES","integer",,"32","2",
+"qwat_od","vw_export_leak","pipe_node_b_fk_printmap",,"YES","ARRAY",,,,
+"qwat_od","vw_export_leak","pipe_node_b_geometry",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_export_leak","pipe_node_b_geometry_alt1",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_export_leak","pipe_node_b_geometry_alt2",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_leak","pipe_node_b_update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_node_b_update_geometry_alt2",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_precision_code_sire",,"YES","smallint",,"16","2",
@@ -1554,14 +1541,14 @@
 "qwat_od","vw_export_leak","pipe_precision_value_ro",,"YES","character varying","50",,,
 "qwat_od","vw_export_leak","pipe_precision_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_pressure_nominal",,"YES","smallint",,"16","2",
+"qwat_od","vw_export_leak","pipe_pressurezone__geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_export_leak","pipe_pressurezone__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_pressurezone_colorcode",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_leak","pipe_pressurezone_fk_consumptionzone",,"YES","integer",,"32","2",
 "qwat_od","vw_export_leak","pipe_pressurezone_fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_export_leak","pipe_pressurezone_geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_leak","pipe_pressurezone_geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_leak","pipe_pressurezone__geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_pressurezone_geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_leak","pipe_pressurezone__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_pressurezone_label_1_rotation",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_leak","pipe_pressurezone_label_1_text",,"YES","character varying","120",,,
 "qwat_od","vw_export_leak","pipe_pressurezone_label_1_visible",,"YES","smallint",,"16","2",
@@ -1577,7 +1564,6 @@
 "qwat_od","vw_export_leak","pipe_pressurezone_subscriber",,"YES","integer",,"32","2",
 "qwat_od","vw_export_leak","pipe_pressurezone_update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_pressurezone_update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","vw_export_leak","pipe__printmaps",,"YES","character varying","100",,,
 "qwat_od","vw_export_leak","pipe_protection_description_en",,"YES","text",,,,
 "qwat_od","vw_export_leak","pipe_protection_description_fr",,"YES","text",,,,
 "qwat_od","vw_export_leak","pipe_protection_description_ro",,"YES","text",,,,
@@ -1606,15 +1592,18 @@
 "qwat_od","vw_export_leak","pipe_tunnel_or_bridge",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","pipe_update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","vw_export_leak","pipe__valve_closed",,"YES","boolean",,,,
-"qwat_od","vw_export_leak","pipe__valve_count",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_leak","pipe_year",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_leak","pipe_year_end",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_leak","pipe_year_rehabilitation",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_leak","repair",,"YES","text",,,,
 "qwat_od","vw_export_leak","repair_date",,"YES","date",,,,"0"
-"qwat_od","vw_export_leak","_repaired",,"YES","boolean",,,,
 "qwat_od","vw_export_leak","widespread_damage",,"YES","boolean",,,,
+"qwat_od","vw_export_meter","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_export_meter","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_export_meter","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_export_meter","_pipe_orientation",,"YES","double precision",,"53","2",
+"qwat_od","vw_export_meter","_pipe_schema_visible",,"YES","boolean",,,,
+"qwat_od","vw_export_meter","_printmaps",,"YES","text",,,,
 "qwat_od","vw_export_meter","altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_export_meter","distributor_name",,"YES","character varying","30",,,
 "qwat_od","vw_export_meter","district_colorcode",,"YES","smallint",,"16","2",
@@ -1653,9 +1642,7 @@
 "qwat_od","vw_export_meter","folder_identification",,"YES","character varying","50",,,
 "qwat_od","vw_export_meter","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_meter","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_meter","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_export_meter","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_meter","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_meter","id",,"YES","integer",,"32","2",
 "qwat_od","vw_export_meter","identification",,"YES","character varying","50",,,
 "qwat_od","vw_export_meter","label_1_rotation",,"YES","double precision",,"53","2",
@@ -1680,20 +1667,6 @@
 "qwat_od","vw_export_meter","object_reference_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_meter","orientation",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_meter","parcel",,"YES","character varying","50",,,
-"qwat_od","vw_export_meter","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_meter","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_meter","_pipe_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_export_meter","precisionalti_code_sire",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_meter","precisionalti_description_en",,"YES","text",,,,
-"qwat_od","vw_export_meter","precisionalti_description_fr",,"YES","text",,,,
-"qwat_od","vw_export_meter","precisionalti_description_ro",,"YES","text",,,,
-"qwat_od","vw_export_meter","precisionalti_short_en",,"YES","character varying","10",,,
-"qwat_od","vw_export_meter","precisionalti_short_fr",,"YES","character varying","10",,,
-"qwat_od","vw_export_meter","precisionalti_short_ro",,"YES","character varying","10",,,
-"qwat_od","vw_export_meter","precisionalti_value_en",,"YES","character varying","50",,,
-"qwat_od","vw_export_meter","precisionalti_value_fr",,"YES","character varying","50",,,
-"qwat_od","vw_export_meter","precisionalti_value_ro",,"YES","character varying","50",,,
-"qwat_od","vw_export_meter","precisionalti_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_meter","precision_code_sire",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_meter","precision_description_en",,"YES","text",,,,
 "qwat_od","vw_export_meter","precision_description_fr",,"YES","text",,,,
@@ -1705,14 +1678,25 @@
 "qwat_od","vw_export_meter","precision_value_fr",,"YES","character varying","50",,,
 "qwat_od","vw_export_meter","precision_value_ro",,"YES","character varying","50",,,
 "qwat_od","vw_export_meter","precision_vl_active",,"YES","boolean",,,,
+"qwat_od","vw_export_meter","precisionalti_code_sire",,"YES","smallint",,"16","2",
+"qwat_od","vw_export_meter","precisionalti_description_en",,"YES","text",,,,
+"qwat_od","vw_export_meter","precisionalti_description_fr",,"YES","text",,,,
+"qwat_od","vw_export_meter","precisionalti_description_ro",,"YES","text",,,,
+"qwat_od","vw_export_meter","precisionalti_short_en",,"YES","character varying","10",,,
+"qwat_od","vw_export_meter","precisionalti_short_fr",,"YES","character varying","10",,,
+"qwat_od","vw_export_meter","precisionalti_short_ro",,"YES","character varying","10",,,
+"qwat_od","vw_export_meter","precisionalti_value_en",,"YES","character varying","50",,,
+"qwat_od","vw_export_meter","precisionalti_value_fr",,"YES","character varying","50",,,
+"qwat_od","vw_export_meter","precisionalti_value_ro",,"YES","character varying","50",,,
+"qwat_od","vw_export_meter","precisionalti_vl_active",,"YES","boolean",,,,
+"qwat_od","vw_export_meter","pressurezone__geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_export_meter","pressurezone__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_meter","pressurezone_colorcode",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_meter","pressurezone_fk_consumptionzone",,"YES","integer",,"32","2",
 "qwat_od","vw_export_meter","pressurezone_fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_export_meter","pressurezone_geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_meter","pressurezone_geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_meter","pressurezone__geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_export_meter","pressurezone_geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_meter","pressurezone__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_meter","pressurezone_label_1_rotation",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_meter","pressurezone_label_1_text",,"YES","character varying","120",,,
 "qwat_od","vw_export_meter","pressurezone_label_1_visible",,"YES","smallint",,"16","2",
@@ -1728,7 +1712,6 @@
 "qwat_od","vw_export_meter","pressurezone_subscriber",,"YES","integer",,"32","2",
 "qwat_od","vw_export_meter","pressurezone_update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_export_meter","pressurezone_update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","vw_export_meter","_printmaps",,"YES","text",,,,
 "qwat_od","vw_export_meter","remark",,"YES","text",,,,
 "qwat_od","vw_export_meter","schema_force_visible",,"YES","boolean",,,,
 "qwat_od","vw_export_meter","status_active",,"YES","boolean",,,,
@@ -1747,6 +1730,12 @@
 "qwat_od","vw_export_meter","update_geometry_alt2",,"YES","boolean",,,,
 "qwat_od","vw_export_meter","year",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_meter","year_end",,"YES","smallint",,"16","2",
+"qwat_od","vw_export_part","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_export_part","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_export_part","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_export_part","_pipe_orientation",,"YES","double precision",,"53","2",
+"qwat_od","vw_export_part","_pipe_schema_visible",,"YES","boolean",,,,
+"qwat_od","vw_export_part","_printmaps",,"YES","text",,,,
 "qwat_od","vw_export_part","altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_export_part","distributor_name",,"YES","character varying","30",,,
 "qwat_od","vw_export_part","district_colorcode",,"YES","smallint",,"16","2",
@@ -1786,9 +1775,7 @@
 "qwat_od","vw_export_part","folder_identification",,"YES","character varying","50",,,
 "qwat_od","vw_export_part","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_part","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_part","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_export_part","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_part","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_part","id",,"YES","integer",,"32","2",
 "qwat_od","vw_export_part","identification",,"YES","character varying","50",,,
 "qwat_od","vw_export_part","label_1_rotation",,"YES","double precision",,"53","2",
@@ -1822,20 +1809,6 @@
 "qwat_od","vw_export_part","part_type_value_fr",,"YES","character varying","50",,,
 "qwat_od","vw_export_part","part_type_value_ro",,"YES","character varying","50",,,
 "qwat_od","vw_export_part","part_type_vl_active",,"YES","boolean",,,,
-"qwat_od","vw_export_part","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_part","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_part","_pipe_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_export_part","precisionalti_code_sire",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_part","precisionalti_description_en",,"YES","text",,,,
-"qwat_od","vw_export_part","precisionalti_description_fr",,"YES","text",,,,
-"qwat_od","vw_export_part","precisionalti_description_ro",,"YES","text",,,,
-"qwat_od","vw_export_part","precisionalti_short_en",,"YES","character varying","10",,,
-"qwat_od","vw_export_part","precisionalti_short_fr",,"YES","character varying","10",,,
-"qwat_od","vw_export_part","precisionalti_short_ro",,"YES","character varying","10",,,
-"qwat_od","vw_export_part","precisionalti_value_en",,"YES","character varying","50",,,
-"qwat_od","vw_export_part","precisionalti_value_fr",,"YES","character varying","50",,,
-"qwat_od","vw_export_part","precisionalti_value_ro",,"YES","character varying","50",,,
-"qwat_od","vw_export_part","precisionalti_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_part","precision_code_sire",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_part","precision_description_en",,"YES","text",,,,
 "qwat_od","vw_export_part","precision_description_fr",,"YES","text",,,,
@@ -1847,14 +1820,25 @@
 "qwat_od","vw_export_part","precision_value_fr",,"YES","character varying","50",,,
 "qwat_od","vw_export_part","precision_value_ro",,"YES","character varying","50",,,
 "qwat_od","vw_export_part","precision_vl_active",,"YES","boolean",,,,
+"qwat_od","vw_export_part","precisionalti_code_sire",,"YES","smallint",,"16","2",
+"qwat_od","vw_export_part","precisionalti_description_en",,"YES","text",,,,
+"qwat_od","vw_export_part","precisionalti_description_fr",,"YES","text",,,,
+"qwat_od","vw_export_part","precisionalti_description_ro",,"YES","text",,,,
+"qwat_od","vw_export_part","precisionalti_short_en",,"YES","character varying","10",,,
+"qwat_od","vw_export_part","precisionalti_short_fr",,"YES","character varying","10",,,
+"qwat_od","vw_export_part","precisionalti_short_ro",,"YES","character varying","10",,,
+"qwat_od","vw_export_part","precisionalti_value_en",,"YES","character varying","50",,,
+"qwat_od","vw_export_part","precisionalti_value_fr",,"YES","character varying","50",,,
+"qwat_od","vw_export_part","precisionalti_value_ro",,"YES","character varying","50",,,
+"qwat_od","vw_export_part","precisionalti_vl_active",,"YES","boolean",,,,
+"qwat_od","vw_export_part","pressurezone__geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_export_part","pressurezone__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_part","pressurezone_colorcode",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_part","pressurezone_fk_consumptionzone",,"YES","integer",,"32","2",
 "qwat_od","vw_export_part","pressurezone_fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_export_part","pressurezone_geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_part","pressurezone_geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_part","pressurezone__geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_export_part","pressurezone_geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_part","pressurezone__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_part","pressurezone_label_1_rotation",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_part","pressurezone_label_1_text",,"YES","character varying","120",,,
 "qwat_od","vw_export_part","pressurezone_label_1_visible",,"YES","smallint",,"16","2",
@@ -1870,7 +1854,6 @@
 "qwat_od","vw_export_part","pressurezone_subscriber",,"YES","integer",,"32","2",
 "qwat_od","vw_export_part","pressurezone_update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_export_part","pressurezone_update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","vw_export_part","_printmaps",,"YES","text",,,,
 "qwat_od","vw_export_part","remark",,"YES","text",,,,
 "qwat_od","vw_export_part","schema_force_visible",,"YES","boolean",,,,
 "qwat_od","vw_export_part","status_active",,"YES","boolean",,,,
@@ -1890,6 +1873,13 @@
 "qwat_od","vw_export_part","year",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_part","year_end",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_pipe","_diff_elevation",,"YES","numeric",,"8","10",
+"qwat_od","vw_export_pipe","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_export_pipe","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_export_pipe","_length2d",,"YES","numeric",,"8","10",
+"qwat_od","vw_export_pipe","_length3d",,"YES","numeric",,"8","10",
+"qwat_od","vw_export_pipe","_printmaps",,"YES","character varying","100",,,
+"qwat_od","vw_export_pipe","_valve_closed",,"YES","boolean",,,,
+"qwat_od","vw_export_pipe","_valve_count",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_pipe","distributor_name",,"YES","character varying","30",,,
 "qwat_od","vw_export_pipe","district_colorcode",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_pipe","district_geometry",,"YES","USER-DEFINED",,,,
@@ -1946,9 +1936,7 @@
 "qwat_od","vw_export_pipe","function_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_pipe","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_pipe","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_pipe","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","id",,"YES","integer",,"32","2",
 "qwat_od","vw_export_pipe","installmethod_description_en",,"YES","text",,,,
 "qwat_od","vw_export_pipe","installmethod_description_fr",,"YES","text",,,,
@@ -1964,8 +1952,9 @@
 "qwat_od","vw_export_pipe","label_1_visible",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_pipe","label_2_text",,"YES","character varying","120",,,
 "qwat_od","vw_export_pipe","label_2_visible",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_pipe","_length2d",,"YES","numeric",,"8","10",
-"qwat_od","vw_export_pipe","_length3d",,"YES","numeric",,"8","10",
+"qwat_od","vw_export_pipe","material__displayname_en",,"YES","character varying","30",,,
+"qwat_od","vw_export_pipe","material__displayname_fr",,"YES","character varying","30",,,
+"qwat_od","vw_export_pipe","material__displayname_ro",,"YES","character varying","30",,,
 "qwat_od","vw_export_pipe","material_code_sire",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_pipe","material_description_en",,"YES","text",,,,
 "qwat_od","vw_export_pipe","material_description_fr",,"YES","text",,,,
@@ -1974,9 +1963,6 @@
 "qwat_od","vw_export_pipe","material_diameter_external",,"YES","numeric",,"7","10",
 "qwat_od","vw_export_pipe","material_diameter_internal",,"YES","numeric",,"7","10",
 "qwat_od","vw_export_pipe","material_diameter_nominal",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_pipe","material__displayname_en",,"YES","character varying","30",,,
-"qwat_od","vw_export_pipe","material__displayname_fr",,"YES","character varying","30",,,
-"qwat_od","vw_export_pipe","material__displayname_ro",,"YES","character varying","30",,,
 "qwat_od","vw_export_pipe","material_pressure_nominal",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_pipe","material_sdr",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_pipe","material_short_en",,"YES","character varying","10",,,
@@ -1988,32 +1974,32 @@
 "qwat_od","vw_export_pipe","material_value_ro",,"YES","character varying","50",,,
 "qwat_od","vw_export_pipe","material_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","material_wall_thickness",,"YES","numeric",,"4","10",
-"qwat_od","vw_export_pipe","node_a_fk_district",,"YES","integer",,"32","2",
-"qwat_od","vw_export_pipe","node_a_fk_pressurezone",,"YES","integer",,"32","2",
-"qwat_od","vw_export_pipe","node_a_fk_printmap",,"YES","ARRAY",,,,
-"qwat_od","vw_export_pipe","node_a_geometry",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_pipe","node_a_geometry_alt1",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_pipe","node_a__geometry_alt1_used",,"YES","boolean",,,,
-"qwat_od","vw_export_pipe","node_a_geometry_alt2",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_pipe","node_a__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","node_a__pipe_node_type",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_pipe","node_a__pipe_orientation",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_pipe","node_a__pipe_schema_visible",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","node_a__printmaps",,"YES","text",,,,
+"qwat_od","vw_export_pipe","node_a_fk_district",,"YES","integer",,"32","2",
+"qwat_od","vw_export_pipe","node_a_fk_pressurezone",,"YES","integer",,"32","2",
+"qwat_od","vw_export_pipe","node_a_fk_printmap",,"YES","ARRAY",,,,
+"qwat_od","vw_export_pipe","node_a_geometry",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_export_pipe","node_a_geometry_alt1",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_export_pipe","node_a_geometry_alt2",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_pipe","node_a_update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","node_a_update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","vw_export_pipe","node_b_fk_district",,"YES","integer",,"32","2",
-"qwat_od","vw_export_pipe","node_b_fk_pressurezone",,"YES","integer",,"32","2",
-"qwat_od","vw_export_pipe","node_b_fk_printmap",,"YES","ARRAY",,,,
-"qwat_od","vw_export_pipe","node_b_geometry",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_pipe","node_b_geometry_alt1",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_pipe","node_b__geometry_alt1_used",,"YES","boolean",,,,
-"qwat_od","vw_export_pipe","node_b_geometry_alt2",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_pipe","node_b__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","node_b__pipe_node_type",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_pipe","node_b__pipe_orientation",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_pipe","node_b__pipe_schema_visible",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","node_b__printmaps",,"YES","text",,,,
+"qwat_od","vw_export_pipe","node_b_fk_district",,"YES","integer",,"32","2",
+"qwat_od","vw_export_pipe","node_b_fk_pressurezone",,"YES","integer",,"32","2",
+"qwat_od","vw_export_pipe","node_b_fk_printmap",,"YES","ARRAY",,,,
+"qwat_od","vw_export_pipe","node_b_geometry",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_export_pipe","node_b_geometry_alt1",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_export_pipe","node_b_geometry_alt2",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_pipe","node_b_update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","node_b_update_geometry_alt2",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","precision_code_sire",,"YES","smallint",,"16","2",
@@ -2028,14 +2014,14 @@
 "qwat_od","vw_export_pipe","precision_value_ro",,"YES","character varying","50",,,
 "qwat_od","vw_export_pipe","precision_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","pressure_nominal",,"YES","smallint",,"16","2",
+"qwat_od","vw_export_pipe","pressurezone__geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_export_pipe","pressurezone__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","pressurezone_colorcode",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_pipe","pressurezone_fk_consumptionzone",,"YES","integer",,"32","2",
 "qwat_od","vw_export_pipe","pressurezone_fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_export_pipe","pressurezone_geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_pipe","pressurezone_geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_pipe","pressurezone__geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","pressurezone_geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_pipe","pressurezone__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","pressurezone_label_1_rotation",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_pipe","pressurezone_label_1_text",,"YES","character varying","120",,,
 "qwat_od","vw_export_pipe","pressurezone_label_1_visible",,"YES","smallint",,"16","2",
@@ -2051,7 +2037,6 @@
 "qwat_od","vw_export_pipe","pressurezone_subscriber",,"YES","integer",,"32","2",
 "qwat_od","vw_export_pipe","pressurezone_update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","pressurezone_update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","vw_export_pipe","_printmaps",,"YES","character varying","100",,,
 "qwat_od","vw_export_pipe","protection_description_en",,"YES","text",,,,
 "qwat_od","vw_export_pipe","protection_description_fr",,"YES","text",,,,
 "qwat_od","vw_export_pipe","protection_description_ro",,"YES","text",,,,
@@ -2079,11 +2064,15 @@
 "qwat_od","vw_export_pipe","tunnel_or_bridge",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_export_pipe","update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","vw_export_pipe","_valve_closed",,"YES","boolean",,,,
-"qwat_od","vw_export_pipe","_valve_count",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_pipe","year",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_pipe","year_end",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_pipe","year_rehabilitation",,"YES","smallint",,"16","2",
+"qwat_od","vw_export_subscriber","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_export_subscriber","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_export_subscriber","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_export_subscriber","_pipe_orientation",,"YES","double precision",,"53","2",
+"qwat_od","vw_export_subscriber","_pipe_schema_visible",,"YES","boolean",,,,
+"qwat_od","vw_export_subscriber","_printmaps",,"YES","text",,,,
 "qwat_od","vw_export_subscriber","altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_export_subscriber","distributor_name",,"YES","character varying","30",,,
 "qwat_od","vw_export_subscriber","district_colorcode",,"YES","smallint",,"16","2",
@@ -2125,9 +2114,7 @@
 "qwat_od","vw_export_subscriber","folder_identification",,"YES","character varying","50",,,
 "qwat_od","vw_export_subscriber","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_subscriber","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_subscriber","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_export_subscriber","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_subscriber","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_subscriber","id",,"YES","integer",,"32","2",
 "qwat_od","vw_export_subscriber","identification",,"YES","character varying","50",,,
 "qwat_od","vw_export_subscriber","label_1_rotation",,"YES","double precision",,"53","2",
@@ -2152,20 +2139,6 @@
 "qwat_od","vw_export_subscriber","object_reference_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_subscriber","orientation",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_subscriber","parcel",,"YES","character varying","12",,,
-"qwat_od","vw_export_subscriber","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_subscriber","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_subscriber","_pipe_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_export_subscriber","precisionalti_code_sire",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_subscriber","precisionalti_description_en",,"YES","text",,,,
-"qwat_od","vw_export_subscriber","precisionalti_description_fr",,"YES","text",,,,
-"qwat_od","vw_export_subscriber","precisionalti_description_ro",,"YES","text",,,,
-"qwat_od","vw_export_subscriber","precisionalti_short_en",,"YES","character varying","10",,,
-"qwat_od","vw_export_subscriber","precisionalti_short_fr",,"YES","character varying","10",,,
-"qwat_od","vw_export_subscriber","precisionalti_short_ro",,"YES","character varying","10",,,
-"qwat_od","vw_export_subscriber","precisionalti_value_en",,"YES","character varying","50",,,
-"qwat_od","vw_export_subscriber","precisionalti_value_fr",,"YES","character varying","50",,,
-"qwat_od","vw_export_subscriber","precisionalti_value_ro",,"YES","character varying","50",,,
-"qwat_od","vw_export_subscriber","precisionalti_vl_active",,"YES","boolean",,,,
 "qwat_od","vw_export_subscriber","precision_code_sire",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_subscriber","precision_description_en",,"YES","text",,,,
 "qwat_od","vw_export_subscriber","precision_description_fr",,"YES","text",,,,
@@ -2177,14 +2150,25 @@
 "qwat_od","vw_export_subscriber","precision_value_fr",,"YES","character varying","50",,,
 "qwat_od","vw_export_subscriber","precision_value_ro",,"YES","character varying","50",,,
 "qwat_od","vw_export_subscriber","precision_vl_active",,"YES","boolean",,,,
+"qwat_od","vw_export_subscriber","precisionalti_code_sire",,"YES","smallint",,"16","2",
+"qwat_od","vw_export_subscriber","precisionalti_description_en",,"YES","text",,,,
+"qwat_od","vw_export_subscriber","precisionalti_description_fr",,"YES","text",,,,
+"qwat_od","vw_export_subscriber","precisionalti_description_ro",,"YES","text",,,,
+"qwat_od","vw_export_subscriber","precisionalti_short_en",,"YES","character varying","10",,,
+"qwat_od","vw_export_subscriber","precisionalti_short_fr",,"YES","character varying","10",,,
+"qwat_od","vw_export_subscriber","precisionalti_short_ro",,"YES","character varying","10",,,
+"qwat_od","vw_export_subscriber","precisionalti_value_en",,"YES","character varying","50",,,
+"qwat_od","vw_export_subscriber","precisionalti_value_fr",,"YES","character varying","50",,,
+"qwat_od","vw_export_subscriber","precisionalti_value_ro",,"YES","character varying","50",,,
+"qwat_od","vw_export_subscriber","precisionalti_vl_active",,"YES","boolean",,,,
+"qwat_od","vw_export_subscriber","pressurezone__geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_export_subscriber","pressurezone__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_subscriber","pressurezone_colorcode",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_subscriber","pressurezone_fk_consumptionzone",,"YES","integer",,"32","2",
 "qwat_od","vw_export_subscriber","pressurezone_fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_export_subscriber","pressurezone_geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_export_subscriber","pressurezone_geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_subscriber","pressurezone__geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_export_subscriber","pressurezone_geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_subscriber","pressurezone__geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_export_subscriber","pressurezone_label_1_rotation",,"YES","double precision",,"53","2",
 "qwat_od","vw_export_subscriber","pressurezone_label_1_text",,"YES","character varying","120",,,
 "qwat_od","vw_export_subscriber","pressurezone_label_1_visible",,"YES","smallint",,"16","2",
@@ -2200,7 +2184,6 @@
 "qwat_od","vw_export_subscriber","pressurezone_subscriber",,"YES","integer",,"32","2",
 "qwat_od","vw_export_subscriber","pressurezone_update_geometry_alt1",,"YES","boolean",,,,
 "qwat_od","vw_export_subscriber","pressurezone_update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","vw_export_subscriber","_printmaps",,"YES","text",,,,
 "qwat_od","vw_export_subscriber","remark",,"YES","text",,,,
 "qwat_od","vw_export_subscriber","schema_force_visible",,"YES","boolean",,,,
 "qwat_od","vw_export_subscriber","status_active",,"YES","boolean",,,,
@@ -2229,180 +2212,6 @@
 "qwat_od","vw_export_subscriber","update_geometry_alt2",,"YES","boolean",,,,
 "qwat_od","vw_export_subscriber","year",,"YES","smallint",,"16","2",
 "qwat_od","vw_export_subscriber","year_end",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_valve","altitude",,"YES","numeric",,"10","10",
-"qwat_od","vw_export_valve","closed",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","diameter_nominal",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","distributor_name",,"YES","character varying","30",,,
-"qwat_od","vw_export_valve","district_colorcode",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_valve","district_geometry",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_valve","district_label_1_rotation",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","district_label_1_text",,"YES","character varying","120",,,
-"qwat_od","vw_export_valve","district_label_1_visible",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_valve","district_label_1_x",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","district_label_1_y",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","district_label_2_rotation",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","district_label_2_text",,"YES","character varying","120",,,
-"qwat_od","vw_export_valve","district_label_2_visible",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_valve","district_label_2_x",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","district_label_2_y",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","district_land_registry",,"YES","character varying","12",,,
-"qwat_od","vw_export_valve","district_name",,"YES","character varying","40",,,
-"qwat_od","vw_export_valve","district_prefix",,"YES","character varying","12",,,
-"qwat_od","vw_export_valve","district_shortname",,"YES","character varying","12",,,
-"qwat_od","vw_export_valve","district_zip",,"YES","character varying","12",,,
-"qwat_od","vw_export_valve","fk_distributor",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","fk_district",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","fk_folder",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","fk_handle_precision",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","fk_handle_precisionalti",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","fk_locationtype",,"YES","ARRAY",,,,
-"qwat_od","vw_export_valve","fk_maintenance",,"YES","ARRAY",,,,
-"qwat_od","vw_export_valve","fk_object_reference",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","fk_pipe",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","fk_precision",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","fk_precisionalti",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","fk_pressurezone",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","fk_printmap",,"YES","ARRAY",,,,
-"qwat_od","vw_export_valve","fk_status",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","fk_valve_actuation",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","fk_valve_function",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","fk_valve_type",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","folder_date_end",,"YES","date",,,,"0"
-"qwat_od","vw_export_valve","folder_date_start",,"YES","date",,,,"0"
-"qwat_od","vw_export_valve","folder_description",,"YES","text",,,,
-"qwat_od","vw_export_valve","folder_geometry_line",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_valve","folder_geometry_polygon",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_valve","folder_identification",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","geometry",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_valve","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_valve","_geometry_alt1_used",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_valve","_geometry_alt2_used",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","handle_altitude",,"YES","numeric",,"10","10",
-"qwat_od","vw_export_valve","handle_geometry",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_valve","id",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","identification",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","label_1_rotation",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","label_1_text",,"YES","character varying","120",,,
-"qwat_od","vw_export_valve","label_1_visible",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_valve","label_1_x",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","label_1_y",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","label_2_rotation",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","label_2_text",,"YES","character varying","120",,,
-"qwat_od","vw_export_valve","label_2_visible",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_valve","label_2_x",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","label_2_y",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","networkseparation",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","object_reference_description_en",,"YES","text",,,,
-"qwat_od","vw_export_valve","object_reference_description_fr",,"YES","text",,,,
-"qwat_od","vw_export_valve","object_reference_description_ro",,"YES","text",,,,
-"qwat_od","vw_export_valve","object_reference_short_en",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","object_reference_short_fr",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","object_reference_short_ro",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","object_reference_value_en",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","object_reference_value_fr",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","object_reference_value_ro",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","object_reference_vl_active",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_valve","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","_pipe_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","precisionalti_code_sire",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_valve","precisionalti_description_en",,"YES","text",,,,
-"qwat_od","vw_export_valve","precisionalti_description_fr",,"YES","text",,,,
-"qwat_od","vw_export_valve","precisionalti_description_ro",,"YES","text",,,,
-"qwat_od","vw_export_valve","precisionalti_short_en",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","precisionalti_short_fr",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","precisionalti_short_ro",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","precisionalti_value_en",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","precisionalti_value_fr",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","precisionalti_value_ro",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","precisionalti_vl_active",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","precision_code_sire",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_valve","precision_description_en",,"YES","text",,,,
-"qwat_od","vw_export_valve","precision_description_fr",,"YES","text",,,,
-"qwat_od","vw_export_valve","precision_description_ro",,"YES","text",,,,
-"qwat_od","vw_export_valve","precision_short_en",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","precision_short_fr",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","precision_short_ro",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","precision_value_en",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","precision_value_fr",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","precision_value_ro",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","precision_vl_active",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","pressurezone_colorcode",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_valve","pressurezone_fk_consumptionzone",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","pressurezone_fk_distributor",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","pressurezone_geometry",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_valve","pressurezone_geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_valve","pressurezone__geometry_alt1_used",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","pressurezone_geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_export_valve","pressurezone__geometry_alt2_used",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","pressurezone_label_1_rotation",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","pressurezone_label_1_text",,"YES","character varying","120",,,
-"qwat_od","vw_export_valve","pressurezone_label_1_visible",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_valve","pressurezone_label_1_x",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","pressurezone_label_1_y",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","pressurezone_label_2_rotation",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","pressurezone_label_2_text",,"YES","character varying","120",,,
-"qwat_od","vw_export_valve","pressurezone_label_2_visible",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_valve","pressurezone_label_2_x",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","pressurezone_label_2_y",,"YES","double precision",,"53","2",
-"qwat_od","vw_export_valve","pressurezone_name",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","pressurezone_population",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","pressurezone_subscriber",,"YES","integer",,"32","2",
-"qwat_od","vw_export_valve","pressurezone_update_geometry_alt1",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","pressurezone_update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","_printmaps",,"YES","text",,,,
-"qwat_od","vw_export_valve","remark",,"YES","text",,,,
-"qwat_od","vw_export_valve","schema_force_visible",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","status_active",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","status_code_sire",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_valve","status_description_en",,"YES","text",,,,
-"qwat_od","vw_export_valve","status_description_fr",,"YES","text",,,,
-"qwat_od","vw_export_valve","status_description_ro",,"YES","text",,,,
-"qwat_od","vw_export_valve","status_short_en",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","status_short_fr",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","status_short_ro",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","status_value_en",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","status_value_fr",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","status_value_ro",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","status_vl_active",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","update_geometry_alt1",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","update_geometry_alt2",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","valve_actuation_description_en",,"YES","text",,,,
-"qwat_od","vw_export_valve","valve_actuation_description_fr",,"YES","text",,,,
-"qwat_od","vw_export_valve","valve_actuation_description_ro",,"YES","text",,,,
-"qwat_od","vw_export_valve","valve_actuation_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","valve_actuation_short_en",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","valve_actuation_short_fr",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","valve_actuation_short_ro",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","valve_actuation_value_en",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","valve_actuation_value_fr",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","valve_actuation_value_ro",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","valve_actuation_vl_active",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","valve_function_description_en",,"YES","text",,,,
-"qwat_od","vw_export_valve","valve_function_description_fr",,"YES","text",,,,
-"qwat_od","vw_export_valve","valve_function_description_ro",,"YES","text",,,,
-"qwat_od","vw_export_valve","valve_function_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","valve_function_short_en",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","valve_function_short_fr",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","valve_function_short_ro",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","valve_function_value_en",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","valve_function_value_fr",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","valve_function_value_ro",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","valve_function_vl_active",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","valve_type_description_en",,"YES","text",,,,
-"qwat_od","vw_export_valve","valve_type_description_fr",,"YES","text",,,,
-"qwat_od","vw_export_valve","valve_type_description_ro",,"YES","text",,,,
-"qwat_od","vw_export_valve","valve_type_short_en",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","valve_type_short_fr",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","valve_type_short_ro",,"YES","character varying","10",,,
-"qwat_od","vw_export_valve","valve_type_value_en",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","valve_type_value_fr",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","valve_type_value_ro",,"YES","character varying","50",,,
-"qwat_od","vw_export_valve","valve_type_vl_active",,"YES","boolean",,,,
-"qwat_od","vw_export_valve","year",,"YES","smallint",,"16","2",
-"qwat_od","vw_export_valve","year_end",,"YES","smallint",,"16","2",
 "qwat_od","vw_installation_chamber","depth",,"YES","numeric",,"10","10",
 "qwat_od","vw_installation_chamber","eca",,"YES","character varying","30",,,
 "qwat_od","vw_installation_chamber","fk_parent",,"YES","integer",,"32","2",
@@ -2460,17 +2269,18 @@
 "qwat_od","vw_installation_source","name",,"YES","character varying","60",,,
 "qwat_od","vw_installation_source","open_water_surface",,"YES","boolean",,,,
 "qwat_od","vw_installation_source","parcel",,"YES","character varying","30",,,
+"qwat_od","vw_installation_tank","_cistern1_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","vw_installation_tank","_cistern2_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","vw_installation_tank","_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_installation_tank","altitude_apron",,"YES","numeric",,"7","10",
 "qwat_od","vw_installation_tank","altitude_overflow",,"YES","numeric",,"7","10",
 "qwat_od","vw_installation_tank","cistern1_dimension_1",,"YES","numeric",,"10","10",
 "qwat_od","vw_installation_tank","cistern1_dimension_2",,"YES","numeric",,"10","10",
 "qwat_od","vw_installation_tank","cistern1_fk_type",,"YES","integer",,"32","2",
-"qwat_od","vw_installation_tank","_cistern1_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_installation_tank","cistern1_storage",,"YES","numeric",,"10","10",
 "qwat_od","vw_installation_tank","cistern2_dimension_1",,"YES","numeric",,"10","10",
 "qwat_od","vw_installation_tank","cistern2_dimension_2",,"YES","numeric",,"10","10",
 "qwat_od","vw_installation_tank","cistern2_fk_type",,"YES","integer",,"32","2",
-"qwat_od","vw_installation_tank","_cistern2_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_installation_tank","cistern2_storage",,"YES","numeric",,"10","10",
 "qwat_od","vw_installation_tank","eca",,"YES","character varying","30",,,
 "qwat_od","vw_installation_tank","fire_remote",,"YES","boolean",,,,
@@ -2483,7 +2293,6 @@
 "qwat_od","vw_installation_tank","geometry_polygon",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_installation_tank","height_max",,"YES","numeric",,"7","10",
 "qwat_od","vw_installation_tank","id",,"YES","integer",,"32","2",
-"qwat_od","vw_installation_tank","_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_installation_tank","name",,"YES","character varying","60",,,
 "qwat_od","vw_installation_tank","open_water_surface",,"YES","boolean",,,,
 "qwat_od","vw_installation_tank","parcel",,"YES","character varying","30",,,
@@ -2509,6 +2318,12 @@
 "qwat_od","vw_installation_treatment","sanitization_uv",,"YES","boolean",,,,
 "qwat_od","vw_installation_treatment","settling",,"YES","boolean",,,,
 "qwat_od","vw_installation_treatment","treatment_capacity",,"YES","numeric",,"10","10",
+"qwat_od","vw_node_element","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_node_element","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_node_element","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_node_element","_pipe_orientation",,"YES","double precision",,"53","2",
+"qwat_od","vw_node_element","_pipe_schema_visible",,"YES","boolean",,,,
+"qwat_od","vw_node_element","_printmaps",,"YES","text",,,,
 "qwat_od","vw_node_element","altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_node_element","fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_node_element","fk_district",,"YES","integer",,"32","2",
@@ -2522,9 +2337,7 @@
 "qwat_od","vw_node_element","fk_status",,"YES","integer",,"32","2",
 "qwat_od","vw_node_element","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_node_element","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_node_element","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_node_element","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_node_element","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_node_element","id",,"YES","integer",,"32","2",
 "qwat_od","vw_node_element","identification",,"YES","character varying","50",,,
 "qwat_od","vw_node_element","label_1_rotation",,"YES","double precision",,"53","2",
@@ -2538,10 +2351,6 @@
 "qwat_od","vw_node_element","label_2_x",,"YES","double precision",,"53","2",
 "qwat_od","vw_node_element","label_2_y",,"YES","double precision",,"53","2",
 "qwat_od","vw_node_element","orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_node_element","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_node_element","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_node_element","_pipe_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_node_element","_printmaps",,"YES","text",,,,
 "qwat_od","vw_node_element","remark",,"YES","text",,,,
 "qwat_od","vw_node_element","schema_force_visible",,"YES","boolean",,,,
 "qwat_od","vw_node_element","update_geometry_alt1",,"YES","boolean",,,,
@@ -2551,6 +2360,13 @@
 "qwat_od","vw_pipe_child_parent","child",,"YES","integer",,"32","2",
 "qwat_od","vw_pipe_child_parent","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_pipe_child_parent","parent",,"YES","integer",,"32","2",
+"qwat_od","vw_pipe_schema","_length2d",,"YES","numeric",,,"10",
+"qwat_od","vw_pipe_schema","_length3d",,"YES","numeric",,,"10",
+"qwat_od","vw_pipe_schema","_pressurezone",,"YES","character varying","50",,,
+"qwat_od","vw_pipe_schema","_pressurezone_colorcode",,"YES","smallint",,"16","2",
+"qwat_od","vw_pipe_schema","_printmaps",,"YES","character varying","100",,,
+"qwat_od","vw_pipe_schema","_valve_closed",,"YES","boolean",,,,
+"qwat_od","vw_pipe_schema","_valve_count",,"YES","bigint",,"64","2",
 "qwat_od","vw_pipe_schema","fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_pipe_schema","fk_district",,"YES","integer",,"32","2",
 "qwat_od","vw_pipe_schema","fk_folder",,"YES","integer",,"32","2",
@@ -2566,42 +2382,36 @@
 "qwat_od","vw_pipe_schema","id",,"YES","integer",,"32","2",
 "qwat_od","vw_pipe_schema","label_2_text",,"YES","character varying","120",,,
 "qwat_od","vw_pipe_schema","label_2_visible",,"YES","smallint",,"16","2",
-"qwat_od","vw_pipe_schema","_length2d",,"YES","numeric",,,"10",
-"qwat_od","vw_pipe_schema","_length3d",,"YES","numeric",,,"10",
 "qwat_od","vw_pipe_schema","number_of_pipe",,"YES","bigint",,"64","2",
 "qwat_od","vw_pipe_schema","pressure_nominal",,"YES","smallint",,"16","2",
-"qwat_od","vw_pipe_schema","_pressurezone",,"YES","character varying","50",,,
-"qwat_od","vw_pipe_schema","_pressurezone_colorcode",,"YES","smallint",,"16","2",
-"qwat_od","vw_pipe_schema","_printmaps",,"YES","character varying","100",,,
 "qwat_od","vw_pipe_schema","remark",,"YES","text",,,,
 "qwat_od","vw_pipe_schema","tunnel_or_bridge",,"YES","boolean",,,,
-"qwat_od","vw_pipe_schema","_valve_closed",,"YES","boolean",,,,
-"qwat_od","vw_pipe_schema","_valve_count",,"YES","bigint",,"64","2",
 "qwat_od","vw_pipe_schema","year",,"YES","smallint",,"16","2",
 "qwat_od","vw_pipe_schema","year_end",,"YES","smallint",,"16","2",
 "qwat_od","vw_pipe_schema_error","error_desc",,"YES","character varying",,,,
 "qwat_od","vw_pipe_schema_error","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_pipe_schema_error","groupid",,"YES","integer",,"32","2",
-"qwat_od","vw_pipe_schema_merged","geometry",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_pipe_schema_merged","id",,"YES","integer",,"32","2",
 "qwat_od","vw_pipe_schema_merged","_length2d",,"YES","numeric",,,"10",
 "qwat_od","vw_pipe_schema_merged","_length3d",,"YES","numeric",,,"10",
-"qwat_od","vw_pipe_schema_merged","number_of_pipe",,"YES","bigint",,"64","2",
-"qwat_od","vw_pipe_schema_merged","tunnel_or_bridge",,"YES","boolean",,,,
 "qwat_od","vw_pipe_schema_merged","_valve_closed",,"YES","boolean",,,,
 "qwat_od","vw_pipe_schema_merged","_valve_count",,"YES","bigint",,"64","2",
+"qwat_od","vw_pipe_schema_merged","geometry",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_pipe_schema_merged","id",,"YES","integer",,"32","2",
+"qwat_od","vw_pipe_schema_merged","number_of_pipe",,"YES","bigint",,"64","2",
+"qwat_od","vw_pipe_schema_merged","tunnel_or_bridge",,"YES","boolean",,,,
+"qwat_od","vw_pipe_schema_visibleitems","_length2d",,"YES","numeric",,"8","10",
+"qwat_od","vw_pipe_schema_visibleitems","_length3d",,"YES","numeric",,"8","10",
+"qwat_od","vw_pipe_schema_visibleitems","_valve_closed",,"YES","boolean",,,,
+"qwat_od","vw_pipe_schema_visibleitems","_valve_count",,"YES","smallint",,"16","2",
 "qwat_od","vw_pipe_schema_visibleitems","fk_material",,"YES","integer",,"32","2",
 "qwat_od","vw_pipe_schema_visibleitems","fk_parent",,"YES","integer",,"32","2",
 "qwat_od","vw_pipe_schema_visibleitems","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_pipe_schema_visibleitems","id",,"YES","integer",,"32","2",
-"qwat_od","vw_pipe_schema_visibleitems","_length2d",,"YES","numeric",,"8","10",
-"qwat_od","vw_pipe_schema_visibleitems","_length3d",,"YES","numeric",,"8","10",
 "qwat_od","vw_pipe_schema_visibleitems","schema_force_visible",,"YES","boolean",,,,
 "qwat_od","vw_pipe_schema_visibleitems","tunnel_or_bridge",,"YES","boolean",,,,
-"qwat_od","vw_pipe_schema_visibleitems","_valve_closed",,"YES","boolean",,,,
-"qwat_od","vw_pipe_schema_visibleitems","_valve_count",,"YES","smallint",,"16","2",
 "qwat_od","vw_printmap","_district",,"YES","character varying","40",,,
 "qwat_od","vw_printmap","_district_short",,"YES","character varying","12",,,
+"qwat_od","vw_printmap","_longname",,"YES","text",,,,
 "qwat_od","vw_printmap","fk_district",,"YES","smallint",,"16","2",
 "qwat_od","vw_printmap","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_printmap","id",,"YES","integer",,"32","2",
@@ -2615,7 +2425,6 @@
 "qwat_od","vw_printmap","label_2_visible",,"YES","smallint",,"16","2",
 "qwat_od","vw_printmap","label_2_x",,"YES","double precision",,"53","2",
 "qwat_od","vw_printmap","label_2_y",,"YES","double precision",,"53","2",
-"qwat_od","vw_printmap","_longname",,"YES","text",,,,
 "qwat_od","vw_printmap","name",,"YES","character varying","20",,,
 "qwat_od","vw_printmap","remark",,"YES","text",,,,
 "qwat_od","vw_printmap","version_date",,"YES","date",,,,"0"
@@ -2623,27 +2432,28 @@
 "qwat_od","vw_printmap","x_min",,"YES","double precision",,"53","2",
 "qwat_od","vw_printmap","y_max",,"YES","double precision",,"53","2",
 "qwat_od","vw_printmap","y_min",,"YES","double precision",,"53","2",
+"qwat_od","vw_protectionzone","_type",,"YES","character varying","10",,,
+"qwat_od","vw_protectionzone","_type_long",,"YES","character varying","50",,,
 "qwat_od","vw_protectionzone","agent",,"YES","character varying","40",,,
 "qwat_od","vw_protectionzone","date",,"YES","date",,,,"0"
 "qwat_od","vw_protectionzone","fk_type",,"YES","integer",,"32","2",
 "qwat_od","vw_protectionzone","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_protectionzone","id",,"YES","integer",,"32","2",
 "qwat_od","vw_protectionzone","name",,"YES","character varying","40",,,
-"qwat_od","vw_protectionzone","_type",,"YES","character varying","10",,,
-"qwat_od","vw_protectionzone","_type_long",,"YES","character varying","50",,,
 "qwat_od","vw_protectionzone","validated",,"YES","boolean",,,,
+"qwat_od","vw_qwat_installation","_cistern1_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","vw_qwat_installation","_cistern2_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","vw_qwat_installation","_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_qwat_installation","activatedcharcoal",,"YES","boolean",,,,
 "qwat_od","vw_qwat_installation","altitude_apron",,"YES","numeric",,"7","10",
 "qwat_od","vw_qwat_installation","altitude_overflow",,"YES","numeric",,"7","10",
 "qwat_od","vw_qwat_installation","cistern1_dimension_1",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_installation","cistern1_dimension_2",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_installation","cistern1_fk_type",,"YES","integer",,"32","2",
-"qwat_od","vw_qwat_installation","_cistern1_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_qwat_installation","cistern1_storage",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_installation","cistern2_dimension_1",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_installation","cistern2_dimension_2",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_installation","cistern2_fk_type",,"YES","integer",,"32","2",
-"qwat_od","vw_qwat_installation","_cistern2_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_qwat_installation","cistern2_storage",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_installation","contract_end",,"YES","date",,,,"0"
 "qwat_od","vw_qwat_installation","depth",,"YES","numeric",,"10","10",
@@ -2674,7 +2484,6 @@
 "qwat_od","vw_qwat_installation","height_max",,"YES","numeric",,"7","10",
 "qwat_od","vw_qwat_installation","id",,"YES","integer",,"32","2",
 "qwat_od","vw_qwat_installation","installation_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_qwat_installation","_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_qwat_installation","manometer",,"YES","boolean",,,,
 "qwat_od","vw_qwat_installation","manometric_height",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_installation","name",,"YES","character varying","60",,,
@@ -2694,6 +2503,15 @@
 "qwat_od","vw_qwat_installation","storage_total",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_installation","treatment_capacity",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_installation","water_meter",,"YES","boolean",,,,
+"qwat_od","vw_qwat_network_element","_cistern1_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","vw_qwat_network_element","_cistern2_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","vw_qwat_network_element","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_qwat_network_element","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_qwat_network_element","_litrepercm",,"YES","numeric",,"9","10",
+"qwat_od","vw_qwat_network_element","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_qwat_network_element","_pipe_orientation",,"YES","double precision",,"53","2",
+"qwat_od","vw_qwat_network_element","_pipe_schema_visible",,"YES","boolean",,,,
+"qwat_od","vw_qwat_network_element","_printmaps",,"YES","text",,,,
 "qwat_od","vw_qwat_network_element","activatedcharcoal",,"YES","boolean",,,,
 "qwat_od","vw_qwat_network_element","altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_network_element","altitude_apron",,"YES","numeric",,"7","10",
@@ -2701,12 +2519,10 @@
 "qwat_od","vw_qwat_network_element","cistern1_dimension_1",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_network_element","cistern1_dimension_2",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_network_element","cistern1_fk_type",,"YES","integer",,"32","2",
-"qwat_od","vw_qwat_network_element","_cistern1_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_qwat_network_element","cistern1_storage",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_network_element","cistern2_dimension_1",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_network_element","cistern2_dimension_2",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_network_element","cistern2_fk_type",,"YES","integer",,"32","2",
-"qwat_od","vw_qwat_network_element","_cistern2_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_qwat_network_element","cistern2_storage",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_network_element","closed",,"YES","boolean",,,,
 "qwat_od","vw_qwat_network_element","contract_end",,"YES","date",,,,"0"
@@ -2765,9 +2581,7 @@
 "qwat_od","vw_qwat_network_element","gathering_chamber",,"YES","boolean",,,,
 "qwat_od","vw_qwat_network_element","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_qwat_network_element","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_qwat_network_element","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_qwat_network_element","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_qwat_network_element","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_qwat_network_element","geometry_polygon",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_qwat_network_element","handle_altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_network_element","handle_geometry",,"YES","USER-DEFINED",,,,
@@ -2785,7 +2599,6 @@
 "qwat_od","vw_qwat_network_element","label_2_visible",,"YES","smallint",,"16","2",
 "qwat_od","vw_qwat_network_element","label_2_x",,"YES","double precision",,"53","2",
 "qwat_od","vw_qwat_network_element","label_2_y",,"YES","double precision",,"53","2",
-"qwat_od","vw_qwat_network_element","_litrepercm",,"YES","numeric",,"9","10",
 "qwat_od","vw_qwat_network_element","manometer",,"YES","boolean",,,,
 "qwat_od","vw_qwat_network_element","manometric_height",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_network_element","marked",,"YES","boolean",,,,
@@ -2798,12 +2611,8 @@
 "qwat_od","vw_qwat_network_element","open_water_surface",,"YES","boolean",,,,
 "qwat_od","vw_qwat_network_element","orientation",,"YES","double precision",,"53","2",
 "qwat_od","vw_qwat_network_element","parcel",,"YES","character varying",,,,
-"qwat_od","vw_qwat_network_element","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_qwat_network_element","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_qwat_network_element","_pipe_schema_visible",,"YES","boolean",,,,
 "qwat_od","vw_qwat_network_element","pressure_dynamic",,"YES","numeric",,"5","10",
 "qwat_od","vw_qwat_network_element","pressure_static",,"YES","numeric",,"5","10",
-"qwat_od","vw_qwat_network_element","_printmaps",,"YES","text",,,,
 "qwat_od","vw_qwat_network_element","rejected_flow",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_network_element","remark",,"YES","text",,,,
 "qwat_od","vw_qwat_network_element","sanitization_chlorine_gazeous",,"YES","boolean",,,,
@@ -2822,6 +2631,12 @@
 "qwat_od","vw_qwat_network_element","water_meter",,"YES","boolean",,,,
 "qwat_od","vw_qwat_network_element","year",,"YES","smallint",,"16","2",
 "qwat_od","vw_qwat_network_element","year_end",,"YES","smallint",,"16","2",
+"qwat_od","vw_qwat_node","_geometry_alt1_used",,"YES","boolean",,,,
+"qwat_od","vw_qwat_node","_geometry_alt2_used",,"YES","boolean",,,,
+"qwat_od","vw_qwat_node","_pipe_node_type",,"YES","USER-DEFINED",,,,
+"qwat_od","vw_qwat_node","_pipe_orientation",,"YES","double precision",,"53","2",
+"qwat_od","vw_qwat_node","_pipe_schema_visible",,"YES","boolean",,,,
+"qwat_od","vw_qwat_node","_printmaps",,"YES","text",,,,
 "qwat_od","vw_qwat_node","altitude",,"YES","numeric",,"10","10",
 "qwat_od","vw_qwat_node","fk_distributor",,"YES","integer",,"32","2",
 "qwat_od","vw_qwat_node","fk_district",,"YES","integer",,"32","2",
@@ -2835,9 +2650,7 @@
 "qwat_od","vw_qwat_node","fk_status",,"YES","integer",,"32","2",
 "qwat_od","vw_qwat_node","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_qwat_node","geometry_alt1",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_qwat_node","_geometry_alt1_used",,"YES","boolean",,,,
 "qwat_od","vw_qwat_node","geometry_alt2",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_qwat_node","_geometry_alt2_used",,"YES","boolean",,,,
 "qwat_od","vw_qwat_node","id",,"YES","integer",,"32","2",
 "qwat_od","vw_qwat_node","identification",,"YES","character varying","50",,,
 "qwat_od","vw_qwat_node","label_1_rotation",,"YES","double precision",,"53","2",
@@ -2852,10 +2665,6 @@
 "qwat_od","vw_qwat_node","label_2_y",,"YES","double precision",,"53","2",
 "qwat_od","vw_qwat_node","node_type",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_qwat_node","orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_qwat_node","_pipe_node_type",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_qwat_node","_pipe_orientation",,"YES","double precision",,"53","2",
-"qwat_od","vw_qwat_node","_pipe_schema_visible",,"YES","boolean",,,,
-"qwat_od","vw_qwat_node","_printmaps",,"YES","text",,,,
 "qwat_od","vw_qwat_node","remark",,"YES","text",,,,
 "qwat_od","vw_qwat_node","schema_force_visible",,"YES","boolean",,,,
 "qwat_od","vw_qwat_node","update_geometry_alt1",,"YES","boolean",,,,
@@ -2884,14 +2693,9 @@
 "qwat_od","vw_remote","remark",,"YES","text",,,,
 "qwat_od","vw_remote","status",,"YES","character varying","50",,,
 "qwat_od","vw_remote","year",,"YES","smallint",,"16","2",
-"qwat_od","vw_search_view","geometry",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_search_view","layer_name",,"YES","text",,,,
-"qwat_od","vw_search_view","search_text",,"YES","text",,,,
 "qwat_od","vw_subscriber_pipe_relation","geometry",,"YES","USER-DEFINED",,,,
 "qwat_od","vw_subscriber_pipe_relation","id",,"YES","integer",,"32","2",
 "qwat_od","vw_subscriber_pipe_relation","identification",,"YES","character varying","50",,,
-"qwat_od","vw_valve_lines","geometry",,"YES","USER-DEFINED",,,,
-"qwat_od","vw_valve_lines","id",,"YES","integer",,"32","2",
 "qwat_od","worker","date_end",,"YES","date",,,,"0"
 "qwat_od","worker","date_entry",,"YES","date",,,,"0"
 "qwat_od","worker","first_name",,"YES","text",,,,
@@ -2919,10 +2723,10 @@
 "qwat_sys","settings","id","nextval('qwat_sys.settings_id_seq'::regclass)","NO","integer",,"32","2",
 "qwat_sys","settings","name",,"YES","character varying","30",,,
 "qwat_sys","settings","type",,"YES","regtype",,,,
-"qwat_sys","settings","value",,"YES","text",,,,
 "qwat_sys","settings","v_max",,"YES","double precision",,"53","2",
 "qwat_sys","settings","v_min",,"YES","double precision",,"53","2",
 "qwat_sys","settings","v_not_null","true","YES","boolean",,,,
+"qwat_sys","settings","value",,"YES","text",,,,
 "qwat_sys","versions","id","nextval('qwat_sys.versions_id_seq'::regclass)","NO","integer",,"32","2",
 "qwat_sys","versions","module",,"YES","character varying",,,,
 "qwat_sys","versions","version",,"YES","character varying",,,,
@@ -3095,6 +2899,9 @@
 "qwat_vl","pipe_installmethod","value_fr",,"YES","character varying","50",,,
 "qwat_vl","pipe_installmethod","value_ro",,"YES","character varying","50",,,
 "qwat_vl","pipe_installmethod","vl_active","true","YES","boolean",,,,
+"qwat_vl","pipe_material","_displayname_en",,"YES","character varying","30",,,
+"qwat_vl","pipe_material","_displayname_fr",,"YES","character varying","30",,,
+"qwat_vl","pipe_material","_displayname_ro",,"YES","character varying","30",,,
 "qwat_vl","pipe_material","code_sire",,"YES","smallint",,"16","2",
 "qwat_vl","pipe_material","description_en",,"YES","text",,,,
 "qwat_vl","pipe_material","description_fr",,"YES","text",,,,
@@ -3103,9 +2910,6 @@
 "qwat_vl","pipe_material","diameter_external",,"YES","numeric",,"7","10",
 "qwat_vl","pipe_material","diameter_internal",,"YES","numeric",,"7","10",
 "qwat_vl","pipe_material","diameter_nominal",,"YES","smallint",,"16","2",
-"qwat_vl","pipe_material","_displayname_en",,"YES","character varying","30",,,
-"qwat_vl","pipe_material","_displayname_fr",,"YES","character varying","30",,,
-"qwat_vl","pipe_material","_displayname_ro",,"YES","character varying","30",,,
 "qwat_vl","pipe_material","id",,"NO","integer",,"32","2",
 "qwat_vl","pipe_material","pressure_nominal",,"YES","double precision",,"53","2",
 "qwat_vl","pipe_material","sdr",,"YES","double precision",,"53","2",
@@ -3239,6 +3043,7 @@
 "qwat_vl","status","description_en",,"YES","text",,,,
 "qwat_vl","status","description_fr",,"YES","text",,,,
 "qwat_vl","status","description_ro",,"YES","text",,,,
+"qwat_vl","status","functional","true","YES","boolean",,,,
 "qwat_vl","status","id",,"NO","integer",,"32","2",
 "qwat_vl","status","short_en",,"YES","character varying","10",,,
 "qwat_vl","status","short_fr",,"YES","character varying","10",,,
@@ -3514,19 +3319,29 @@
 "tank_pkey","qwat_od.tank.id","qwat_od","tank","id","tank","id","PRIMARY KEY"
 "treatment_id_fkey","qwat_od.treatment.id","qwat_od","treatment","id","installation","id","FOREIGN KEY"
 "treatment_pkey","qwat_od.treatment.id","qwat_od","treatment","id","treatment","id","PRIMARY KEY"
+"valve_fk_distributor","qwat_od.valve.fk_distributor","qwat_od","valve","fk_distributor","distributor","id","FOREIGN KEY"
+"valve_fk_district","qwat_od.valve.fk_district","qwat_od","valve","fk_district","district","id","FOREIGN KEY"
+"valve_fk_folder","qwat_od.valve.fk_folder","qwat_od","valve","fk_folder","folder","id","FOREIGN KEY"
 "valve_fk_function","qwat_od.valve.fk_valve_function","qwat_od","valve","fk_valve_function","valve_function","id","FOREIGN KEY"
 "valve_fk_handle_precision","qwat_od.valve.fk_handle_precision","qwat_od","valve","fk_handle_precision","precision","id","FOREIGN KEY"
 "valve_fk_handle_precisionalti","qwat_od.valve.fk_handle_precisionalti","qwat_od","valve","fk_handle_precisionalti","precisionalti","id","FOREIGN KEY"
+"valve_fk_object_reference","qwat_od.valve.fk_object_reference","qwat_od","valve","fk_object_reference","object_reference","id","FOREIGN KEY"
 "valve_fk_pipe","qwat_od.valve.fk_pipe","qwat_od","valve","fk_pipe","pipe","id","FOREIGN KEY"
+"valve_fk_precision","qwat_od.valve.fk_precision","qwat_od","valve","fk_precision","precision","id","FOREIGN KEY"
+"valve_fk_precisionalti","qwat_od.valve.fk_precisionalti","qwat_od","valve","fk_precisionalti","precisionalti","id","FOREIGN KEY"
+"valve_fk_pressurezone","qwat_od.valve.fk_pressurezone","qwat_od","valve","fk_pressurezone","pressurezone","id","FOREIGN KEY"
+"valve_fk_status","qwat_od.valve.fk_status","qwat_od","valve","fk_status","status","id","FOREIGN KEY"
 "valve_fk_type","qwat_od.valve.fk_valve_type","qwat_od","valve","fk_valve_type","valve_type","id","FOREIGN KEY"
 "valve_fk_valve_actuation","qwat_od.valve.fk_valve_actuation","qwat_od","valve","fk_valve_actuation","valve_actuation","id","FOREIGN KEY"
-"valve_id_fkey","qwat_od.valve.id","qwat_od","valve","id","network_element","id","FOREIGN KEY"
+"valve_label_1_visible","qwat_od.valve.label_1_visible","qwat_od","valve","label_1_visible","visible","vl_code_int","FOREIGN KEY"
+"valve_label_2_visible","qwat_od.valve.label_2_visible","qwat_od","valve","label_2_visible","visible","vl_code_int","FOREIGN KEY"
 "valve_pkey","qwat_od.valve.id","qwat_od","valve","id","valve","id","PRIMARY KEY"
+"valve_schema_force_visible","qwat_od.valve.schema_force_visible","qwat_od","valve","schema_force_visible","visible","vl_code","FOREIGN KEY"
 "worker_pkey","qwat_od.worker.id","qwat_od","worker","id","worker","id","PRIMARY KEY"
 "logged_actions_pkey","qwat_sys.logged_actions.event_id","qwat_sys","logged_actions","event_id","logged_actions","event_id","PRIMARY KEY"
 "module_unique","qwat_sys.versions.module","qwat_sys","versions","module","versions","module","UNIQUE"
-"settings_pkey","qwat_sys.settings.id","qwat_sys","settings","id","settings","id","PRIMARY KEY"
 "setting_unique","qwat_sys.settings.name","qwat_sys","settings","name","settings","name","UNIQUE"
+"settings_pkey","qwat_sys.settings.id","qwat_sys","settings","id","settings","id","PRIMARY KEY"
 "versions_pkey","qwat_sys.versions.id","qwat_sys","versions","id","versions","id","PRIMARY KEY"
 "value_list_base_pk","qwat_vl.value_list_base.id","qwat_vl","value_list_base","id","value_list_base","id","PRIMARY KEY"
 "visible_code","qwat_vl.visible.vl_code","qwat_vl","visible","vl_code","visible","vl_code","UNIQUE"
@@ -3548,8 +3363,8 @@
 "vl_pipe_installmethod_pk","qwat_vl.pipe_installmethod.id","qwat_vl","pipe_installmethod","id","pipe_installmethod","id","PRIMARY KEY"
 "vl_pipe_material_pk","qwat_vl.pipe_material.id","qwat_vl","pipe_material","id","pipe_material","id","PRIMARY KEY"
 "vl_pipe_protection_pk","qwat_vl.pipe_protection.id","qwat_vl","pipe_protection","id","pipe_protection","id","PRIMARY KEY"
-"vl_precisionalti_pk","qwat_vl.precisionalti.id","qwat_vl","precisionalti","id","precisionalti","id","PRIMARY KEY"
 "vl_precision_pk","qwat_vl.precision.id","qwat_vl","precision","id","precision","id","PRIMARY KEY"
+"vl_precisionalti_pk","qwat_vl.precisionalti.id","qwat_vl","precisionalti","id","precisionalti","id","PRIMARY KEY"
 "vl_pressurecontrol_type_pk","qwat_vl.pressurecontrol_type.id","qwat_vl","pressurecontrol_type","id","pressurecontrol_type","id","PRIMARY KEY"
 "vl_protectionzone_type_pk","qwat_vl.protectionzone_type.id","qwat_vl","protectionzone_type","id","protectionzone_type","id","PRIMARY KEY"
 "vl_pump_operating_pk","qwat_vl.pump_operating.id","qwat_vl","pump_operating","id","pump_operating","id","PRIMARY KEY"
@@ -3563,11 +3378,11 @@
 "vl_tank_firestorage_pk","qwat_vl.tank_firestorage.id","qwat_vl","tank_firestorage","id","tank_firestorage","id","PRIMARY KEY"
 "vl_valve_actuation_pk","qwat_vl.valve_actuation.id","qwat_vl","valve_actuation","id","valve_actuation","id","PRIMARY KEY"
 "vl_valve_function_pk","qwat_vl.valve_function.id","qwat_vl","valve_function","id","valve_function","id","PRIMARY KEY"
-"vlvalve_maintenance_pk","qwat_vl.valve_maintenance.id","qwat_vl","valve_maintenance","id","valve_maintenance","id","PRIMARY KEY"
 "vl_valve_type_pk","qwat_vl.valve_type.id","qwat_vl","valve_type","id","valve_type","id","PRIMARY KEY"
 "vl_visible_pk","qwat_vl.visible.id","qwat_vl","visible","id","visible","id","PRIMARY KEY"
 "vl_watertype_pk","qwat_vl.watertype.id","qwat_vl","watertype","id","watertype","id","PRIMARY KEY"
 "vl_worker_type_pk","qwat_vl.worker_type.id","qwat_vl","worker_type","id","worker_type","id","PRIMARY KEY"
+"vlvalve_maintenance_pk","qwat_vl.valve_maintenance.id","qwat_vl","valve_maintenance","id","valve_maintenance","id","PRIMARY KEY"
 "vw_consumptionzone"," SELECT co.id,
     co.name,
     co.population,
@@ -3911,1663 +3726,6 @@
     subscriber.flow_planned
    FROM (qwat_od.subscriber subscriber
      JOIN qwat_od.vw_node_element element ON ((subscriber.id = element.id)));"
-"vw_element_valve"," SELECT element.id,
-    element.fk_district,
-    element.fk_pressurezone,
-    element.fk_printmap,
-    element._printmaps,
-    element._geometry_alt1_used,
-    element._geometry_alt2_used,
-    element._pipe_node_type,
-    element._pipe_orientation,
-    element._pipe_schema_visible,
-    element.geometry,
-    element.geometry_alt1,
-    element.geometry_alt2,
-    element.update_geometry_alt1,
-    element.update_geometry_alt2,
-    element.identification,
-    element.fk_distributor,
-    element.fk_status,
-    element.fk_folder,
-    element.fk_locationtype,
-    element.fk_precision,
-    element.fk_precisionalti,
-    element.fk_object_reference,
-    element.altitude,
-    element.year,
-    element.year_end,
-    element.orientation,
-    element.remark,
-    element.schema_force_visible,
-    element.label_1_visible,
-    element.label_1_x,
-    element.label_1_y,
-    element.label_1_rotation,
-    element.label_1_text,
-    element.label_2_visible,
-    element.label_2_x,
-    element.label_2_y,
-    element.label_2_rotation,
-    element.label_2_text,
-    valve.fk_valve_type,
-    valve.fk_valve_function,
-    valve.fk_valve_actuation,
-    valve.fk_pipe,
-    valve.fk_handle_precision,
-    valve.fk_handle_precisionalti,
-    valve.fk_maintenance,
-    valve.diameter_nominal,
-    valve.closed,
-    valve.networkseparation,
-    valve.handle_altitude,
-    valve.handle_geometry
-   FROM (qwat_od.valve valve
-     JOIN qwat_od.vw_node_element element ON ((valve.id = element.id)));"
-"vw_export_hydrant"," SELECT vw_element_hydrant.id,
-    vw_element_hydrant.fk_district,
-    vw_element_hydrant.fk_pressurezone,
-    vw_element_hydrant.fk_printmap,
-    vw_element_hydrant._printmaps,
-    vw_element_hydrant._geometry_alt1_used,
-    vw_element_hydrant._geometry_alt2_used,
-    vw_element_hydrant._pipe_node_type,
-    vw_element_hydrant._pipe_orientation,
-    vw_element_hydrant._pipe_schema_visible,
-    vw_element_hydrant.geometry,
-    vw_element_hydrant.geometry_alt1,
-    vw_element_hydrant.geometry_alt2,
-    vw_element_hydrant.update_geometry_alt1,
-    vw_element_hydrant.update_geometry_alt2,
-    vw_element_hydrant.identification,
-    vw_element_hydrant.fk_distributor,
-    vw_element_hydrant.fk_status,
-    vw_element_hydrant.fk_folder,
-    vw_element_hydrant.fk_locationtype,
-    vw_element_hydrant.fk_precision,
-    vw_element_hydrant.fk_precisionalti,
-    vw_element_hydrant.fk_object_reference,
-    vw_element_hydrant.altitude,
-    vw_element_hydrant.year,
-    vw_element_hydrant.year_end,
-    vw_element_hydrant.orientation,
-    vw_element_hydrant.remark,
-    vw_element_hydrant.schema_force_visible,
-    vw_element_hydrant.label_1_visible,
-    vw_element_hydrant.label_1_x,
-    vw_element_hydrant.label_1_y,
-    vw_element_hydrant.label_1_rotation,
-    vw_element_hydrant.label_1_text,
-    vw_element_hydrant.label_2_visible,
-    vw_element_hydrant.label_2_x,
-    vw_element_hydrant.label_2_y,
-    vw_element_hydrant.label_2_rotation,
-    vw_element_hydrant.label_2_text,
-    vw_element_hydrant.fk_provider,
-    vw_element_hydrant.fk_model_sup,
-    vw_element_hydrant.fk_model_inf,
-    vw_element_hydrant.fk_material,
-    vw_element_hydrant.fk_output,
-    vw_element_hydrant.underground,
-    vw_element_hydrant.marked,
-    vw_element_hydrant.pressure_static,
-    vw_element_hydrant.pressure_dynamic,
-    vw_element_hydrant.flow,
-    vw_element_hydrant.observation_date,
-    vw_element_hydrant.observation_source,
-    status.vl_active AS status_vl_active,
-    status.short_fr AS status_short_fr,
-    status.short_en AS status_short_en,
-    status.short_ro AS status_short_ro,
-    status.value_fr AS status_value_fr,
-    status.value_en AS status_value_en,
-    status.value_ro AS status_value_ro,
-    status.description_fr AS status_description_fr,
-    status.description_en AS status_description_en,
-    status.description_ro AS status_description_ro,
-    status.active AS status_active,
-    status.code_sire AS status_code_sire,
-    district.name AS district_name,
-    district.shortname AS district_shortname,
-    district.zip AS district_zip,
-    district.land_registry AS district_land_registry,
-    district.prefix AS district_prefix,
-    district.colorcode AS district_colorcode,
-    district.geometry AS district_geometry,
-    district.label_1_visible AS district_label_1_visible,
-    district.label_1_x AS district_label_1_x,
-    district.label_1_y AS district_label_1_y,
-    district.label_1_rotation AS district_label_1_rotation,
-    district.label_1_text AS district_label_1_text,
-    district.label_2_visible AS district_label_2_visible,
-    district.label_2_x AS district_label_2_x,
-    district.label_2_y AS district_label_2_y,
-    district.label_2_rotation AS district_label_2_rotation,
-    district.label_2_text AS district_label_2_text,
-    model_inf.vl_active AS model_inf_vl_active,
-    model_inf.short_fr AS model_inf_short_fr,
-    model_inf.short_en AS model_inf_short_en,
-    model_inf.short_ro AS model_inf_short_ro,
-    model_inf.value_fr AS model_inf_value_fr,
-    model_inf.value_en AS model_inf_value_en,
-    model_inf.value_ro AS model_inf_value_ro,
-    model_inf.description_fr AS model_inf_description_fr,
-    model_inf.description_en AS model_inf_description_en,
-    model_inf.description_ro AS model_inf_description_ro,
-    pressurezone.fk_distributor AS pressurezone_fk_distributor,
-    pressurezone.fk_consumptionzone AS pressurezone_fk_consumptionzone,
-    pressurezone.name AS pressurezone_name,
-    pressurezone.population AS pressurezone_population,
-    pressurezone.subscriber AS pressurezone_subscriber,
-    pressurezone.colorcode AS pressurezone_colorcode,
-    pressurezone.geometry AS pressurezone_geometry,
-    pressurezone.geometry_alt1 AS pressurezone_geometry_alt1,
-    pressurezone.geometry_alt2 AS pressurezone_geometry_alt2,
-    pressurezone._geometry_alt1_used AS pressurezone__geometry_alt1_used,
-    pressurezone._geometry_alt2_used AS pressurezone__geometry_alt2_used,
-    pressurezone.update_geometry_alt1 AS pressurezone_update_geometry_alt1,
-    pressurezone.update_geometry_alt2 AS pressurezone_update_geometry_alt2,
-    pressurezone.label_1_visible AS pressurezone_label_1_visible,
-    pressurezone.label_1_x AS pressurezone_label_1_x,
-    pressurezone.label_1_y AS pressurezone_label_1_y,
-    pressurezone.label_1_rotation AS pressurezone_label_1_rotation,
-    pressurezone.label_1_text AS pressurezone_label_1_text,
-    pressurezone.label_2_visible AS pressurezone_label_2_visible,
-    pressurezone.label_2_x AS pressurezone_label_2_x,
-    pressurezone.label_2_y AS pressurezone_label_2_y,
-    pressurezone.label_2_rotation AS pressurezone_label_2_rotation,
-    pressurezone.label_2_text AS pressurezone_label_2_text,
-    material.vl_active AS material_vl_active,
-    material.short_fr AS material_short_fr,
-    material.short_en AS material_short_en,
-    material.short_ro AS material_short_ro,
-    material.value_fr AS material_value_fr,
-    material.value_en AS material_value_en,
-    material.value_ro AS material_value_ro,
-    material.description_fr AS material_description_fr,
-    material.description_en AS material_description_en,
-    material.description_ro AS material_description_ro,
-    material.pressure_nominal AS material_pressure_nominal,
-    precision.vl_active AS precision_vl_active,
-    precision.short_fr AS precision_short_fr,
-    precision.short_en AS precision_short_en,
-    precision.short_ro AS precision_short_ro,
-    precision.value_fr AS precision_value_fr,
-    precision.value_en AS precision_value_en,
-    precision.value_ro AS precision_value_ro,
-    precision.description_fr AS precision_description_fr,
-    precision.description_en AS precision_description_en,
-    precision.description_ro AS precision_description_ro,
-    precision.code_sire AS precision_code_sire,
-    model_sup.vl_active AS model_sup_vl_active,
-    model_sup.short_fr AS model_sup_short_fr,
-    model_sup.short_en AS model_sup_short_en,
-    model_sup.short_ro AS model_sup_short_ro,
-    model_sup.value_fr AS model_sup_value_fr,
-    model_sup.value_en AS model_sup_value_en,
-    model_sup.value_ro AS model_sup_value_ro,
-    model_sup.description_fr AS model_sup_description_fr,
-    model_sup.description_en AS model_sup_description_en,
-    model_sup.description_ro AS model_sup_description_ro,
-    object_reference.vl_active AS object_reference_vl_active,
-    object_reference.short_fr AS object_reference_short_fr,
-    object_reference.short_en AS object_reference_short_en,
-    object_reference.short_ro AS object_reference_short_ro,
-    object_reference.value_fr AS object_reference_value_fr,
-    object_reference.value_en AS object_reference_value_en,
-    object_reference.value_ro AS object_reference_value_ro,
-    object_reference.description_fr AS object_reference_description_fr,
-    object_reference.description_en AS object_reference_description_en,
-    object_reference.description_ro AS object_reference_description_ro,
-    provider.vl_active AS provider_vl_active,
-    provider.short_fr AS provider_short_fr,
-    provider.short_en AS provider_short_en,
-    provider.short_ro AS provider_short_ro,
-    provider.value_fr AS provider_value_fr,
-    provider.value_en AS provider_value_en,
-    provider.value_ro AS provider_value_ro,
-    provider.description_fr AS provider_description_fr,
-    provider.description_en AS provider_description_en,
-    provider.description_ro AS provider_description_ro,
-    distributor.name AS distributor_name,
-    output.vl_active AS output_vl_active,
-    output.short_fr AS output_short_fr,
-    output.short_en AS output_short_en,
-    output.short_ro AS output_short_ro,
-    output.value_fr AS output_value_fr,
-    output.value_en AS output_value_en,
-    output.value_ro AS output_value_ro,
-    output.description_fr AS output_description_fr,
-    output.description_en AS output_description_en,
-    output.description_ro AS output_description_ro,
-    folder.identification AS folder_identification,
-    folder.description AS folder_description,
-    folder.date_start AS folder_date_start,
-    folder.date_end AS folder_date_end,
-    folder.geometry_polygon AS folder_geometry_polygon,
-    folder.geometry_line AS folder_geometry_line,
-    precisionalti.vl_active AS precisionalti_vl_active,
-    precisionalti.short_fr AS precisionalti_short_fr,
-    precisionalti.short_en AS precisionalti_short_en,
-    precisionalti.short_ro AS precisionalti_short_ro,
-    precisionalti.value_fr AS precisionalti_value_fr,
-    precisionalti.value_en AS precisionalti_value_en,
-    precisionalti.value_ro AS precisionalti_value_ro,
-    precisionalti.description_fr AS precisionalti_description_fr,
-    precisionalti.description_en AS precisionalti_description_en,
-    precisionalti.description_ro AS precisionalti_description_ro,
-    precisionalti.code_sire AS precisionalti_code_sire
-   FROM (((((((((((((qwat_od.vw_element_hydrant
-     LEFT JOIN qwat_vl.status status ON ((vw_element_hydrant.fk_status = status.id)))
-     LEFT JOIN qwat_od.district district ON ((vw_element_hydrant.fk_district = district.id)))
-     LEFT JOIN qwat_vl.hydrant_model_inf model_inf ON ((vw_element_hydrant.fk_model_inf = model_inf.id)))
-     LEFT JOIN qwat_od.pressurezone pressurezone ON ((vw_element_hydrant.fk_pressurezone = pressurezone.id)))
-     LEFT JOIN qwat_vl.hydrant_material material ON ((vw_element_hydrant.fk_material = material.id)))
-     LEFT JOIN qwat_vl.precision precision ON ((vw_element_hydrant.fk_precision = precision.id)))
-     LEFT JOIN qwat_vl.hydrant_model_sup model_sup ON ((vw_element_hydrant.fk_model_sup = model_sup.id)))
-     LEFT JOIN qwat_vl.object_reference object_reference ON ((vw_element_hydrant.fk_object_reference = object_reference.id)))
-     LEFT JOIN qwat_vl.hydrant_provider provider ON ((vw_element_hydrant.fk_provider = provider.id)))
-     LEFT JOIN qwat_od.distributor distributor ON ((vw_element_hydrant.fk_distributor = distributor.id)))
-     LEFT JOIN qwat_vl.hydrant_output output ON ((vw_element_hydrant.fk_output = output.id)))
-     LEFT JOIN qwat_od.folder folder ON ((vw_element_hydrant.fk_folder = folder.id)))
-     LEFT JOIN qwat_vl.precisionalti precisionalti ON ((vw_element_hydrant.fk_precisionalti = precisionalti.id)));"
-"vw_export_installation"," SELECT vw_element_installation.id,
-    vw_element_installation.fk_district,
-    vw_element_installation.fk_pressurezone,
-    vw_element_installation.fk_printmap,
-    vw_element_installation._printmaps,
-    vw_element_installation._geometry_alt1_used,
-    vw_element_installation._geometry_alt2_used,
-    vw_element_installation._pipe_node_type,
-    vw_element_installation._pipe_orientation,
-    vw_element_installation._pipe_schema_visible,
-    vw_element_installation.geometry,
-    vw_element_installation.geometry_alt1,
-    vw_element_installation.geometry_alt2,
-    vw_element_installation.update_geometry_alt1,
-    vw_element_installation.update_geometry_alt2,
-    vw_element_installation.identification,
-    vw_element_installation.fk_distributor,
-    vw_element_installation.fk_status,
-    vw_element_installation.fk_folder,
-    vw_element_installation.fk_locationtype,
-    vw_element_installation.fk_precision,
-    vw_element_installation.fk_precisionalti,
-    vw_element_installation.fk_object_reference,
-    vw_element_installation.altitude,
-    vw_element_installation.year,
-    vw_element_installation.year_end,
-    vw_element_installation.orientation,
-    vw_element_installation.remark,
-    vw_element_installation.schema_force_visible,
-    vw_element_installation.label_1_visible,
-    vw_element_installation.label_1_x,
-    vw_element_installation.label_1_y,
-    vw_element_installation.label_1_rotation,
-    vw_element_installation.label_1_text,
-    vw_element_installation.label_2_visible,
-    vw_element_installation.label_2_x,
-    vw_element_installation.label_2_y,
-    vw_element_installation.label_2_rotation,
-    vw_element_installation.label_2_text,
-    vw_element_installation.installation_type,
-    vw_element_installation.name,
-    vw_element_installation.fk_parent,
-    vw_element_installation.fk_remote,
-    vw_element_installation.fk_watertype,
-    vw_element_installation.parcel,
-    vw_element_installation.eca,
-    vw_element_installation.open_water_surface,
-    vw_element_installation.geometry_polygon,
-    vw_element_installation.fk_source_type,
-    vw_element_installation.fk_source_quality,
-    vw_element_installation.flow_lowest,
-    vw_element_installation.flow_average,
-    vw_element_installation.flow_concession,
-    vw_element_installation.contract_end,
-    vw_element_installation.gathering_chamber,
-    vw_element_installation.fk_pump_type,
-    vw_element_installation.fk_pipe_in,
-    vw_element_installation.fk_pipe_out,
-    vw_element_installation.fk_pump_operating,
-    vw_element_installation.no_pumps,
-    vw_element_installation.rejected_flow,
-    vw_element_installation.manometric_height,
-    vw_element_installation.fk_overflow,
-    vw_element_installation.fk_tank_firestorage,
-    vw_element_installation.storage_total,
-    vw_element_installation.storage_supply,
-    vw_element_installation.storage_fire,
-    vw_element_installation.altitude_overflow,
-    vw_element_installation.altitude_apron,
-    vw_element_installation.height_max,
-    vw_element_installation.fire_valve,
-    vw_element_installation.fire_remote,
-    vw_element_installation._litrepercm,
-    vw_element_installation.cistern1_fk_type,
-    vw_element_installation.cistern1_dimension_1,
-    vw_element_installation.cistern1_dimension_2,
-    vw_element_installation.cistern1_storage,
-    vw_element_installation._cistern1_litrepercm,
-    vw_element_installation.cistern2_fk_type,
-    vw_element_installation.cistern2_dimension_1,
-    vw_element_installation.cistern2_dimension_2,
-    vw_element_installation.cistern2_storage,
-    vw_element_installation._cistern2_litrepercm,
-    vw_element_installation.sanitization_uv,
-    vw_element_installation.sanitization_chlorine_liquid,
-    vw_element_installation.sanitization_chlorine_gazeous,
-    vw_element_installation.sanitization_ozone,
-    vw_element_installation.filtration_membrane,
-    vw_element_installation.filtration_sandorgravel,
-    vw_element_installation.flocculation,
-    vw_element_installation.activatedcharcoal,
-    vw_element_installation.settling,
-    vw_element_installation.treatment_capacity,
-    vw_element_installation.networkseparation,
-    vw_element_installation.flow_meter,
-    vw_element_installation.water_meter,
-    vw_element_installation.manometer,
-    vw_element_installation.depth,
-    vw_element_installation.no_valves,
-    vw_element_installation.fk_pressurecontrol_type,
-    status.vl_active AS status_vl_active,
-    status.short_fr AS status_short_fr,
-    status.short_en AS status_short_en,
-    status.short_ro AS status_short_ro,
-    status.value_fr AS status_value_fr,
-    status.value_en AS status_value_en,
-    status.value_ro AS status_value_ro,
-    status.description_fr AS status_description_fr,
-    status.description_en AS status_description_en,
-    status.description_ro AS status_description_ro,
-    status.active AS status_active,
-    status.code_sire AS status_code_sire,
-    watertype.vl_active AS watertype_vl_active,
-    watertype.short_fr AS watertype_short_fr,
-    watertype.short_en AS watertype_short_en,
-    watertype.short_ro AS watertype_short_ro,
-    watertype.value_fr AS watertype_value_fr,
-    watertype.value_en AS watertype_value_en,
-    watertype.value_ro AS watertype_value_ro,
-    watertype.description_fr AS watertype_description_fr,
-    watertype.description_en AS watertype_description_en,
-    watertype.description_ro AS watertype_description_ro,
-    watertype.code_sire AS watertype_code_sire,
-    pump_type.vl_active AS pump_type_vl_active,
-    pump_type.short_fr AS pump_type_short_fr,
-    pump_type.short_en AS pump_type_short_en,
-    pump_type.short_ro AS pump_type_short_ro,
-    pump_type.value_fr AS pump_type_value_fr,
-    pump_type.value_en AS pump_type_value_en,
-    pump_type.value_ro AS pump_type_value_ro,
-    pump_type.description_fr AS pump_type_description_fr,
-    pump_type.description_en AS pump_type_description_en,
-    pump_type.description_ro AS pump_type_description_ro,
-    pump_type.code_sire AS pump_type_code_sire,
-    object_reference.vl_active AS object_reference_vl_active,
-    object_reference.short_fr AS object_reference_short_fr,
-    object_reference.short_en AS object_reference_short_en,
-    object_reference.short_ro AS object_reference_short_ro,
-    object_reference.value_fr AS object_reference_value_fr,
-    object_reference.value_en AS object_reference_value_en,
-    object_reference.value_ro AS object_reference_value_ro,
-    object_reference.description_fr AS object_reference_description_fr,
-    object_reference.description_en AS object_reference_description_en,
-    object_reference.description_ro AS object_reference_description_ro,
-    cistern2.vl_active AS cistern2_vl_active,
-    cistern2.short_fr AS cistern2_short_fr,
-    cistern2.short_en AS cistern2_short_en,
-    cistern2.short_ro AS cistern2_short_ro,
-    cistern2.value_fr AS cistern2_value_fr,
-    cistern2.value_en AS cistern2_value_en,
-    cistern2.value_ro AS cistern2_value_ro,
-    cistern2.description_fr AS cistern2_description_fr,
-    cistern2.description_en AS cistern2_description_en,
-    cistern2.description_ro AS cistern2_description_ro,
-    precision.vl_active AS precision_vl_active,
-    precision.short_fr AS precision_short_fr,
-    precision.short_en AS precision_short_en,
-    precision.short_ro AS precision_short_ro,
-    precision.value_fr AS precision_value_fr,
-    precision.value_en AS precision_value_en,
-    precision.value_ro AS precision_value_ro,
-    precision.description_fr AS precision_description_fr,
-    precision.description_en AS precision_description_en,
-    precision.description_ro AS precision_description_ro,
-    precision.code_sire AS precision_code_sire,
-    tank_firestorage.vl_active AS tank_firestorage_vl_active,
-    tank_firestorage.short_fr AS tank_firestorage_short_fr,
-    tank_firestorage.short_en AS tank_firestorage_short_en,
-    tank_firestorage.short_ro AS tank_firestorage_short_ro,
-    tank_firestorage.value_fr AS tank_firestorage_value_fr,
-    tank_firestorage.value_en AS tank_firestorage_value_en,
-    tank_firestorage.value_ro AS tank_firestorage_value_ro,
-    tank_firestorage.description_fr AS tank_firestorage_description_fr,
-    tank_firestorage.description_en AS tank_firestorage_description_en,
-    tank_firestorage.description_ro AS tank_firestorage_description_ro,
-    cistern1.vl_active AS cistern1_vl_active,
-    cistern1.short_fr AS cistern1_short_fr,
-    cistern1.short_en AS cistern1_short_en,
-    cistern1.short_ro AS cistern1_short_ro,
-    cistern1.value_fr AS cistern1_value_fr,
-    cistern1.value_en AS cistern1_value_en,
-    cistern1.value_ro AS cistern1_value_ro,
-    cistern1.description_fr AS cistern1_description_fr,
-    cistern1.description_en AS cistern1_description_en,
-    cistern1.description_ro AS cistern1_description_ro,
-    source_type.vl_active AS source_type_vl_active,
-    source_type.short_fr AS source_type_short_fr,
-    source_type.short_en AS source_type_short_en,
-    source_type.short_ro AS source_type_short_ro,
-    source_type.value_fr AS source_type_value_fr,
-    source_type.value_en AS source_type_value_en,
-    source_type.value_ro AS source_type_value_ro,
-    source_type.description_fr AS source_type_description_fr,
-    source_type.description_en AS source_type_description_en,
-    source_type.description_ro AS source_type_description_ro,
-    source_type.code_sire AS source_type_code_sire,
-    source_quality.vl_active AS source_quality_vl_active,
-    source_quality.short_fr AS source_quality_short_fr,
-    source_quality.short_en AS source_quality_short_en,
-    source_quality.short_ro AS source_quality_short_ro,
-    source_quality.value_fr AS source_quality_value_fr,
-    source_quality.value_en AS source_quality_value_en,
-    source_quality.value_ro AS source_quality_value_ro,
-    source_quality.description_fr AS source_quality_description_fr,
-    source_quality.description_en AS source_quality_description_en,
-    source_quality.description_ro AS source_quality_description_ro,
-    source_quality.code_sire AS source_quality_code_sire,
-    distributor.name AS distributor_name,
-    overflow.vl_active AS overflow_vl_active,
-    overflow.short_fr AS overflow_short_fr,
-    overflow.short_en AS overflow_short_en,
-    overflow.short_ro AS overflow_short_ro,
-    overflow.value_fr AS overflow_value_fr,
-    overflow.value_en AS overflow_value_en,
-    overflow.value_ro AS overflow_value_ro,
-    overflow.description_fr AS overflow_description_fr,
-    overflow.description_en AS overflow_description_en,
-    overflow.description_ro AS overflow_description_ro,
-    pressurecontrol_type.vl_active AS pressurecontrol_type_vl_active,
-    pressurecontrol_type.short_fr AS pressurecontrol_type_short_fr,
-    pressurecontrol_type.short_en AS pressurecontrol_type_short_en,
-    pressurecontrol_type.short_ro AS pressurecontrol_type_short_ro,
-    pressurecontrol_type.value_fr AS pressurecontrol_type_value_fr,
-    pressurecontrol_type.value_en AS pressurecontrol_type_value_en,
-    pressurecontrol_type.value_ro AS pressurecontrol_type_value_ro,
-    pressurecontrol_type.description_fr AS pressurecontrol_type_description_fr,
-    pressurecontrol_type.description_en AS pressurecontrol_type_description_en,
-    pressurecontrol_type.description_ro AS pressurecontrol_type_description_ro,
-    remote.vl_active AS remote_vl_active,
-    remote.short_fr AS remote_short_fr,
-    remote.short_en AS remote_short_en,
-    remote.short_ro AS remote_short_ro,
-    remote.value_fr AS remote_value_fr,
-    remote.value_en AS remote_value_en,
-    remote.value_ro AS remote_value_ro,
-    remote.description_fr AS remote_description_fr,
-    remote.description_en AS remote_description_en,
-    remote.description_ro AS remote_description_ro,
-    district.name AS district_name,
-    district.shortname AS district_shortname,
-    district.zip AS district_zip,
-    district.land_registry AS district_land_registry,
-    district.prefix AS district_prefix,
-    district.colorcode AS district_colorcode,
-    district.geometry AS district_geometry,
-    district.label_1_visible AS district_label_1_visible,
-    district.label_1_x AS district_label_1_x,
-    district.label_1_y AS district_label_1_y,
-    district.label_1_rotation AS district_label_1_rotation,
-    district.label_1_text AS district_label_1_text,
-    district.label_2_visible AS district_label_2_visible,
-    district.label_2_x AS district_label_2_x,
-    district.label_2_y AS district_label_2_y,
-    district.label_2_rotation AS district_label_2_rotation,
-    district.label_2_text AS district_label_2_text,
-    pressurezone.fk_distributor AS pressurezone_fk_distributor,
-    pressurezone.fk_consumptionzone AS pressurezone_fk_consumptionzone,
-    pressurezone.name AS pressurezone_name,
-    pressurezone.population AS pressurezone_population,
-    pressurezone.subscriber AS pressurezone_subscriber,
-    pressurezone.colorcode AS pressurezone_colorcode,
-    pressurezone.geometry AS pressurezone_geometry,
-    pressurezone.geometry_alt1 AS pressurezone_geometry_alt1,
-    pressurezone.geometry_alt2 AS pressurezone_geometry_alt2,
-    pressurezone._geometry_alt1_used AS pressurezone__geometry_alt1_used,
-    pressurezone._geometry_alt2_used AS pressurezone__geometry_alt2_used,
-    pressurezone.update_geometry_alt1 AS pressurezone_update_geometry_alt1,
-    pressurezone.update_geometry_alt2 AS pressurezone_update_geometry_alt2,
-    pressurezone.label_1_visible AS pressurezone_label_1_visible,
-    pressurezone.label_1_x AS pressurezone_label_1_x,
-    pressurezone.label_1_y AS pressurezone_label_1_y,
-    pressurezone.label_1_rotation AS pressurezone_label_1_rotation,
-    pressurezone.label_1_text AS pressurezone_label_1_text,
-    pressurezone.label_2_visible AS pressurezone_label_2_visible,
-    pressurezone.label_2_x AS pressurezone_label_2_x,
-    pressurezone.label_2_y AS pressurezone_label_2_y,
-    pressurezone.label_2_rotation AS pressurezone_label_2_rotation,
-    pressurezone.label_2_text AS pressurezone_label_2_text,
-    folder.identification AS folder_identification,
-    folder.description AS folder_description,
-    folder.date_start AS folder_date_start,
-    folder.date_end AS folder_date_end,
-    folder.geometry_polygon AS folder_geometry_polygon,
-    folder.geometry_line AS folder_geometry_line,
-    precisionalti.vl_active AS precisionalti_vl_active,
-    precisionalti.short_fr AS precisionalti_short_fr,
-    precisionalti.short_en AS precisionalti_short_en,
-    precisionalti.short_ro AS precisionalti_short_ro,
-    precisionalti.value_fr AS precisionalti_value_fr,
-    precisionalti.value_en AS precisionalti_value_en,
-    precisionalti.value_ro AS precisionalti_value_ro,
-    precisionalti.description_fr AS precisionalti_description_fr,
-    precisionalti.description_en AS precisionalti_description_en,
-    precisionalti.description_ro AS precisionalti_description_ro,
-    precisionalti.code_sire AS precisionalti_code_sire,
-    pump_operating.vl_active AS pump_operating_vl_active,
-    pump_operating.short_fr AS pump_operating_short_fr,
-    pump_operating.short_en AS pump_operating_short_en,
-    pump_operating.short_ro AS pump_operating_short_ro,
-    pump_operating.value_fr AS pump_operating_value_fr,
-    pump_operating.value_en AS pump_operating_value_en,
-    pump_operating.value_ro AS pump_operating_value_ro,
-    pump_operating.description_fr AS pump_operating_description_fr,
-    pump_operating.description_en AS pump_operating_description_en,
-    pump_operating.description_ro AS pump_operating_description_ro,
-    pump_operating.code_sire AS pump_operating_code_sire
-   FROM (((((((((((((((((((qwat_od.vw_element_installation
-     LEFT JOIN qwat_vl.status status ON ((vw_element_installation.fk_status = status.id)))
-     LEFT JOIN qwat_vl.watertype watertype ON ((vw_element_installation.fk_watertype = watertype.id)))
-     LEFT JOIN qwat_vl.pump_type pump_type ON ((vw_element_installation.fk_pump_type = pump_type.id)))
-     LEFT JOIN qwat_vl.object_reference object_reference ON ((vw_element_installation.fk_object_reference = object_reference.id)))
-     LEFT JOIN qwat_vl.cistern cistern2 ON ((vw_element_installation.cistern2_fk_type = cistern2.id)))
-     LEFT JOIN qwat_vl.precision precision ON ((vw_element_installation.fk_precision = precision.id)))
-     LEFT JOIN qwat_vl.tank_firestorage tank_firestorage ON ((vw_element_installation.fk_tank_firestorage = tank_firestorage.id)))
-     LEFT JOIN qwat_vl.cistern cistern1 ON ((vw_element_installation.cistern1_fk_type = cistern1.id)))
-     LEFT JOIN qwat_vl.source_type source_type ON ((vw_element_installation.fk_source_type = source_type.id)))
-     LEFT JOIN qwat_vl.source_quality source_quality ON ((vw_element_installation.fk_source_quality = source_quality.id)))
-     LEFT JOIN qwat_od.distributor distributor ON ((vw_element_installation.fk_distributor = distributor.id)))
-     LEFT JOIN qwat_vl.overflow overflow ON ((vw_element_installation.fk_overflow = overflow.id)))
-     LEFT JOIN qwat_vl.pressurecontrol_type pressurecontrol_type ON ((vw_element_installation.fk_pressurecontrol_type = pressurecontrol_type.id)))
-     LEFT JOIN qwat_vl.remote_type remote ON ((vw_element_installation.fk_remote = remote.id)))
-     LEFT JOIN qwat_od.district district ON ((vw_element_installation.fk_district = district.id)))
-     LEFT JOIN qwat_od.pressurezone pressurezone ON ((vw_element_installation.fk_pressurezone = pressurezone.id)))
-     LEFT JOIN qwat_od.folder folder ON ((vw_element_installation.fk_folder = folder.id)))
-     LEFT JOIN qwat_vl.precisionalti precisionalti ON ((vw_element_installation.fk_precisionalti = precisionalti.id)))
-     LEFT JOIN qwat_vl.pump_operating pump_operating ON ((vw_element_installation.fk_pump_operating = pump_operating.id)));"
-"vw_export_leak"," SELECT leak.id,
-    leak.fk_cause,
-    leak.fk_pipe,
-    leak.widespread_damage,
-    leak.detection_date,
-    leak.repair_date,
-    leak._repaired,
-    leak.address,
-    leak.pipe_replaced,
-    leak.description,
-    leak.repair,
-    leak.geometry,
-    leak.label_1_visible,
-    leak.label_1_x,
-    leak.label_1_y,
-    leak.label_1_rotation,
-    leak.label_1_text,
-    leak.label_2_visible,
-    leak.label_2_x,
-    leak.label_2_y,
-    leak.label_2_rotation,
-    leak.label_2_text,
-    pipe.fk_parent AS pipe_fk_parent,
-    pipe.fk_function AS pipe_fk_function,
-    pipe.fk_installmethod AS pipe_fk_installmethod,
-    pipe.fk_material AS pipe_fk_material,
-    pipe.fk_distributor AS pipe_fk_distributor,
-    pipe.fk_precision AS pipe_fk_precision,
-    pipe.fk_bedding AS pipe_fk_bedding,
-    pipe.fk_protection AS pipe_fk_protection,
-    pipe.fk_status AS pipe_fk_status,
-    pipe.fk_watertype AS pipe_fk_watertype,
-    pipe.fk_locationtype AS pipe_fk_locationtype,
-    pipe.fk_folder AS pipe_fk_folder,
-    pipe.year AS pipe_year,
-    pipe.year_rehabilitation AS pipe_year_rehabilitation,
-    pipe.year_end AS pipe_year_end,
-    pipe.tunnel_or_bridge AS pipe_tunnel_or_bridge,
-    pipe.pressure_nominal AS pipe_pressure_nominal,
-    pipe.remark AS pipe_remark,
-    pipe._valve_count AS pipe__valve_count,
-    pipe._valve_closed AS pipe__valve_closed,
-    pipe.schema_force_visible AS pipe_schema_force_visible,
-    pipe.label_1_visible AS pipe_label_1_visible,
-    pipe.label_1_text AS pipe_label_1_text,
-    pipe.label_2_visible AS pipe_label_2_visible,
-    pipe.label_2_text AS pipe_label_2_text,
-    pipe.fk_node_a AS pipe_fk_node_a,
-    pipe.fk_node_b AS pipe_fk_node_b,
-    pipe.fk_district AS pipe_fk_district,
-    pipe.fk_pressurezone AS pipe_fk_pressurezone,
-    pipe.fk_printmap AS pipe_fk_printmap,
-    pipe._length2d AS pipe__length2d,
-    pipe._length3d AS pipe__length3d,
-    pipe._diff_elevation AS pipe__diff_elevation,
-    pipe._printmaps AS pipe__printmaps,
-    pipe._geometry_alt1_used AS pipe__geometry_alt1_used,
-    pipe._geometry_alt2_used AS pipe__geometry_alt2_used,
-    pipe.update_geometry_alt1 AS pipe_update_geometry_alt1,
-    pipe.update_geometry_alt2 AS pipe_update_geometry_alt2,
-    pipe.geometry AS pipe_geometry,
-    pipe.geometry_alt1 AS pipe_geometry_alt1,
-    pipe.geometry_alt2 AS pipe_geometry_alt2,
-    pipe.status_vl_active AS pipe_status_vl_active,
-    pipe.status_short_fr AS pipe_status_short_fr,
-    pipe.status_short_en AS pipe_status_short_en,
-    pipe.status_short_ro AS pipe_status_short_ro,
-    pipe.status_value_fr AS pipe_status_value_fr,
-    pipe.status_value_en AS pipe_status_value_en,
-    pipe.status_value_ro AS pipe_status_value_ro,
-    pipe.status_description_fr AS pipe_status_description_fr,
-    pipe.status_description_en AS pipe_status_description_en,
-    pipe.status_description_ro AS pipe_status_description_ro,
-    pipe.status_active AS pipe_status_active,
-    pipe.status_code_sire AS pipe_status_code_sire,
-    pipe.function_vl_active AS pipe_function_vl_active,
-    pipe.function_short_fr AS pipe_function_short_fr,
-    pipe.function_short_en AS pipe_function_short_en,
-    pipe.function_short_ro AS pipe_function_short_ro,
-    pipe.function_value_fr AS pipe_function_value_fr,
-    pipe.function_value_en AS pipe_function_value_en,
-    pipe.function_value_ro AS pipe_function_value_ro,
-    pipe.function_description_fr AS pipe_function_description_fr,
-    pipe.function_description_en AS pipe_function_description_en,
-    pipe.function_description_ro AS pipe_function_description_ro,
-    pipe.function_schema_visible AS pipe_function_schema_visible,
-    pipe.function_major AS pipe_function_major,
-    pipe.function_code_sire AS pipe_function_code_sire,
-    pipe.installmethod_vl_active AS pipe_installmethod_vl_active,
-    pipe.installmethod_short_fr AS pipe_installmethod_short_fr,
-    pipe.installmethod_short_en AS pipe_installmethod_short_en,
-    pipe.installmethod_short_ro AS pipe_installmethod_short_ro,
-    pipe.installmethod_value_fr AS pipe_installmethod_value_fr,
-    pipe.installmethod_value_en AS pipe_installmethod_value_en,
-    pipe.installmethod_value_ro AS pipe_installmethod_value_ro,
-    pipe.installmethod_description_fr AS pipe_installmethod_description_fr,
-    pipe.installmethod_description_en AS pipe_installmethod_description_en,
-    pipe.installmethod_description_ro AS pipe_installmethod_description_ro,
-    pipe.district_name AS pipe_district_name,
-    pipe.district_shortname AS pipe_district_shortname,
-    pipe.district_zip AS pipe_district_zip,
-    pipe.district_land_registry AS pipe_district_land_registry,
-    pipe.district_prefix AS pipe_district_prefix,
-    pipe.district_colorcode AS pipe_district_colorcode,
-    pipe.district_geometry AS pipe_district_geometry,
-    pipe.district_label_1_visible AS pipe_district_label_1_visible,
-    pipe.district_label_1_x AS pipe_district_label_1_x,
-    pipe.district_label_1_y AS pipe_district_label_1_y,
-    pipe.district_label_1_rotation AS pipe_district_label_1_rotation,
-    pipe.district_label_1_text AS pipe_district_label_1_text,
-    pipe.district_label_2_visible AS pipe_district_label_2_visible,
-    pipe.district_label_2_x AS pipe_district_label_2_x,
-    pipe.district_label_2_y AS pipe_district_label_2_y,
-    pipe.district_label_2_rotation AS pipe_district_label_2_rotation,
-    pipe.district_label_2_text AS pipe_district_label_2_text,
-    pipe.pressurezone_fk_distributor AS pipe_pressurezone_fk_distributor,
-    pipe.pressurezone_fk_consumptionzone AS pipe_pressurezone_fk_consumptionzone,
-    pipe.pressurezone_name AS pipe_pressurezone_name,
-    pipe.pressurezone_population AS pipe_pressurezone_population,
-    pipe.pressurezone_subscriber AS pipe_pressurezone_subscriber,
-    pipe.pressurezone_colorcode AS pipe_pressurezone_colorcode,
-    pipe.pressurezone_geometry AS pipe_pressurezone_geometry,
-    pipe.pressurezone_geometry_alt1 AS pipe_pressurezone_geometry_alt1,
-    pipe.pressurezone_geometry_alt2 AS pipe_pressurezone_geometry_alt2,
-    pipe.pressurezone__geometry_alt1_used AS pipe_pressurezone__geometry_alt1_used,
-    pipe.pressurezone__geometry_alt2_used AS pipe_pressurezone__geometry_alt2_used,
-    pipe.pressurezone_update_geometry_alt1 AS pipe_pressurezone_update_geometry_alt1,
-    pipe.pressurezone_update_geometry_alt2 AS pipe_pressurezone_update_geometry_alt2,
-    pipe.pressurezone_label_1_visible AS pipe_pressurezone_label_1_visible,
-    pipe.pressurezone_label_1_x AS pipe_pressurezone_label_1_x,
-    pipe.pressurezone_label_1_y AS pipe_pressurezone_label_1_y,
-    pipe.pressurezone_label_1_rotation AS pipe_pressurezone_label_1_rotation,
-    pipe.pressurezone_label_1_text AS pipe_pressurezone_label_1_text,
-    pipe.pressurezone_label_2_visible AS pipe_pressurezone_label_2_visible,
-    pipe.pressurezone_label_2_x AS pipe_pressurezone_label_2_x,
-    pipe.pressurezone_label_2_y AS pipe_pressurezone_label_2_y,
-    pipe.pressurezone_label_2_rotation AS pipe_pressurezone_label_2_rotation,
-    pipe.pressurezone_label_2_text AS pipe_pressurezone_label_2_text,
-    pipe.material_vl_active AS pipe_material_vl_active,
-    pipe.material_short_fr AS pipe_material_short_fr,
-    pipe.material_short_en AS pipe_material_short_en,
-    pipe.material_short_ro AS pipe_material_short_ro,
-    pipe.material_value_fr AS pipe_material_value_fr,
-    pipe.material_value_en AS pipe_material_value_en,
-    pipe.material_value_ro AS pipe_material_value_ro,
-    pipe.material_description_fr AS pipe_material_description_fr,
-    pipe.material_description_en AS pipe_material_description_en,
-    pipe.material_description_ro AS pipe_material_description_ro,
-    pipe.material__displayname_fr AS pipe_material__displayname_fr,
-    pipe.material__displayname_en AS pipe_material__displayname_en,
-    pipe.material__displayname_ro AS pipe_material__displayname_ro,
-    pipe.material_diameter AS pipe_material_diameter,
-    pipe.material_diameter_nominal AS pipe_material_diameter_nominal,
-    pipe.material_diameter_internal AS pipe_material_diameter_internal,
-    pipe.material_diameter_external AS pipe_material_diameter_external,
-    pipe.material_code_sire AS pipe_material_code_sire,
-    pipe.material_pressure_nominal AS pipe_material_pressure_nominal,
-    pipe.material_sdr AS pipe_material_sdr,
-    pipe.material_wall_thickness AS pipe_material_wall_thickness,
-    pipe.material_sn AS pipe_material_sn,
-    pipe.precision_vl_active AS pipe_precision_vl_active,
-    pipe.precision_short_fr AS pipe_precision_short_fr,
-    pipe.precision_short_en AS pipe_precision_short_en,
-    pipe.precision_short_ro AS pipe_precision_short_ro,
-    pipe.precision_value_fr AS pipe_precision_value_fr,
-    pipe.precision_value_en AS pipe_precision_value_en,
-    pipe.precision_value_ro AS pipe_precision_value_ro,
-    pipe.precision_description_fr AS pipe_precision_description_fr,
-    pipe.precision_description_en AS pipe_precision_description_en,
-    pipe.precision_description_ro AS pipe_precision_description_ro,
-    pipe.precision_code_sire AS pipe_precision_code_sire,
-    pipe.protection_vl_active AS pipe_protection_vl_active,
-    pipe.protection_short_fr AS pipe_protection_short_fr,
-    pipe.protection_short_en AS pipe_protection_short_en,
-    pipe.protection_short_ro AS pipe_protection_short_ro,
-    pipe.protection_value_fr AS pipe_protection_value_fr,
-    pipe.protection_value_en AS pipe_protection_value_en,
-    pipe.protection_value_ro AS pipe_protection_value_ro,
-    pipe.protection_description_fr AS pipe_protection_description_fr,
-    pipe.protection_description_en AS pipe_protection_description_en,
-    pipe.protection_description_ro AS pipe_protection_description_ro,
-    pipe.distributor_name AS pipe_distributor_name,
-    pipe.folder_identification AS pipe_folder_identification,
-    pipe.folder_description AS pipe_folder_description,
-    pipe.folder_date_start AS pipe_folder_date_start,
-    pipe.folder_date_end AS pipe_folder_date_end,
-    pipe.folder_geometry_polygon AS pipe_folder_geometry_polygon,
-    pipe.folder_geometry_line AS pipe_folder_geometry_line,
-    pipe.node_b_fk_district AS pipe_node_b_fk_district,
-    pipe.node_b_fk_pressurezone AS pipe_node_b_fk_pressurezone,
-    pipe.node_b_fk_printmap AS pipe_node_b_fk_printmap,
-    pipe.node_b__printmaps AS pipe_node_b__printmaps,
-    pipe.node_b__geometry_alt1_used AS pipe_node_b__geometry_alt1_used,
-    pipe.node_b__geometry_alt2_used AS pipe_node_b__geometry_alt2_used,
-    pipe.node_b__pipe_node_type AS pipe_node_b__pipe_node_type,
-    pipe.node_b__pipe_orientation AS pipe_node_b__pipe_orientation,
-    pipe.node_b__pipe_schema_visible AS pipe_node_b__pipe_schema_visible,
-    pipe.node_b_geometry AS pipe_node_b_geometry,
-    pipe.node_b_geometry_alt1 AS pipe_node_b_geometry_alt1,
-    pipe.node_b_geometry_alt2 AS pipe_node_b_geometry_alt2,
-    pipe.node_b_update_geometry_alt1 AS pipe_node_b_update_geometry_alt1,
-    pipe.node_b_update_geometry_alt2 AS pipe_node_b_update_geometry_alt2,
-    pipe.node_a_fk_district AS pipe_node_a_fk_district,
-    pipe.node_a_fk_pressurezone AS pipe_node_a_fk_pressurezone,
-    pipe.node_a_fk_printmap AS pipe_node_a_fk_printmap,
-    pipe.node_a__printmaps AS pipe_node_a__printmaps,
-    pipe.node_a__geometry_alt1_used AS pipe_node_a__geometry_alt1_used,
-    pipe.node_a__geometry_alt2_used AS pipe_node_a__geometry_alt2_used,
-    pipe.node_a__pipe_node_type AS pipe_node_a__pipe_node_type,
-    pipe.node_a__pipe_orientation AS pipe_node_a__pipe_orientation,
-    pipe.node_a__pipe_schema_visible AS pipe_node_a__pipe_schema_visible,
-    pipe.node_a_geometry AS pipe_node_a_geometry,
-    pipe.node_a_geometry_alt1 AS pipe_node_a_geometry_alt1,
-    pipe.node_a_geometry_alt2 AS pipe_node_a_geometry_alt2,
-    pipe.node_a_update_geometry_alt1 AS pipe_node_a_update_geometry_alt1,
-    pipe.node_a_update_geometry_alt2 AS pipe_node_a_update_geometry_alt2,
-    cause.vl_active AS cause_vl_active,
-    cause.short_fr AS cause_short_fr,
-    cause.short_en AS cause_short_en,
-    cause.short_ro AS cause_short_ro,
-    cause.value_fr AS cause_value_fr,
-    cause.value_en AS cause_value_en,
-    cause.value_ro AS cause_value_ro,
-    cause.description_fr AS cause_description_fr,
-    cause.description_en AS cause_description_en,
-    cause.description_ro AS cause_description_ro
-   FROM ((qwat_od.leak
-     LEFT JOIN qwat_od.vw_export_pipe pipe ON ((leak.fk_pipe = pipe.id)))
-     LEFT JOIN qwat_vl.leak_cause cause ON ((leak.fk_cause = cause.id)));"
-"vw_export_meter"," SELECT vw_element_meter.id,
-    vw_element_meter.fk_district,
-    vw_element_meter.fk_pressurezone,
-    vw_element_meter.fk_printmap,
-    vw_element_meter._printmaps,
-    vw_element_meter._geometry_alt1_used,
-    vw_element_meter._geometry_alt2_used,
-    vw_element_meter._pipe_node_type,
-    vw_element_meter._pipe_orientation,
-    vw_element_meter._pipe_schema_visible,
-    vw_element_meter.geometry,
-    vw_element_meter.geometry_alt1,
-    vw_element_meter.geometry_alt2,
-    vw_element_meter.update_geometry_alt1,
-    vw_element_meter.update_geometry_alt2,
-    vw_element_meter.identification,
-    vw_element_meter.fk_distributor,
-    vw_element_meter.fk_status,
-    vw_element_meter.fk_folder,
-    vw_element_meter.fk_locationtype,
-    vw_element_meter.fk_precision,
-    vw_element_meter.fk_precisionalti,
-    vw_element_meter.fk_object_reference,
-    vw_element_meter.altitude,
-    vw_element_meter.year,
-    vw_element_meter.year_end,
-    vw_element_meter.orientation,
-    vw_element_meter.remark,
-    vw_element_meter.schema_force_visible,
-    vw_element_meter.label_1_visible,
-    vw_element_meter.label_1_x,
-    vw_element_meter.label_1_y,
-    vw_element_meter.label_1_rotation,
-    vw_element_meter.label_1_text,
-    vw_element_meter.label_2_visible,
-    vw_element_meter.label_2_x,
-    vw_element_meter.label_2_y,
-    vw_element_meter.label_2_rotation,
-    vw_element_meter.label_2_text,
-    vw_element_meter.fk_pipe,
-    vw_element_meter.parcel,
-    status.vl_active AS status_vl_active,
-    status.short_fr AS status_short_fr,
-    status.short_en AS status_short_en,
-    status.short_ro AS status_short_ro,
-    status.value_fr AS status_value_fr,
-    status.value_en AS status_value_en,
-    status.value_ro AS status_value_ro,
-    status.description_fr AS status_description_fr,
-    status.description_en AS status_description_en,
-    status.description_ro AS status_description_ro,
-    status.active AS status_active,
-    status.code_sire AS status_code_sire,
-    district.name AS district_name,
-    district.shortname AS district_shortname,
-    district.zip AS district_zip,
-    district.land_registry AS district_land_registry,
-    district.prefix AS district_prefix,
-    district.colorcode AS district_colorcode,
-    district.geometry AS district_geometry,
-    district.label_1_visible AS district_label_1_visible,
-    district.label_1_x AS district_label_1_x,
-    district.label_1_y AS district_label_1_y,
-    district.label_1_rotation AS district_label_1_rotation,
-    district.label_1_text AS district_label_1_text,
-    district.label_2_visible AS district_label_2_visible,
-    district.label_2_x AS district_label_2_x,
-    district.label_2_y AS district_label_2_y,
-    district.label_2_rotation AS district_label_2_rotation,
-    district.label_2_text AS district_label_2_text,
-    pressurezone.fk_distributor AS pressurezone_fk_distributor,
-    pressurezone.fk_consumptionzone AS pressurezone_fk_consumptionzone,
-    pressurezone.name AS pressurezone_name,
-    pressurezone.population AS pressurezone_population,
-    pressurezone.subscriber AS pressurezone_subscriber,
-    pressurezone.colorcode AS pressurezone_colorcode,
-    pressurezone.geometry AS pressurezone_geometry,
-    pressurezone.geometry_alt1 AS pressurezone_geometry_alt1,
-    pressurezone.geometry_alt2 AS pressurezone_geometry_alt2,
-    pressurezone._geometry_alt1_used AS pressurezone__geometry_alt1_used,
-    pressurezone._geometry_alt2_used AS pressurezone__geometry_alt2_used,
-    pressurezone.update_geometry_alt1 AS pressurezone_update_geometry_alt1,
-    pressurezone.update_geometry_alt2 AS pressurezone_update_geometry_alt2,
-    pressurezone.label_1_visible AS pressurezone_label_1_visible,
-    pressurezone.label_1_x AS pressurezone_label_1_x,
-    pressurezone.label_1_y AS pressurezone_label_1_y,
-    pressurezone.label_1_rotation AS pressurezone_label_1_rotation,
-    pressurezone.label_1_text AS pressurezone_label_1_text,
-    pressurezone.label_2_visible AS pressurezone_label_2_visible,
-    pressurezone.label_2_x AS pressurezone_label_2_x,
-    pressurezone.label_2_y AS pressurezone_label_2_y,
-    pressurezone.label_2_rotation AS pressurezone_label_2_rotation,
-    pressurezone.label_2_text AS pressurezone_label_2_text,
-    precision.vl_active AS precision_vl_active,
-    precision.short_fr AS precision_short_fr,
-    precision.short_en AS precision_short_en,
-    precision.short_ro AS precision_short_ro,
-    precision.value_fr AS precision_value_fr,
-    precision.value_en AS precision_value_en,
-    precision.value_ro AS precision_value_ro,
-    precision.description_fr AS precision_description_fr,
-    precision.description_en AS precision_description_en,
-    precision.description_ro AS precision_description_ro,
-    precision.code_sire AS precision_code_sire,
-    object_reference.vl_active AS object_reference_vl_active,
-    object_reference.short_fr AS object_reference_short_fr,
-    object_reference.short_en AS object_reference_short_en,
-    object_reference.short_ro AS object_reference_short_ro,
-    object_reference.value_fr AS object_reference_value_fr,
-    object_reference.value_en AS object_reference_value_en,
-    object_reference.value_ro AS object_reference_value_ro,
-    object_reference.description_fr AS object_reference_description_fr,
-    object_reference.description_en AS object_reference_description_en,
-    object_reference.description_ro AS object_reference_description_ro,
-    distributor.name AS distributor_name,
-    folder.identification AS folder_identification,
-    folder.description AS folder_description,
-    folder.date_start AS folder_date_start,
-    folder.date_end AS folder_date_end,
-    folder.geometry_polygon AS folder_geometry_polygon,
-    folder.geometry_line AS folder_geometry_line,
-    precisionalti.vl_active AS precisionalti_vl_active,
-    precisionalti.short_fr AS precisionalti_short_fr,
-    precisionalti.short_en AS precisionalti_short_en,
-    precisionalti.short_ro AS precisionalti_short_ro,
-    precisionalti.value_fr AS precisionalti_value_fr,
-    precisionalti.value_en AS precisionalti_value_en,
-    precisionalti.value_ro AS precisionalti_value_ro,
-    precisionalti.description_fr AS precisionalti_description_fr,
-    precisionalti.description_en AS precisionalti_description_en,
-    precisionalti.description_ro AS precisionalti_description_ro,
-    precisionalti.code_sire AS precisionalti_code_sire
-   FROM ((((((((qwat_od.vw_element_meter
-     LEFT JOIN qwat_vl.status status ON ((vw_element_meter.fk_status = status.id)))
-     LEFT JOIN qwat_od.district district ON ((vw_element_meter.fk_pressurezone = district.id)))
-     LEFT JOIN qwat_od.pressurezone pressurezone ON ((vw_element_meter.fk_pressurezone = pressurezone.id)))
-     LEFT JOIN qwat_vl.precision precision ON ((vw_element_meter.fk_precision = precision.id)))
-     LEFT JOIN qwat_vl.object_reference object_reference ON ((vw_element_meter.fk_object_reference = object_reference.id)))
-     LEFT JOIN qwat_od.distributor distributor ON ((vw_element_meter.fk_distributor = distributor.id)))
-     LEFT JOIN qwat_od.folder folder ON ((vw_element_meter.fk_folder = folder.id)))
-     LEFT JOIN qwat_vl.precisionalti precisionalti ON ((vw_element_meter.fk_precisionalti = precisionalti.id)));"
-"vw_export_part"," SELECT vw_element_part.id,
-    vw_element_part.fk_district,
-    vw_element_part.fk_pressurezone,
-    vw_element_part.fk_printmap,
-    vw_element_part._printmaps,
-    vw_element_part._geometry_alt1_used,
-    vw_element_part._geometry_alt2_used,
-    vw_element_part._pipe_node_type,
-    vw_element_part._pipe_orientation,
-    vw_element_part._pipe_schema_visible,
-    vw_element_part.geometry,
-    vw_element_part.geometry_alt1,
-    vw_element_part.geometry_alt2,
-    vw_element_part.update_geometry_alt1,
-    vw_element_part.update_geometry_alt2,
-    vw_element_part.identification,
-    vw_element_part.fk_distributor,
-    vw_element_part.fk_status,
-    vw_element_part.fk_folder,
-    vw_element_part.fk_locationtype,
-    vw_element_part.fk_precision,
-    vw_element_part.fk_precisionalti,
-    vw_element_part.fk_object_reference,
-    vw_element_part.altitude,
-    vw_element_part.year,
-    vw_element_part.year_end,
-    vw_element_part.orientation,
-    vw_element_part.remark,
-    vw_element_part.schema_force_visible,
-    vw_element_part.label_1_visible,
-    vw_element_part.label_1_x,
-    vw_element_part.label_1_y,
-    vw_element_part.label_1_rotation,
-    vw_element_part.label_1_text,
-    vw_element_part.label_2_visible,
-    vw_element_part.label_2_x,
-    vw_element_part.label_2_y,
-    vw_element_part.label_2_rotation,
-    vw_element_part.label_2_text,
-    vw_element_part.fk_part_type,
-    vw_element_part.fk_pipe,
-    status.vl_active AS status_vl_active,
-    status.short_fr AS status_short_fr,
-    status.short_en AS status_short_en,
-    status.short_ro AS status_short_ro,
-    status.value_fr AS status_value_fr,
-    status.value_en AS status_value_en,
-    status.value_ro AS status_value_ro,
-    status.description_fr AS status_description_fr,
-    status.description_en AS status_description_en,
-    status.description_ro AS status_description_ro,
-    status.active AS status_active,
-    status.code_sire AS status_code_sire,
-    district.name AS district_name,
-    district.shortname AS district_shortname,
-    district.zip AS district_zip,
-    district.land_registry AS district_land_registry,
-    district.prefix AS district_prefix,
-    district.colorcode AS district_colorcode,
-    district.geometry AS district_geometry,
-    district.label_1_visible AS district_label_1_visible,
-    district.label_1_x AS district_label_1_x,
-    district.label_1_y AS district_label_1_y,
-    district.label_1_rotation AS district_label_1_rotation,
-    district.label_1_text AS district_label_1_text,
-    district.label_2_visible AS district_label_2_visible,
-    district.label_2_x AS district_label_2_x,
-    district.label_2_y AS district_label_2_y,
-    district.label_2_rotation AS district_label_2_rotation,
-    district.label_2_text AS district_label_2_text,
-    pressurezone.fk_distributor AS pressurezone_fk_distributor,
-    pressurezone.fk_consumptionzone AS pressurezone_fk_consumptionzone,
-    pressurezone.name AS pressurezone_name,
-    pressurezone.population AS pressurezone_population,
-    pressurezone.subscriber AS pressurezone_subscriber,
-    pressurezone.colorcode AS pressurezone_colorcode,
-    pressurezone.geometry AS pressurezone_geometry,
-    pressurezone.geometry_alt1 AS pressurezone_geometry_alt1,
-    pressurezone.geometry_alt2 AS pressurezone_geometry_alt2,
-    pressurezone._geometry_alt1_used AS pressurezone__geometry_alt1_used,
-    pressurezone._geometry_alt2_used AS pressurezone__geometry_alt2_used,
-    pressurezone.update_geometry_alt1 AS pressurezone_update_geometry_alt1,
-    pressurezone.update_geometry_alt2 AS pressurezone_update_geometry_alt2,
-    pressurezone.label_1_visible AS pressurezone_label_1_visible,
-    pressurezone.label_1_x AS pressurezone_label_1_x,
-    pressurezone.label_1_y AS pressurezone_label_1_y,
-    pressurezone.label_1_rotation AS pressurezone_label_1_rotation,
-    pressurezone.label_1_text AS pressurezone_label_1_text,
-    pressurezone.label_2_visible AS pressurezone_label_2_visible,
-    pressurezone.label_2_x AS pressurezone_label_2_x,
-    pressurezone.label_2_y AS pressurezone_label_2_y,
-    pressurezone.label_2_rotation AS pressurezone_label_2_rotation,
-    pressurezone.label_2_text AS pressurezone_label_2_text,
-    precision.vl_active AS precision_vl_active,
-    precision.short_fr AS precision_short_fr,
-    precision.short_en AS precision_short_en,
-    precision.short_ro AS precision_short_ro,
-    precision.value_fr AS precision_value_fr,
-    precision.value_en AS precision_value_en,
-    precision.value_ro AS precision_value_ro,
-    precision.description_fr AS precision_description_fr,
-    precision.description_en AS precision_description_en,
-    precision.description_ro AS precision_description_ro,
-    precision.code_sire AS precision_code_sire,
-    part_type.vl_active AS part_type_vl_active,
-    part_type.short_fr AS part_type_short_fr,
-    part_type.short_en AS part_type_short_en,
-    part_type.short_ro AS part_type_short_ro,
-    part_type.value_fr AS part_type_value_fr,
-    part_type.value_en AS part_type_value_en,
-    part_type.value_ro AS part_type_value_ro,
-    part_type.description_fr AS part_type_description_fr,
-    part_type.description_en AS part_type_description_en,
-    part_type.description_ro AS part_type_description_ro,
-    object_reference.vl_active AS object_reference_vl_active,
-    object_reference.short_fr AS object_reference_short_fr,
-    object_reference.short_en AS object_reference_short_en,
-    object_reference.short_ro AS object_reference_short_ro,
-    object_reference.value_fr AS object_reference_value_fr,
-    object_reference.value_en AS object_reference_value_en,
-    object_reference.value_ro AS object_reference_value_ro,
-    object_reference.description_fr AS object_reference_description_fr,
-    object_reference.description_en AS object_reference_description_en,
-    object_reference.description_ro AS object_reference_description_ro,
-    distributor.name AS distributor_name,
-    folder.identification AS folder_identification,
-    folder.description AS folder_description,
-    folder.date_start AS folder_date_start,
-    folder.date_end AS folder_date_end,
-    folder.geometry_polygon AS folder_geometry_polygon,
-    folder.geometry_line AS folder_geometry_line,
-    precisionalti.vl_active AS precisionalti_vl_active,
-    precisionalti.short_fr AS precisionalti_short_fr,
-    precisionalti.short_en AS precisionalti_short_en,
-    precisionalti.short_ro AS precisionalti_short_ro,
-    precisionalti.value_fr AS precisionalti_value_fr,
-    precisionalti.value_en AS precisionalti_value_en,
-    precisionalti.value_ro AS precisionalti_value_ro,
-    precisionalti.description_fr AS precisionalti_description_fr,
-    precisionalti.description_en AS precisionalti_description_en,
-    precisionalti.description_ro AS precisionalti_description_ro,
-    precisionalti.code_sire AS precisionalti_code_sire
-   FROM (((((((((qwat_od.vw_element_part
-     LEFT JOIN qwat_vl.status status ON ((vw_element_part.fk_status = status.id)))
-     LEFT JOIN qwat_od.district district ON ((vw_element_part.fk_pressurezone = district.id)))
-     LEFT JOIN qwat_od.pressurezone pressurezone ON ((vw_element_part.fk_pressurezone = pressurezone.id)))
-     LEFT JOIN qwat_vl.precision precision ON ((vw_element_part.fk_precision = precision.id)))
-     LEFT JOIN qwat_vl.part_type part_type ON ((vw_element_part.fk_part_type = part_type.id)))
-     LEFT JOIN qwat_vl.object_reference object_reference ON ((vw_element_part.fk_object_reference = object_reference.id)))
-     LEFT JOIN qwat_od.distributor distributor ON ((vw_element_part.fk_distributor = distributor.id)))
-     LEFT JOIN qwat_od.folder folder ON ((vw_element_part.fk_folder = folder.id)))
-     LEFT JOIN qwat_vl.precisionalti precisionalti ON ((vw_element_part.fk_precisionalti = precisionalti.id)));"
-"vw_export_pipe"," SELECT pipe.id,
-    pipe.fk_parent,
-    pipe.fk_function,
-    pipe.fk_installmethod,
-    pipe.fk_material,
-    pipe.fk_distributor,
-    pipe.fk_precision,
-    pipe.fk_bedding,
-    pipe.fk_protection,
-    pipe.fk_status,
-    pipe.fk_watertype,
-    pipe.fk_locationtype,
-    pipe.fk_folder,
-    pipe.year,
-    pipe.year_rehabilitation,
-    pipe.year_end,
-    pipe.tunnel_or_bridge,
-    pipe.pressure_nominal,
-    pipe.remark,
-    pipe._valve_count,
-    pipe._valve_closed,
-    pipe.schema_force_visible,
-    pipe.label_1_visible,
-    pipe.label_1_text,
-    pipe.label_2_visible,
-    pipe.label_2_text,
-    pipe.fk_node_a,
-    pipe.fk_node_b,
-    pipe.fk_district,
-    pipe.fk_pressurezone,
-    pipe.fk_printmap,
-    pipe._length2d,
-    pipe._length3d,
-    pipe._diff_elevation,
-    pipe._printmaps,
-    pipe._geometry_alt1_used,
-    pipe._geometry_alt2_used,
-    pipe.update_geometry_alt1,
-    pipe.update_geometry_alt2,
-    pipe.geometry,
-    pipe.geometry_alt1,
-    pipe.geometry_alt2,
-    status.vl_active AS status_vl_active,
-    status.short_fr AS status_short_fr,
-    status.short_en AS status_short_en,
-    status.short_ro AS status_short_ro,
-    status.value_fr AS status_value_fr,
-    status.value_en AS status_value_en,
-    status.value_ro AS status_value_ro,
-    status.description_fr AS status_description_fr,
-    status.description_en AS status_description_en,
-    status.description_ro AS status_description_ro,
-    status.active AS status_active,
-    status.code_sire AS status_code_sire,
-    function.vl_active AS function_vl_active,
-    function.short_fr AS function_short_fr,
-    function.short_en AS function_short_en,
-    function.short_ro AS function_short_ro,
-    function.value_fr AS function_value_fr,
-    function.value_en AS function_value_en,
-    function.value_ro AS function_value_ro,
-    function.description_fr AS function_description_fr,
-    function.description_en AS function_description_en,
-    function.description_ro AS function_description_ro,
-    function.schema_visible AS function_schema_visible,
-    function.major AS function_major,
-    function.code_sire AS function_code_sire,
-    installmethod.vl_active AS installmethod_vl_active,
-    installmethod.short_fr AS installmethod_short_fr,
-    installmethod.short_en AS installmethod_short_en,
-    installmethod.short_ro AS installmethod_short_ro,
-    installmethod.value_fr AS installmethod_value_fr,
-    installmethod.value_en AS installmethod_value_en,
-    installmethod.value_ro AS installmethod_value_ro,
-    installmethod.description_fr AS installmethod_description_fr,
-    installmethod.description_en AS installmethod_description_en,
-    installmethod.description_ro AS installmethod_description_ro,
-    district.name AS district_name,
-    district.shortname AS district_shortname,
-    district.zip AS district_zip,
-    district.land_registry AS district_land_registry,
-    district.prefix AS district_prefix,
-    district.colorcode AS district_colorcode,
-    district.geometry AS district_geometry,
-    district.label_1_visible AS district_label_1_visible,
-    district.label_1_x AS district_label_1_x,
-    district.label_1_y AS district_label_1_y,
-    district.label_1_rotation AS district_label_1_rotation,
-    district.label_1_text AS district_label_1_text,
-    district.label_2_visible AS district_label_2_visible,
-    district.label_2_x AS district_label_2_x,
-    district.label_2_y AS district_label_2_y,
-    district.label_2_rotation AS district_label_2_rotation,
-    district.label_2_text AS district_label_2_text,
-    pressurezone.fk_distributor AS pressurezone_fk_distributor,
-    pressurezone.fk_consumptionzone AS pressurezone_fk_consumptionzone,
-    pressurezone.name AS pressurezone_name,
-    pressurezone.population AS pressurezone_population,
-    pressurezone.subscriber AS pressurezone_subscriber,
-    pressurezone.colorcode AS pressurezone_colorcode,
-    pressurezone.geometry AS pressurezone_geometry,
-    pressurezone.geometry_alt1 AS pressurezone_geometry_alt1,
-    pressurezone.geometry_alt2 AS pressurezone_geometry_alt2,
-    pressurezone._geometry_alt1_used AS pressurezone__geometry_alt1_used,
-    pressurezone._geometry_alt2_used AS pressurezone__geometry_alt2_used,
-    pressurezone.update_geometry_alt1 AS pressurezone_update_geometry_alt1,
-    pressurezone.update_geometry_alt2 AS pressurezone_update_geometry_alt2,
-    pressurezone.label_1_visible AS pressurezone_label_1_visible,
-    pressurezone.label_1_x AS pressurezone_label_1_x,
-    pressurezone.label_1_y AS pressurezone_label_1_y,
-    pressurezone.label_1_rotation AS pressurezone_label_1_rotation,
-    pressurezone.label_1_text AS pressurezone_label_1_text,
-    pressurezone.label_2_visible AS pressurezone_label_2_visible,
-    pressurezone.label_2_x AS pressurezone_label_2_x,
-    pressurezone.label_2_y AS pressurezone_label_2_y,
-    pressurezone.label_2_rotation AS pressurezone_label_2_rotation,
-    pressurezone.label_2_text AS pressurezone_label_2_text,
-    material.vl_active AS material_vl_active,
-    material.short_fr AS material_short_fr,
-    material.short_en AS material_short_en,
-    material.short_ro AS material_short_ro,
-    material.value_fr AS material_value_fr,
-    material.value_en AS material_value_en,
-    material.value_ro AS material_value_ro,
-    material.description_fr AS material_description_fr,
-    material.description_en AS material_description_en,
-    material.description_ro AS material_description_ro,
-    material._displayname_fr AS material__displayname_fr,
-    material._displayname_en AS material__displayname_en,
-    material._displayname_ro AS material__displayname_ro,
-    material.diameter AS material_diameter,
-    material.diameter_nominal AS material_diameter_nominal,
-    material.diameter_internal AS material_diameter_internal,
-    material.diameter_external AS material_diameter_external,
-    material.code_sire AS material_code_sire,
-    material.pressure_nominal AS material_pressure_nominal,
-    material.sdr AS material_sdr,
-    material.wall_thickness AS material_wall_thickness,
-    material.sn AS material_sn,
-    precision.vl_active AS precision_vl_active,
-    precision.short_fr AS precision_short_fr,
-    precision.short_en AS precision_short_en,
-    precision.short_ro AS precision_short_ro,
-    precision.value_fr AS precision_value_fr,
-    precision.value_en AS precision_value_en,
-    precision.value_ro AS precision_value_ro,
-    precision.description_fr AS precision_description_fr,
-    precision.description_en AS precision_description_en,
-    precision.description_ro AS precision_description_ro,
-    precision.code_sire AS precision_code_sire,
-    protection.vl_active AS protection_vl_active,
-    protection.short_fr AS protection_short_fr,
-    protection.short_en AS protection_short_en,
-    protection.short_ro AS protection_short_ro,
-    protection.value_fr AS protection_value_fr,
-    protection.value_en AS protection_value_en,
-    protection.value_ro AS protection_value_ro,
-    protection.description_fr AS protection_description_fr,
-    protection.description_en AS protection_description_en,
-    protection.description_ro AS protection_description_ro,
-    distributor.name AS distributor_name,
-    folder.identification AS folder_identification,
-    folder.description AS folder_description,
-    folder.date_start AS folder_date_start,
-    folder.date_end AS folder_date_end,
-    folder.geometry_polygon AS folder_geometry_polygon,
-    folder.geometry_line AS folder_geometry_line,
-    node_b.fk_district AS node_b_fk_district,
-    node_b.fk_pressurezone AS node_b_fk_pressurezone,
-    node_b.fk_printmap AS node_b_fk_printmap,
-    node_b._printmaps AS node_b__printmaps,
-    node_b._geometry_alt1_used AS node_b__geometry_alt1_used,
-    node_b._geometry_alt2_used AS node_b__geometry_alt2_used,
-    node_b._pipe_node_type AS node_b__pipe_node_type,
-    node_b._pipe_orientation AS node_b__pipe_orientation,
-    node_b._pipe_schema_visible AS node_b__pipe_schema_visible,
-    node_b.geometry AS node_b_geometry,
-    node_b.geometry_alt1 AS node_b_geometry_alt1,
-    node_b.geometry_alt2 AS node_b_geometry_alt2,
-    node_b.update_geometry_alt1 AS node_b_update_geometry_alt1,
-    node_b.update_geometry_alt2 AS node_b_update_geometry_alt2,
-    node_a.fk_district AS node_a_fk_district,
-    node_a.fk_pressurezone AS node_a_fk_pressurezone,
-    node_a.fk_printmap AS node_a_fk_printmap,
-    node_a._printmaps AS node_a__printmaps,
-    node_a._geometry_alt1_used AS node_a__geometry_alt1_used,
-    node_a._geometry_alt2_used AS node_a__geometry_alt2_used,
-    node_a._pipe_node_type AS node_a__pipe_node_type,
-    node_a._pipe_orientation AS node_a__pipe_orientation,
-    node_a._pipe_schema_visible AS node_a__pipe_schema_visible,
-    node_a.geometry AS node_a_geometry,
-    node_a.geometry_alt1 AS node_a_geometry_alt1,
-    node_a.geometry_alt2 AS node_a_geometry_alt2,
-    node_a.update_geometry_alt1 AS node_a_update_geometry_alt1,
-    node_a.update_geometry_alt2 AS node_a_update_geometry_alt2
-   FROM ((((((((((((qwat_od.pipe
-     LEFT JOIN qwat_vl.status status ON ((pipe.fk_status = status.id)))
-     LEFT JOIN qwat_vl.pipe_function function ON ((pipe.fk_function = function.id)))
-     LEFT JOIN qwat_vl.pipe_installmethod installmethod ON ((pipe.fk_installmethod = installmethod.id)))
-     LEFT JOIN qwat_od.district district ON ((pipe.fk_district = district.id)))
-     LEFT JOIN qwat_od.pressurezone pressurezone ON ((pipe.fk_pressurezone = pressurezone.id)))
-     LEFT JOIN qwat_vl.pipe_material material ON ((pipe.fk_material = material.id)))
-     LEFT JOIN qwat_vl.precision precision ON ((pipe.fk_precision = precision.id)))
-     LEFT JOIN qwat_vl.pipe_protection protection ON ((pipe.fk_protection = protection.id)))
-     LEFT JOIN qwat_od.distributor distributor ON ((pipe.fk_distributor = distributor.id)))
-     LEFT JOIN qwat_od.folder folder ON ((pipe.fk_folder = folder.id)))
-     LEFT JOIN qwat_od.node node_b ON ((pipe.fk_node_b = node_b.id)))
-     LEFT JOIN qwat_od.node node_a ON ((pipe.fk_node_a = node_a.id)));"
-"vw_export_subscriber"," SELECT vw_element_subscriber.id,
-    vw_element_subscriber.fk_district,
-    vw_element_subscriber.fk_pressurezone,
-    vw_element_subscriber.fk_printmap,
-    vw_element_subscriber._printmaps,
-    vw_element_subscriber._geometry_alt1_used,
-    vw_element_subscriber._geometry_alt2_used,
-    vw_element_subscriber._pipe_node_type,
-    vw_element_subscriber._pipe_orientation,
-    vw_element_subscriber._pipe_schema_visible,
-    vw_element_subscriber.geometry,
-    vw_element_subscriber.geometry_alt1,
-    vw_element_subscriber.geometry_alt2,
-    vw_element_subscriber.update_geometry_alt1,
-    vw_element_subscriber.update_geometry_alt2,
-    vw_element_subscriber.identification,
-    vw_element_subscriber.fk_distributor,
-    vw_element_subscriber.fk_status,
-    vw_element_subscriber.fk_folder,
-    vw_element_subscriber.fk_locationtype,
-    vw_element_subscriber.fk_precision,
-    vw_element_subscriber.fk_precisionalti,
-    vw_element_subscriber.fk_object_reference,
-    vw_element_subscriber.altitude,
-    vw_element_subscriber.year,
-    vw_element_subscriber.year_end,
-    vw_element_subscriber.orientation,
-    vw_element_subscriber.remark,
-    vw_element_subscriber.schema_force_visible,
-    vw_element_subscriber.label_1_visible,
-    vw_element_subscriber.label_1_x,
-    vw_element_subscriber.label_1_y,
-    vw_element_subscriber.label_1_rotation,
-    vw_element_subscriber.label_1_text,
-    vw_element_subscriber.label_2_visible,
-    vw_element_subscriber.label_2_x,
-    vw_element_subscriber.label_2_y,
-    vw_element_subscriber.label_2_rotation,
-    vw_element_subscriber.label_2_text,
-    vw_element_subscriber.fk_subscriber_type,
-    vw_element_subscriber.fk_pipe,
-    vw_element_subscriber.parcel,
-    vw_element_subscriber.flow_current,
-    vw_element_subscriber.flow_planned,
-    status.vl_active AS status_vl_active,
-    status.short_fr AS status_short_fr,
-    status.short_en AS status_short_en,
-    status.short_ro AS status_short_ro,
-    status.value_fr AS status_value_fr,
-    status.value_en AS status_value_en,
-    status.value_ro AS status_value_ro,
-    status.description_fr AS status_description_fr,
-    status.description_en AS status_description_en,
-    status.description_ro AS status_description_ro,
-    status.active AS status_active,
-    status.code_sire AS status_code_sire,
-    district.name AS district_name,
-    district.shortname AS district_shortname,
-    district.zip AS district_zip,
-    district.land_registry AS district_land_registry,
-    district.prefix AS district_prefix,
-    district.colorcode AS district_colorcode,
-    district.geometry AS district_geometry,
-    district.label_1_visible AS district_label_1_visible,
-    district.label_1_x AS district_label_1_x,
-    district.label_1_y AS district_label_1_y,
-    district.label_1_rotation AS district_label_1_rotation,
-    district.label_1_text AS district_label_1_text,
-    district.label_2_visible AS district_label_2_visible,
-    district.label_2_x AS district_label_2_x,
-    district.label_2_y AS district_label_2_y,
-    district.label_2_rotation AS district_label_2_rotation,
-    district.label_2_text AS district_label_2_text,
-    pressurezone.fk_distributor AS pressurezone_fk_distributor,
-    pressurezone.fk_consumptionzone AS pressurezone_fk_consumptionzone,
-    pressurezone.name AS pressurezone_name,
-    pressurezone.population AS pressurezone_population,
-    pressurezone.subscriber AS pressurezone_subscriber,
-    pressurezone.colorcode AS pressurezone_colorcode,
-    pressurezone.geometry AS pressurezone_geometry,
-    pressurezone.geometry_alt1 AS pressurezone_geometry_alt1,
-    pressurezone.geometry_alt2 AS pressurezone_geometry_alt2,
-    pressurezone._geometry_alt1_used AS pressurezone__geometry_alt1_used,
-    pressurezone._geometry_alt2_used AS pressurezone__geometry_alt2_used,
-    pressurezone.update_geometry_alt1 AS pressurezone_update_geometry_alt1,
-    pressurezone.update_geometry_alt2 AS pressurezone_update_geometry_alt2,
-    pressurezone.label_1_visible AS pressurezone_label_1_visible,
-    pressurezone.label_1_x AS pressurezone_label_1_x,
-    pressurezone.label_1_y AS pressurezone_label_1_y,
-    pressurezone.label_1_rotation AS pressurezone_label_1_rotation,
-    pressurezone.label_1_text AS pressurezone_label_1_text,
-    pressurezone.label_2_visible AS pressurezone_label_2_visible,
-    pressurezone.label_2_x AS pressurezone_label_2_x,
-    pressurezone.label_2_y AS pressurezone_label_2_y,
-    pressurezone.label_2_rotation AS pressurezone_label_2_rotation,
-    pressurezone.label_2_text AS pressurezone_label_2_text,
-    precision.vl_active AS precision_vl_active,
-    precision.short_fr AS precision_short_fr,
-    precision.short_en AS precision_short_en,
-    precision.short_ro AS precision_short_ro,
-    precision.value_fr AS precision_value_fr,
-    precision.value_en AS precision_value_en,
-    precision.value_ro AS precision_value_ro,
-    precision.description_fr AS precision_description_fr,
-    precision.description_en AS precision_description_en,
-    precision.description_ro AS precision_description_ro,
-    precision.code_sire AS precision_code_sire,
-    subscriber_type.vl_active AS subscriber_type_vl_active,
-    subscriber_type.short_fr AS subscriber_type_short_fr,
-    subscriber_type.short_en AS subscriber_type_short_en,
-    subscriber_type.short_ro AS subscriber_type_short_ro,
-    subscriber_type.value_fr AS subscriber_type_value_fr,
-    subscriber_type.value_en AS subscriber_type_value_en,
-    subscriber_type.value_ro AS subscriber_type_value_ro,
-    subscriber_type.description_fr AS subscriber_type_description_fr,
-    subscriber_type.description_en AS subscriber_type_description_en,
-    subscriber_type.description_ro AS subscriber_type_description_ro,
-    object_reference.vl_active AS object_reference_vl_active,
-    object_reference.short_fr AS object_reference_short_fr,
-    object_reference.short_en AS object_reference_short_en,
-    object_reference.short_ro AS object_reference_short_ro,
-    object_reference.value_fr AS object_reference_value_fr,
-    object_reference.value_en AS object_reference_value_en,
-    object_reference.value_ro AS object_reference_value_ro,
-    object_reference.description_fr AS object_reference_description_fr,
-    object_reference.description_en AS object_reference_description_en,
-    object_reference.description_ro AS object_reference_description_ro,
-    distributor.name AS distributor_name,
-    folder.identification AS folder_identification,
-    folder.description AS folder_description,
-    folder.date_start AS folder_date_start,
-    folder.date_end AS folder_date_end,
-    folder.geometry_polygon AS folder_geometry_polygon,
-    folder.geometry_line AS folder_geometry_line,
-    precisionalti.vl_active AS precisionalti_vl_active,
-    precisionalti.short_fr AS precisionalti_short_fr,
-    precisionalti.short_en AS precisionalti_short_en,
-    precisionalti.short_ro AS precisionalti_short_ro,
-    precisionalti.value_fr AS precisionalti_value_fr,
-    precisionalti.value_en AS precisionalti_value_en,
-    precisionalti.value_ro AS precisionalti_value_ro,
-    precisionalti.description_fr AS precisionalti_description_fr,
-    precisionalti.description_en AS precisionalti_description_en,
-    precisionalti.description_ro AS precisionalti_description_ro,
-    precisionalti.code_sire AS precisionalti_code_sire
-   FROM (((((((((qwat_od.vw_element_subscriber
-     LEFT JOIN qwat_vl.status status ON ((vw_element_subscriber.fk_status = status.id)))
-     LEFT JOIN qwat_od.district district ON ((vw_element_subscriber.fk_district = district.id)))
-     LEFT JOIN qwat_od.pressurezone pressurezone ON ((vw_element_subscriber.fk_pressurezone = pressurezone.id)))
-     LEFT JOIN qwat_vl.precision precision ON ((vw_element_subscriber.fk_precision = precision.id)))
-     LEFT JOIN qwat_vl.subscriber_type subscriber_type ON ((vw_element_subscriber.fk_subscriber_type = subscriber_type.id)))
-     LEFT JOIN qwat_vl.object_reference object_reference ON ((vw_element_subscriber.fk_object_reference = object_reference.id)))
-     LEFT JOIN qwat_od.distributor distributor ON ((vw_element_subscriber.fk_distributor = distributor.id)))
-     LEFT JOIN qwat_od.folder folder ON ((vw_element_subscriber.fk_folder = folder.id)))
-     LEFT JOIN qwat_vl.precisionalti precisionalti ON ((vw_element_subscriber.fk_precisionalti = precisionalti.id)));"
-"vw_export_valve"," SELECT vw_element_valve.id,
-    vw_element_valve.fk_district,
-    vw_element_valve.fk_pressurezone,
-    vw_element_valve.fk_printmap,
-    vw_element_valve._printmaps,
-    vw_element_valve._geometry_alt1_used,
-    vw_element_valve._geometry_alt2_used,
-    vw_element_valve._pipe_node_type,
-    vw_element_valve._pipe_orientation,
-    vw_element_valve._pipe_schema_visible,
-    vw_element_valve.geometry,
-    vw_element_valve.geometry_alt1,
-    vw_element_valve.geometry_alt2,
-    vw_element_valve.update_geometry_alt1,
-    vw_element_valve.update_geometry_alt2,
-    vw_element_valve.identification,
-    vw_element_valve.fk_distributor,
-    vw_element_valve.fk_status,
-    vw_element_valve.fk_folder,
-    vw_element_valve.fk_locationtype,
-    vw_element_valve.fk_precision,
-    vw_element_valve.fk_precisionalti,
-    vw_element_valve.fk_object_reference,
-    vw_element_valve.altitude,
-    vw_element_valve.year,
-    vw_element_valve.year_end,
-    vw_element_valve.orientation,
-    vw_element_valve.remark,
-    vw_element_valve.schema_force_visible,
-    vw_element_valve.label_1_visible,
-    vw_element_valve.label_1_x,
-    vw_element_valve.label_1_y,
-    vw_element_valve.label_1_rotation,
-    vw_element_valve.label_1_text,
-    vw_element_valve.label_2_visible,
-    vw_element_valve.label_2_x,
-    vw_element_valve.label_2_y,
-    vw_element_valve.label_2_rotation,
-    vw_element_valve.label_2_text,
-    vw_element_valve.fk_valve_type,
-    vw_element_valve.fk_valve_function,
-    vw_element_valve.fk_valve_actuation,
-    vw_element_valve.fk_pipe,
-    vw_element_valve.fk_handle_precision,
-    vw_element_valve.fk_handle_precisionalti,
-    vw_element_valve.fk_maintenance,
-    vw_element_valve.diameter_nominal,
-    vw_element_valve.closed,
-    vw_element_valve.networkseparation,
-    vw_element_valve.handle_altitude,
-    vw_element_valve.handle_geometry,
-    status.vl_active AS status_vl_active,
-    status.short_fr AS status_short_fr,
-    status.short_en AS status_short_en,
-    status.short_ro AS status_short_ro,
-    status.value_fr AS status_value_fr,
-    status.value_en AS status_value_en,
-    status.value_ro AS status_value_ro,
-    status.description_fr AS status_description_fr,
-    status.description_en AS status_description_en,
-    status.description_ro AS status_description_ro,
-    status.active AS status_active,
-    status.code_sire AS status_code_sire,
-    district.name AS district_name,
-    district.shortname AS district_shortname,
-    district.zip AS district_zip,
-    district.land_registry AS district_land_registry,
-    district.prefix AS district_prefix,
-    district.colorcode AS district_colorcode,
-    district.geometry AS district_geometry,
-    district.label_1_visible AS district_label_1_visible,
-    district.label_1_x AS district_label_1_x,
-    district.label_1_y AS district_label_1_y,
-    district.label_1_rotation AS district_label_1_rotation,
-    district.label_1_text AS district_label_1_text,
-    district.label_2_visible AS district_label_2_visible,
-    district.label_2_x AS district_label_2_x,
-    district.label_2_y AS district_label_2_y,
-    district.label_2_rotation AS district_label_2_rotation,
-    district.label_2_text AS district_label_2_text,
-    pressurezone.fk_distributor AS pressurezone_fk_distributor,
-    pressurezone.fk_consumptionzone AS pressurezone_fk_consumptionzone,
-    pressurezone.name AS pressurezone_name,
-    pressurezone.population AS pressurezone_population,
-    pressurezone.subscriber AS pressurezone_subscriber,
-    pressurezone.colorcode AS pressurezone_colorcode,
-    pressurezone.geometry AS pressurezone_geometry,
-    pressurezone.geometry_alt1 AS pressurezone_geometry_alt1,
-    pressurezone.geometry_alt2 AS pressurezone_geometry_alt2,
-    pressurezone._geometry_alt1_used AS pressurezone__geometry_alt1_used,
-    pressurezone._geometry_alt2_used AS pressurezone__geometry_alt2_used,
-    pressurezone.update_geometry_alt1 AS pressurezone_update_geometry_alt1,
-    pressurezone.update_geometry_alt2 AS pressurezone_update_geometry_alt2,
-    pressurezone.label_1_visible AS pressurezone_label_1_visible,
-    pressurezone.label_1_x AS pressurezone_label_1_x,
-    pressurezone.label_1_y AS pressurezone_label_1_y,
-    pressurezone.label_1_rotation AS pressurezone_label_1_rotation,
-    pressurezone.label_1_text AS pressurezone_label_1_text,
-    pressurezone.label_2_visible AS pressurezone_label_2_visible,
-    pressurezone.label_2_x AS pressurezone_label_2_x,
-    pressurezone.label_2_y AS pressurezone_label_2_y,
-    pressurezone.label_2_rotation AS pressurezone_label_2_rotation,
-    pressurezone.label_2_text AS pressurezone_label_2_text,
-    valve_function.vl_active AS valve_function_vl_active,
-    valve_function.short_fr AS valve_function_short_fr,
-    valve_function.short_en AS valve_function_short_en,
-    valve_function.short_ro AS valve_function_short_ro,
-    valve_function.value_fr AS valve_function_value_fr,
-    valve_function.value_en AS valve_function_value_en,
-    valve_function.value_ro AS valve_function_value_ro,
-    valve_function.description_fr AS valve_function_description_fr,
-    valve_function.description_en AS valve_function_description_en,
-    valve_function.description_ro AS valve_function_description_ro,
-    valve_function.schema_visible AS valve_function_schema_visible,
-    precision.vl_active AS precision_vl_active,
-    precision.short_fr AS precision_short_fr,
-    precision.short_en AS precision_short_en,
-    precision.short_ro AS precision_short_ro,
-    precision.value_fr AS precision_value_fr,
-    precision.value_en AS precision_value_en,
-    precision.value_ro AS precision_value_ro,
-    precision.description_fr AS precision_description_fr,
-    precision.description_en AS precision_description_en,
-    precision.description_ro AS precision_description_ro,
-    precision.code_sire AS precision_code_sire,
-    distributor.name AS distributor_name,
-    valve_type.vl_active AS valve_type_vl_active,
-    valve_type.short_fr AS valve_type_short_fr,
-    valve_type.short_en AS valve_type_short_en,
-    valve_type.short_ro AS valve_type_short_ro,
-    valve_type.value_fr AS valve_type_value_fr,
-    valve_type.value_en AS valve_type_value_en,
-    valve_type.value_ro AS valve_type_value_ro,
-    valve_type.description_fr AS valve_type_description_fr,
-    valve_type.description_en AS valve_type_description_en,
-    valve_type.description_ro AS valve_type_description_ro,
-    object_reference.vl_active AS object_reference_vl_active,
-    object_reference.short_fr AS object_reference_short_fr,
-    object_reference.short_en AS object_reference_short_en,
-    object_reference.short_ro AS object_reference_short_ro,
-    object_reference.value_fr AS object_reference_value_fr,
-    object_reference.value_en AS object_reference_value_en,
-    object_reference.value_ro AS object_reference_value_ro,
-    object_reference.description_fr AS object_reference_description_fr,
-    object_reference.description_en AS object_reference_description_en,
-    object_reference.description_ro AS object_reference_description_ro,
-    valve_actuation.vl_active AS valve_actuation_vl_active,
-    valve_actuation.short_fr AS valve_actuation_short_fr,
-    valve_actuation.short_en AS valve_actuation_short_en,
-    valve_actuation.short_ro AS valve_actuation_short_ro,
-    valve_actuation.value_fr AS valve_actuation_value_fr,
-    valve_actuation.value_en AS valve_actuation_value_en,
-    valve_actuation.value_ro AS valve_actuation_value_ro,
-    valve_actuation.description_fr AS valve_actuation_description_fr,
-    valve_actuation.description_en AS valve_actuation_description_en,
-    valve_actuation.description_ro AS valve_actuation_description_ro,
-    valve_actuation.schema_visible AS valve_actuation_schema_visible,
-    folder.identification AS folder_identification,
-    folder.description AS folder_description,
-    folder.date_start AS folder_date_start,
-    folder.date_end AS folder_date_end,
-    folder.geometry_polygon AS folder_geometry_polygon,
-    folder.geometry_line AS folder_geometry_line,
-    precisionalti.vl_active AS precisionalti_vl_active,
-    precisionalti.short_fr AS precisionalti_short_fr,
-    precisionalti.short_en AS precisionalti_short_en,
-    precisionalti.short_ro AS precisionalti_short_ro,
-    precisionalti.value_fr AS precisionalti_value_fr,
-    precisionalti.value_en AS precisionalti_value_en,
-    precisionalti.value_ro AS precisionalti_value_ro,
-    precisionalti.description_fr AS precisionalti_description_fr,
-    precisionalti.description_en AS precisionalti_description_en,
-    precisionalti.description_ro AS precisionalti_description_ro,
-    precisionalti.code_sire AS precisionalti_code_sire
-   FROM (((((((((((qwat_od.vw_element_valve
-     LEFT JOIN qwat_vl.status status ON ((vw_element_valve.fk_status = status.id)))
-     LEFT JOIN qwat_od.district district ON ((vw_element_valve.fk_district = district.id)))
-     LEFT JOIN qwat_od.pressurezone pressurezone ON ((vw_element_valve.fk_pressurezone = pressurezone.id)))
-     LEFT JOIN qwat_vl.valve_function valve_function ON ((vw_element_valve.fk_valve_function = valve_function.id)))
-     LEFT JOIN qwat_vl.precision precision ON ((vw_element_valve.fk_precision = precision.id)))
-     LEFT JOIN qwat_od.distributor distributor ON ((vw_element_valve.fk_distributor = distributor.id)))
-     LEFT JOIN qwat_vl.valve_type valve_type ON ((vw_element_valve.fk_valve_type = valve_type.id)))
-     LEFT JOIN qwat_vl.object_reference object_reference ON ((vw_element_valve.fk_object_reference = object_reference.id)))
-     LEFT JOIN qwat_vl.valve_actuation valve_actuation ON ((vw_element_valve.fk_valve_actuation = valve_actuation.id)))
-     LEFT JOIN qwat_od.folder folder ON ((vw_element_valve.fk_folder = folder.id)))
-     LEFT JOIN qwat_vl.precisionalti precisionalti ON ((vw_element_valve.fk_precisionalti = precisionalti.id)));"
 "vw_installation_chamber"," SELECT installation.id,
     installation.name,
     installation.fk_parent,
@@ -6204,51 +4362,12 @@ UNION
      JOIN qwat_vl.status ON ((remote.fk_status = status.id)))
      JOIN qwat_vl.precision ON ((remote.fk_precision = precision.id)))
      JOIN qwat_vl.pipe_material ON ((remote.fk_material = pipe_material.id)));"
-"vw_search_view"," SELECT 'Ouvrages'::text AS layer_name,
-        CASE
-            WHEN (vw_export_installation.installation_type = 'source'::qwat_od.installation_type) THEN ((('Source '::text || (vw_export_installation.identification)::text) || ' '::text) || (vw_export_installation.name)::text)
-            WHEN (vw_export_installation.installation_type = 'treatment'::qwat_od.installation_type) THEN ((('Traitement '::text || (vw_export_installation.identification)::text) || ' '::text) || (vw_export_installation.name)::text)
-            WHEN (vw_export_installation.installation_type = 'tank'::qwat_od.installation_type) THEN ((('Réservoir '::text || (vw_export_installation.identification)::text) || ' '::text) || (vw_export_installation.name)::text)
-            WHEN (vw_export_installation.installation_type = 'pressurecontrol'::qwat_od.installation_type) THEN ((('Régulation de pression '::text || (vw_export_installation.identification)::text) || ' '::text) || (vw_export_installation.name)::text)
-            WHEN (vw_export_installation.installation_type = 'pump'::qwat_od.installation_type) THEN ((('Pompage '::text || (vw_export_installation.identification)::text) || ' '::text) || (vw_export_installation.name)::text)
-            WHEN (vw_export_installation.installation_type = 'chamber'::qwat_od.installation_type) THEN ((('Chambre '::text || (vw_export_installation.identification)::text) || ' '::text) || (vw_export_installation.name)::text)
-            ELSE NULL::text
-        END AS search_text,
-    st_force2d(vw_export_installation.geometry) AS geometry
-   FROM qwat_od.vw_export_installation
-  WHERE (vw_export_installation.status_active IS TRUE)
-UNION
- SELECT 'Hydrantes'::text AS layer_name,
-    (((vw_export_hydrant.district_name)::text || ' '::text) || (vw_export_hydrant.identification)::text) AS search_text,
-    st_force2d(vw_export_hydrant.geometry) AS geometry
-   FROM qwat_od.vw_export_hydrant
-  WHERE (vw_export_hydrant.status_active IS TRUE)
-UNION
- SELECT 'Abonnés'::text AS layer_name,
-    ((((((vw_export_subscriber.subscriber_type_value_fr)::text || ' '::text) || COALESCE(((vw_export_subscriber.district_prefix)::text || '_'::text), ''::text)) || (vw_export_subscriber.identification)::text) || ' '::text) || (vw_export_subscriber.district_name)::text) AS search_text,
-    st_force2d(vw_export_subscriber.geometry) AS geometry
-   FROM qwat_od.vw_export_subscriber
-UNION
- SELECT 'Compteur'::text AS layer_name,
-    (COALESCE(((meter.district_prefix)::text || '_'::text)) || (meter.identification)::text) AS search_text,
-    st_force2d(meter.geometry) AS geometry
-   FROM qwat_od.vw_export_meter meter
-UNION
- SELECT 'Vannes'::text AS layer_name,
-    (((((vw_export_valve.valve_function_value_fr)::text || ' '::text) || (vw_export_valve.identification)::text) || ' '::text) || (vw_export_valve.district_name)::text) AS search_text,
-    st_force2d(vw_export_valve.geometry) AS geometry
-   FROM qwat_od.vw_export_valve
-  WHERE (vw_export_valve.identification IS NOT NULL);"
 "vw_subscriber_pipe_relation"," SELECT a.id,
     a.identification,
     (st_makeline(st_force2d(a.geometry), st_lineinterpolatepoint(st_force2d(b.geometry), (0.5)::double precision)))::geometry(LineString,21781) AS geometry
    FROM (qwat_od.vw_element_subscriber a
      JOIN qwat_od.pipe b ON ((a.fk_pipe = b.id)))
   WHERE (a.fk_pipe IS NOT NULL);"
-"vw_valve_lines"," SELECT valve.id,
-    (st_makeline(st_force2d(valve.handle_geometry), valve.geometry))::geometry(LineString,21781) AS geometry
-   FROM qwat_od.vw_element_valve valve
-  WHERE ((valve.handle_geometry IS NOT NULL) AND (valve.geometry IS NOT NULL));"
 "annotationline_id_seq"
 "annotationpoint_id_seq"
 "constructionpoint_id_seq"
@@ -6271,6 +4390,7 @@ UNION
 "remote_id_seq"
 "settings_id_seq"
 "subscriber_reference_id_seq"
+"valve_id_seq"
 "versions_id_seq"
 "worker_id_seq"
 "annotationline","annotationline_geoidx","geometry"
@@ -6622,12 +4742,26 @@ UNION
 "tank_firestorage","vl_tank_firestorage_pk","id"
 "treatment","treatment_pkey","id"
 "value_list_base","value_list_base_pk","id"
+"valve","fki_valve_fk_distributor","fk_distributor"
+"valve","fki_valve_fk_district","fk_district"
+"valve","fki_valve_fk_folder","fk_folder"
 "valve","fki_valve_fk_function","fk_valve_function"
 "valve","fki_valve_fk_handle_precision","fk_handle_precision"
 "valve","fki_valve_fk_handle_precisionalti","fk_handle_precisionalti"
+"valve","fki_valve_fk_object_reference","fk_object_reference"
 "valve","fki_valve_fk_pipe","fk_pipe"
+"valve","fki_valve_fk_precision","fk_precision"
+"valve","fki_valve_fk_precisionalti","fk_precisionalti"
+"valve","fki_valve_fk_pressurezone","fk_pressurezone"
+"valve","fki_valve_fk_status","fk_status"
 "valve","fki_valve_fk_type","fk_valve_type"
 "valve","fki_valve_fk_valve_actuation","fk_valve_actuation"
+"valve","fki_valve_label_1_visible","label_1_visible"
+"valve","fki_valve_label_2_visible","label_2_visible"
+"valve","fki_valve_schema_force_visible","schema_force_visible"
+"valve","valve_geoidx","geometry"
+"valve","valve_geoidx_alt1","geometry_alt1"
+"valve","valve_geoidx_alt2","geometry_alt2"
 "valve","valve_pkey","id"
 "valve_actuation","vl_valve_actuation_pk","id"
 "valve_function","vl_valve_function_pk","id"
@@ -6767,9 +4901,6 @@ UNION
 "tr_element_subscriber_delete"
 "tr_element_subscriber_insert"
 "tr_element_subscriber_update"
-"tr_element_valve_delete"
-"tr_element_valve_insert"
-"tr_element_valve_update"
 "tr_fancy_value"
 "tr_installation_chamber_delete"
 "tr_installation_chamber_insert"
@@ -6791,8 +4922,6 @@ UNION
 "tr_installation_treatment_update"
 "tr_leak_pipe"
 "tr_leak_repaired"
-"tr_node_add_pipe_vertex_insert"
-"tr_node_add_pipe_vertex_update"
 "tr_node_altgeom_alt"
 "tr_node_altgeom_insert"
 "tr_node_altgeom_update"
@@ -6819,6 +4948,13 @@ UNION
 "tr_setting_create_fn_get_insert"
 "tr_setting_create_fn_get_update"
 "tr_tank"
+"tr_valve_add_pipe_vertex_insert"
+"tr_valve_add_pipe_vertex_update"
+"tr_valve_altgeom_alt"
+"tr_valve_altgeom_insert"
+"tr_valve_altgeom_update"
+"tr_valve_infos_insert_trigger"
+"tr_valve_infos_update_trigger"
 "tr_valve_pipe_delete"
 "tr_valve_pipe_update"
 "tr_valve_update_trigger"
@@ -6833,7 +4969,6 @@ UNION
 "tr_vw_qwat_node_update"
 "valve_handle_altitude_insert_trigger"
 "valve_handle_altitude_update_trigger"
-"valve_node_set_type"
 "RI_FKey_noaction_del"
 "RI_FKey_noaction_upd"
 "RI_FKey_noaction_del"
@@ -7046,6 +5181,46 @@ UNION
 "RI_FKey_noaction_upd"
 "RI_FKey_noaction_del"
 "RI_FKey_noaction_upd"
+"RI_FKey_noaction_del"
+"RI_FKey_noaction_upd"
+"RI_FKey_noaction_del"
+"RI_FKey_noaction_upd"
+"RI_FKey_noaction_del"
+"RI_FKey_noaction_upd"
+"RI_FKey_noaction_del"
+"RI_FKey_noaction_upd"
+"RI_FKey_noaction_del"
+"RI_FKey_noaction_upd"
+"RI_FKey_noaction_del"
+"RI_FKey_noaction_upd"
+"RI_FKey_noaction_del"
+"RI_FKey_noaction_upd"
+"RI_FKey_noaction_del"
+"RI_FKey_noaction_upd"
+"RI_FKey_noaction_del"
+"RI_FKey_noaction_upd"
+"RI_FKey_noaction_del"
+"RI_FKey_noaction_upd"
+"RI_FKey_check_ins"
+"RI_FKey_check_upd"
+"RI_FKey_check_ins"
+"RI_FKey_check_upd"
+"RI_FKey_check_ins"
+"RI_FKey_check_upd"
+"RI_FKey_check_ins"
+"RI_FKey_check_upd"
+"RI_FKey_check_ins"
+"RI_FKey_check_upd"
+"RI_FKey_check_ins"
+"RI_FKey_check_upd"
+"RI_FKey_check_ins"
+"RI_FKey_check_upd"
+"RI_FKey_check_ins"
+"RI_FKey_check_upd"
+"RI_FKey_check_ins"
+"RI_FKey_check_upd"
+"RI_FKey_check_ins"
+"RI_FKey_check_upd"
 "RI_FKey_check_ins"
 "RI_FKey_check_upd"
 "RI_FKey_check_ins"
@@ -14672,189 +12847,6 @@ END;
 	"
 "
 	BEGIN
-		DELETE FROM qwat_od.valve WHERE id = OLD.id;
-		DELETE FROM qwat_od.vw_node_element WHERE id = OLD.id;
-		RETURN NULL;
-	END;
-	"
-"
-	BEGIN
-		INSERT INTO qwat_od.vw_node_element (
-			id
-			, fk_district
-			, fk_pressurezone
-			, fk_printmap
-			, _printmaps
-			, _geometry_alt1_used
-			, _geometry_alt2_used
-			, _pipe_node_type
-			, _pipe_orientation
-			, _pipe_schema_visible
-			, geometry
-			, geometry_alt1
-			, geometry_alt2
-			, update_geometry_alt1
-			, update_geometry_alt2
-			, identification
-			, fk_distributor
-			, fk_status
-			, fk_folder
-			, fk_locationtype
-			, fk_precision
-			, fk_precisionalti
-			, fk_object_reference
-			, altitude
-			, year
-			, year_end
-			, orientation
-			, remark
-			, schema_force_visible
-			, label_1_visible
-			, label_1_x
-			, label_1_y
-			, label_1_rotation
-			, label_1_text
-			, label_2_visible
-			, label_2_x
-			, label_2_y
-			, label_2_rotation
-			, label_2_text
-		) VALUES (
-			NEW.id 
-			, NEW.fk_district
-			, NEW.fk_pressurezone
-			, NEW.fk_printmap
-			, NEW._printmaps
-			, NEW._geometry_alt1_used
-			, NEW._geometry_alt2_used
-			, NEW._pipe_node_type
-			, NEW._pipe_orientation
-			, NEW._pipe_schema_visible
-			, NEW.geometry
-			, NEW.geometry_alt1
-			, NEW.geometry_alt2
-			, NEW.update_geometry_alt1
-			, NEW.update_geometry_alt2
-			, NEW.identification
-			, NEW.fk_distributor
-			, NEW.fk_status
-			, NEW.fk_folder
-			, NEW.fk_locationtype
-			, NEW.fk_precision
-			, NEW.fk_precisionalti
-			, NEW.fk_object_reference
-			, NEW.altitude
-			, NEW.year
-			, NEW.year_end
-			, NEW.orientation
-			, NEW.remark
-			, NEW.schema_force_visible
-			, NEW.label_1_visible
-			, NEW.label_1_x
-			, NEW.label_1_y
-			, NEW.label_1_rotation
-			, NEW.label_1_text
-			, NEW.label_2_visible
-			, NEW.label_2_x
-			, NEW.label_2_y
-			, NEW.label_2_rotation
-			, NEW.label_2_text
-		) RETURNING id INTO NEW.id;
-
-		INSERT INTO qwat_od.valve (
-			id
-			, fk_valve_type
-			, fk_valve_function
-			, fk_valve_actuation
-			, fk_pipe
-			, fk_handle_precision
-			, fk_handle_precisionalti
-			, fk_maintenance
-			, diameter_nominal
-			, closed
-			, networkseparation
-			, handle_altitude
-			, handle_geometry
-		) VALUES (
-			NEW.id 
-			, NEW.fk_valve_type
-			, NEW.fk_valve_function
-			, NEW.fk_valve_actuation
-			, qwat_od.fn_pipe_get_id(NEW.geometry)
-			, NEW.fk_handle_precision
-			, NEW.fk_handle_precisionalti
-			, NEW.fk_maintenance
-			, NEW.diameter_nominal
-			, NEW.closed
-			, NEW.networkseparation
-			, NEW.handle_altitude
-			, NEW.handle_geometry
-		);
-		RETURN NEW;
-	END;
-	"
-"
-	BEGIN
-	UPDATE qwat_od.vw_node_element SET
-			fk_district = NEW.fk_district,
-			fk_pressurezone = NEW.fk_pressurezone,
-			fk_printmap = NEW.fk_printmap,
-			_printmaps = NEW._printmaps,
-			_geometry_alt1_used = NEW._geometry_alt1_used,
-			_geometry_alt2_used = NEW._geometry_alt2_used,
-			_pipe_node_type = NEW._pipe_node_type,
-			_pipe_orientation = NEW._pipe_orientation,
-			_pipe_schema_visible = NEW._pipe_schema_visible,
-			geometry = NEW.geometry,
-			geometry_alt1 = NEW.geometry_alt1,
-			geometry_alt2 = NEW.geometry_alt2,
-			update_geometry_alt1 = NEW.update_geometry_alt1,
-			update_geometry_alt2 = NEW.update_geometry_alt2,
-			identification = NEW.identification,
-			fk_distributor = NEW.fk_distributor,
-			fk_status = NEW.fk_status,
-			fk_folder = NEW.fk_folder,
-			fk_locationtype = NEW.fk_locationtype,
-			fk_precision = NEW.fk_precision,
-			fk_precisionalti = NEW.fk_precisionalti,
-			fk_object_reference = NEW.fk_object_reference,
-			altitude = NEW.altitude,
-			year = NEW.year,
-			year_end = NEW.year_end,
-			orientation = NEW.orientation,
-			remark = NEW.remark,
-			schema_force_visible = NEW.schema_force_visible,
-			label_1_visible = NEW.label_1_visible,
-			label_1_x = NEW.label_1_x,
-			label_1_y = NEW.label_1_y,
-			label_1_rotation = NEW.label_1_rotation,
-			label_1_text = NEW.label_1_text,
-			label_2_visible = NEW.label_2_visible,
-			label_2_x = NEW.label_2_x,
-			label_2_y = NEW.label_2_y,
-			label_2_rotation = NEW.label_2_rotation,
-			label_2_text = NEW.label_2_text
-		WHERE id = OLD.id;
-
-	UPDATE qwat_od.valve SET
-			fk_valve_type = NEW.fk_valve_type,
-			fk_valve_function = NEW.fk_valve_function,
-			fk_valve_actuation = NEW.fk_valve_actuation,
-			fk_pipe = qwat_od.fn_pipe_get_id(NEW.geometry),
-			fk_handle_precision = NEW.fk_handle_precision,
-			fk_handle_precisionalti = NEW.fk_handle_precisionalti,
-			fk_maintenance = NEW.fk_maintenance,
-			diameter_nominal = NEW.diameter_nominal,
-			closed = NEW.closed,
-			networkseparation = NEW.networkseparation,
-			handle_altitude = NEW.handle_altitude,
-			handle_geometry = NEW.handle_geometry
-		WHERE id = OLD.id;
-		RETURN NEW;
-	END;
-	"
-"
-	BEGIN
 		IF NEW.diameter IS NULL OR NEW.diameter = '' THEN
 			NEW._displayname_en := NEW.short_en;
 			NEW._displayname_fr := NEW.short_fr;
@@ -15385,24 +13377,6 @@ END;
 "
 "
 	BEGIN
-			-- add a vertex to the corresponding pipe if it intersects
-			-- when the node is close enough to the pipe (< 1 micrometer) the node is considered to intersect the pipe
-			-- it allows to deal with intersections that cannot be represented by floating point numbers
-			UPDATE qwat_od.pipe SET geometry = ST_Snap(geometry, NEW.geometry, 1e-6) WHERE ST_Distance(geometry, NEW.geometry) < 1e-6;
-		RETURN NEW;
-	END;
-"
-"
-	BEGIN
-			-- add a vertex to the corresponding pipe if it intersects
-			-- when the node is close enough to the pipe (< 1 micrometer) the node is considered to intersect the pipe
-			-- it allows to deal with intersections that cannot be represented by floating point numbers
-			UPDATE qwat_od.pipe SET geometry = ST_Snap(geometry, NEW.geometry, 1e-6) WHERE ST_Distance(geometry, NEW.geometry) < 1e-6;
-		RETURN NEW;
-	END;
-"
-"
-	BEGIN
 		NEW._geometry_alt1_used := NEW.geometry_alt1 IS NOT NULL AND ST_Equals(ST_Force2d(NEW.geometry_alt1), ST_Force2d(NEW.geometry)) IS FALSE;
 		NEW._geometry_alt2_used := NEW.geometry_alt2 IS NOT NULL AND ST_Equals(ST_Force2d(NEW.geometry_alt2), ST_Force2d(NEW.geometry)) IS FALSE;
 		RETURN NEW;
@@ -15861,16 +13835,111 @@ END;
 	END;
 "
 "
-	BEGIN
-		UPDATE qwat_od.vw_element_valve valve SET fk_pipe = qwat_od.fn_pipe_get_id(geometry) WHERE fk_pipe = OLD.id OR ST_Distance(geometry, OLD.geometry) < 1e-4;
-		RETURN NULL;
-	END;
+    DECLARE
+        pipe_id integer;
+    BEGIN
+            -- add a vertex to the corresponding pipe if it intersects
+            -- when the valve is close enough to the pipe (< 1 micrometer) the valve is considered to intersect the pipe
+            -- it allows to deal with intersections that cannot be represented by floating point numbers
+            UPDATE qwat_od.pipe SET geometry = ST_Snap(geometry, NEW.geometry, 1e-6) WHERE ST_Distance(geometry, NEW.geometry) < 1e-6;
+            PERFORM qwat_od.fn_valve_set_orientation(NEW.id);
+        RETURN NEW;
+    END;
+"
+"
+    DECLARE
+        pipe_id integer;
+    BEGIN
+            -- add a vertex to the corresponding pipe if it intersects
+            -- when the valve is close enough to the pipe (< 1 micrometer) the valve is considered to intersect the pipe
+            -- it allows to deal with intersections that cannot be represented by floating point numbers
+            UPDATE qwat_od.pipe SET geometry = ST_Snap(geometry, NEW.geometry, 1e-6) WHERE ST_Distance(geometry, NEW.geometry) < 1e-6;
+            PERFORM qwat_od.fn_valve_set_orientation(NEW.id);
+        RETURN NEW;
+    END;
 "
 "
 	BEGIN
-		UPDATE qwat_od.vw_element_valve valve SET fk_pipe = qwat_od.fn_pipe_get_id(geometry) WHERE fk_pipe = OLD.id OR ST_Distance(geometry, OLD.geometry) < 1e-4;
-		RETURN NULL;
+		NEW._geometry_alt1_used := NEW.geometry_alt1 IS NOT NULL AND ST_Equals(ST_Force2d(NEW.geometry_alt1), ST_Force2d(NEW.geometry)) IS FALSE;
+		NEW._geometry_alt2_used := NEW.geometry_alt2 IS NOT NULL AND ST_Equals(ST_Force2d(NEW.geometry_alt2), ST_Force2d(NEW.geometry)) IS FALSE;
+		RETURN NEW;
 	END;
+	"
+"
+	BEGIN
+		IF NEW.geometry_alt1 IS NULL OR NEW.update_geometry_alt1 IS TRUE OR ( TG_OP = 'UPDATE' AND NEW.update_geometry_alt1 IS NULL AND ST_Equals(OLD.geometry, OLD.geometry_alt1) ) THEN
+			NEW.geometry_alt1 := NEW.geometry;
+		END IF;
+		IF NEW.geometry_alt2 IS NULL OR NEW.update_geometry_alt2 IS TRUE OR ( TG_OP = 'UPDATE' AND NEW.update_geometry_alt2 IS NULL AND ST_Equals(OLD.geometry, OLD.geometry_alt2) ) THEN
+			NEW.geometry_alt2 := NEW.geometry;
+		END IF;
+		NEW._geometry_alt1_used := ST_Equals(ST_Force2d(NEW.geometry_alt1), ST_Force2d(NEW.geometry)) IS FALSE;
+		NEW._geometry_alt2_used := ST_Equals(ST_Force2d(NEW.geometry_alt2), ST_Force2d(NEW.geometry)) IS FALSE;
+		NEW.update_geometry_alt1 := NULL; -- used to determine if alternative geometry 1 should be updated when main geometry is updated
+		NEW.update_geometry_alt2 := NULL; -- used to determine if alternative geometry 2 should be updated when main geometry is updated
+		RETURN NEW;
+	END;
+	"
+"
+	BEGIN
+		IF NEW.geometry_alt1 IS NULL OR NEW.update_geometry_alt1 IS TRUE OR ( TG_OP = 'UPDATE' AND NEW.update_geometry_alt1 IS NULL AND ST_Equals(OLD.geometry, OLD.geometry_alt1) ) THEN
+			NEW.geometry_alt1 := NEW.geometry;
+		END IF;
+		IF NEW.geometry_alt2 IS NULL OR NEW.update_geometry_alt2 IS TRUE OR ( TG_OP = 'UPDATE' AND NEW.update_geometry_alt2 IS NULL AND ST_Equals(OLD.geometry, OLD.geometry_alt2) ) THEN
+			NEW.geometry_alt2 := NEW.geometry;
+		END IF;
+		NEW._geometry_alt1_used := ST_Equals(ST_Force2d(NEW.geometry_alt1), ST_Force2d(NEW.geometry)) IS FALSE;
+		NEW._geometry_alt2_used := ST_Equals(ST_Force2d(NEW.geometry_alt2), ST_Force2d(NEW.geometry)) IS FALSE;
+		NEW.update_geometry_alt1 := NULL; -- used to determine if alternative geometry 1 should be updated when main geometry is updated
+		NEW.update_geometry_alt2 := NULL; -- used to determine if alternative geometry 2 should be updated when main geometry is updated
+		RETURN NEW;
+	END;
+	"
+"
+    BEGIN
+        NEW.fk_pipe             := qwat_od.fn_pipe_get_id(NEW.geometry);
+        NEW.fk_district         := qwat_od.fn_get_district(NEW.geometry);
+        NEW.fk_pressurezone     := qwat_od.fn_get_pressurezone(NEW.geometry);
+        RETURN NEW;
+    END;
+"
+"
+    BEGIN
+        NEW.fk_pipe             := qwat_od.fn_pipe_get_id(NEW.geometry);
+        NEW.fk_district         := qwat_od.fn_get_district(NEW.geometry);
+        NEW.fk_pressurezone     := qwat_od.fn_get_pressurezone(NEW.geometry);
+        RETURN NEW;
+    END;
+"
+"
+    DECLARE
+        r record;
+    BEGIN
+        UPDATE qwat_od.valve SET fk_pipe = qwat_od.fn_pipe_get_id(geometry) WHERE fk_pipe = OLD.id OR ST_Distance(geometry, OLD.geometry) < 1e-4;
+
+        -- Il faudrait un trigger sur un changement de géom sur les conduites qui appellent valve_set_orientation pour toutes les vannes avec fk_pipe = id.
+        FOR r IN SELECT id FROM qwat_od.valve WHERE fk_pipe = OLD.id
+        LOOP
+            PERFORM qwat_od.fn_valve_set_orientation(r.id);
+        END LOOP;
+
+        RETURN NULL;
+    END;
+"
+"
+    DECLARE
+        r record;
+    BEGIN
+        UPDATE qwat_od.valve SET fk_pipe = qwat_od.fn_pipe_get_id(geometry) WHERE fk_pipe = OLD.id OR ST_Distance(geometry, OLD.geometry) < 1e-4;
+
+        -- Il faudrait un trigger sur un changement de géom sur les conduites qui appellent valve_set_orientation pour toutes les vannes avec fk_pipe = id.
+        FOR r IN SELECT id FROM qwat_od.valve WHERE fk_pipe = OLD.id
+        LOOP
+            PERFORM qwat_od.fn_valve_set_orientation(r.id);
+        END LOOP;
+
+        RETURN NULL;
+    END;
 "
 "
 	BEGIN
@@ -16070,6 +14139,7 @@ END;
 				, NEW.fk_pressurecontrol_type
 		);
 
+		 ELSE NULL;
 	 END CASE;
 		RETURN NEW;
 	END;
@@ -16511,6 +14581,7 @@ END;
 				, NEW.parcel
 		);
 
+		 ELSE NULL;
 	 END CASE;
 		RETURN NEW;
 	END;
@@ -16789,6 +14860,7 @@ END;
 				, NEW.label_2_text
 		);
 
+		 ELSE NULL;
 	 END CASE;
 		RETURN NEW;
 	END;
@@ -16885,12 +14957,6 @@ END;
 				NEW.handle_geometry := ST_SetSRID( ST_MakePoint( ST_X(NEW.handle_geometry), ST_Y(NEW.handle_geometry), COALESCE(NEW.handle_altitude,0) ), ST_SRID(NEW.handle_geometry) );
 		END IF;
 		RETURN NEW;
-	END;
-"
-"
-	BEGIN
-		PERFORM qwat_od.fn_node_set_type(NEW.id);
-	RETURN NEW;
 	END;
 "
 "audit_table","ARRAY","
@@ -17250,46 +15316,36 @@ END
 	END
 "
 "fn_node_create","boolean","
-	DECLARE
-		_node_id integer;
-	BEGIN
-		SELECT id FROM qwat_od.node WHERE ST_Equals(ST_Force2d(_point), ST_Force2d(node.geometry)) IS TRUE LIMIT 1 INTO _node_id;
-		IF _node_id IS NULL THEN
-                        IF deactivate_node_add_pipe_vertex THEN
-                           -- if we are called from a pipe creation, do not try to add a vertex on the pipe
-                           ALTER TABLE qwat_od.node DISABLE TRIGGER tr_node_add_pipe_vertex_insert;
-                        END IF;
-			INSERT INTO qwat_od.node (geometry) VALUES (ST_Force3D(_point)) RETURNING id INTO _node_id;
-                        IF deactivate_node_add_pipe_vertex THEN
-                           ALTER TABLE qwat_od.node ENABLE TRIGGER tr_node_add_pipe_vertex_insert;
-                        END IF;
-			IF _node_id IS NULL THEN
-				RAISE EXCEPTION 'Node is null although it should have been created';
-			END IF;
-		END IF;
-		RETURN _node_id;
-	END;
+    DECLARE
+        _node_id integer;
+    BEGIN
+        SELECT id FROM qwat_od.node WHERE ST_Equals(ST_Force2d(_point), ST_Force2d(node.geometry)) IS TRUE LIMIT 1 INTO _node_id;
+        IF _node_id IS NULL THEN
+
+            INSERT INTO qwat_od.node (geometry) VALUES (ST_Force3D(_point)) RETURNING id INTO _node_id;
+
+            IF _node_id IS NULL THEN
+                RAISE EXCEPTION 'Node is null although it should have been created';
+            END IF;
+        END IF;
+        RETURN _node_id;
+    END;
 "
 "fn_node_create","USER-DEFINED","
-	DECLARE
-		_node_id integer;
-	BEGIN
-		SELECT id FROM qwat_od.node WHERE ST_Equals(ST_Force2d(_point), ST_Force2d(node.geometry)) IS TRUE LIMIT 1 INTO _node_id;
-		IF _node_id IS NULL THEN
-                        IF deactivate_node_add_pipe_vertex THEN
-                           -- if we are called from a pipe creation, do not try to add a vertex on the pipe
-                           ALTER TABLE qwat_od.node DISABLE TRIGGER tr_node_add_pipe_vertex_insert;
-                        END IF;
-			INSERT INTO qwat_od.node (geometry) VALUES (ST_Force3D(_point)) RETURNING id INTO _node_id;
-                        IF deactivate_node_add_pipe_vertex THEN
-                           ALTER TABLE qwat_od.node ENABLE TRIGGER tr_node_add_pipe_vertex_insert;
-                        END IF;
-			IF _node_id IS NULL THEN
-				RAISE EXCEPTION 'Node is null although it should have been created';
-			END IF;
-		END IF;
-		RETURN _node_id;
-	END;
+    DECLARE
+        _node_id integer;
+    BEGIN
+        SELECT id FROM qwat_od.node WHERE ST_Equals(ST_Force2d(_point), ST_Force2d(node.geometry)) IS TRUE LIMIT 1 INTO _node_id;
+        IF _node_id IS NULL THEN
+
+            INSERT INTO qwat_od.node (geometry) VALUES (ST_Force3D(_point)) RETURNING id INTO _node_id;
+
+            IF _node_id IS NULL THEN
+                RAISE EXCEPTION 'Node is null although it should have been created';
+            END IF;
+        END IF;
+        RETURN _node_id;
+    END;
 "
 "fn_node_get_ids","USER-DEFINED","
 	DECLARE
@@ -17340,7 +15396,7 @@ END
 		-- get the geoemetry
 		_node_geom := geometry FROM qwat_od.node WHERE id = _node_id;
 
-		-- count the active pipes associated to this node
+		-- count the functional pipes associated to this node
 		SELECT
 				COUNT(pipe.id) AS count,
 				bool_or(coalesce(schema_force_visible,pipe_function.schema_visible)) AS schema_visible
@@ -17349,7 +15405,7 @@ END
 				INNER JOIN qwat_vl.status ON pipe.fk_status = status.id
 				INNER JOIN qwat_vl.pipe_function ON pipe.fk_function = pipe_function.id
 			WHERE (fk_node_a = _node_id OR fk_node_b = _node_id)
-				AND status.active IS TRUE;
+				AND status.functional IS TRUE;
 
 		-- if not connected to any pipe, delete the node if it is not something else (i.e. is not inherited)
 		IF _grouped.count = 0 THEN
@@ -17408,7 +15464,7 @@ END
 						FROM qwat_od.pipe
 						INNER JOIN qwat_vl.pipe_material ON pipe.fk_material = pipe_material.id
 						INNER JOIN qwat_vl.status        ON pipe.fk_status = status.id
-						WHERE fk_node_a = _node_id AND status.active IS TRUE
+						WHERE fk_node_a = _node_id AND status.functional IS TRUE
 				UNION ALL
 				SELECT	pipe.id, pipe.year, pipe_material.value_fr AS material, pipe_material.diameter_nominal AS diameter,
 						ST_EndPoint(geometry)                      AS point_1,
@@ -17416,7 +15472,7 @@ END
 						FROM qwat_od.pipe
 						INNER JOIN qwat_vl.pipe_material ON pipe.fk_material = pipe_material.id
 						INNER JOIN qwat_vl.status        ON pipe.fk_status = status.id
-						WHERE fk_node_b = _node_id AND status.active IS TRUE
+						WHERE fk_node_b = _node_id AND status.functional IS TRUE
 			) LOOP
 				IF _looppos=0 THEN
 					-- first pipe
@@ -17791,6 +15847,31 @@ END
 		RAISE NOTICE '';
 	END;
 "
+"replay_event","integer","
+DECLARE
+  query text;
+BEGIN
+	select into query
+	  case
+	  when action = 'I' then
+	    'INSERT INTO ' || schema_name || '.' || table_name ||
+	    ' ('||(select string_agg(key, ',') from each(row_data))||') VALUES ' ||
+	    '('||(select string_agg(case when value is null then 'null' else '''' || value || '''' end, ',') from each(row_data))||')'
+	  when action = 'D' then
+            'DELETE FROM ' || schema_name || '.' || table_name ||
+	    ' WHERE id=' || (row_data->'id')::text
+          when action = 'U' then
+            'UPDATE ' || schema_name || '.' || table_name ||
+            ' SET ' || (select string_agg(key || '=' || case when value is null then 'null' else ''''||value||'''' end, ',') from each(changed_fields)) ||
+            ' WHERE id=' || (row_data->'id')::text
+	  end
+	from qwat_sys.logged_actions where event_id=pevent_id;
+
+	--raise notice '%', query;
+
+	execute query;
+END;
+"
 "version_dump","character varying","
 select
     a[1], a[2]::int, a[3]::int, a[4]::int, a[5], a[6]
@@ -17808,7 +15889,6 @@ from
 "qwat_od","vw_element_part","SELECT"
 "qwat_od","vw_element_samplingpoint","SELECT"
 "qwat_od","vw_element_subscriber","SELECT"
-"qwat_od","vw_element_valve","SELECT"
 "qwat_od","vw_export_hydrant","SELECT"
 "qwat_od","vw_export_installation","SELECT"
 "qwat_od","vw_export_leak","SELECT"
@@ -17816,7 +15896,6 @@ from
 "qwat_od","vw_export_part","SELECT"
 "qwat_od","vw_export_pipe","SELECT"
 "qwat_od","vw_export_subscriber","SELECT"
-"qwat_od","vw_export_valve","SELECT"
 "qwat_od","vw_installation_chamber","SELECT"
 "qwat_od","vw_installation_pressurecontrol","SELECT"
 "qwat_od","vw_installation_pump","SELECT"
@@ -17838,6 +15917,4 @@ from
 "qwat_od","vw_qwat_network_element","SELECT"
 "qwat_od","vw_qwat_node","SELECT"
 "qwat_od","vw_remote","SELECT"
-"qwat_od","vw_search_view","SELECT"
 "qwat_od","vw_subscriber_pipe_relation","SELECT"
-"qwat_od","vw_valve_lines","SELECT"

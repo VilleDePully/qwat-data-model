@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# exit on error
+set -e
+
 # PARAMS
 TESTDB=qwat_test
 TESTCONFORMDB=qwat_test_conform
@@ -7,6 +10,7 @@ USER=postgres
 HOST=localhost
 QWATSERVICETEST=qwat_test
 QWATSERVICETESTCONFORM=qwat_test_conform
+SRID=21781
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -28,7 +32,7 @@ shift
 done
 
 echo "Droping existing qwat_test"
-/usr/bin/dropdb "$TESTDB" --host $HOST --port 5432 --username "$USER" --no-password
+/usr/bin/dropdb --if-exists "$TESTDB" --host $HOST --port 5432 --username "$USER" --no-password
 
 echo "Creating DB (qwat_test)"
 /usr/bin/createdb "$TESTDB" --host $HOST --port 5432 --username "$USER" --no-password
@@ -37,7 +41,7 @@ echo "Initializing qwat DB in qwat_test"
 ./init_qwat.sh -p $QWATSERVICETEST -d > init_qwat.log
 
 echo "Droping DB (qwat_test_conform)"
-/usr/bin/dropdb "$TESTCONFORMDB" --host $HOST --port 5432 --username "$USER" --no-password
+/usr/bin/dropdb --if-exists "$TESTCONFORMDB" --host $HOST --port 5432 --username "$USER" --no-password
 
 echo "Creating DB (qwat_test_conform)"
 /usr/bin/createdb "$TESTCONFORMDB" --host $HOST --port 5432 --username "$USER" --no-password
@@ -51,37 +55,63 @@ printf "    Latest tag = ${GREEN}$SHORT_LATEST_TAG${NC}\n"
 
 
 # We need to execute init_qwat.sh from the lastest TAG version in $QWATSERVICETESTCONFORM
-# Saving current branch
-echo "Saving current branch"
-#CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-CURRENT_BRANCH=$TRAVIS_BRANCH
-printf "    Current branch = ${GREEN}$CURRENT_BRANCH${NC}\n"
+printf "    Travis branch = ${GREEN}$TRAVIS_BRANCH${NC}\n"
+printf "    Travis commit = ${GREEN}$TRAVIS_COMMIT${NC}\n"
+printf "    Travis PR branch = ${GREEN}$TRAVIS_PULL_REQUEST_BRANCH${NC}\n"
+printf "    Travis PR commit = ${GREEN}$TRAVIS_PULL_REQUEST_SHA${NC}\n"
+
+if [[ !  -z  $TRAVIS_PULL_REQUEST_SHA  ]]; then
+  CURRENT_COMMIT=$TRAVIS_PULL_REQUEST_SHA
+else
+  CURRENT_COMMIT=$TRAVIS_COMMIT
+fi
+
 
 PROPER_LATEST_TAG=$SHORT_LATEST_TAG".0.0"
-echo "Switching on lastest tag major version ($PROPER_LATEST_TAG)"
+echo "Switching on lastest tag major version ${GREEN}$PROPER_LATEST_TAG)${NC}"
 git checkout tags/$PROPER_LATEST_TAG
 
 cd ..
 echo "Initializing qwat DB in qwat_test_conform"
 ./init_qwat.sh -p $QWATSERVICETESTCONFORM -d > init_qwat.log
 
-echo "Switching back to current branch ($CURRENT_BRANCH)"
-git checkout $CURRENT_BRANCH
+echo "Switching back to current commit ($CURRENT_COMMIT)"
+git checkout $CURRENT_COMMIT
 
 
 echo "Applying deltas on $TESTCONFORMDB:"
 for f in $DIR/delta/*.sql
 do
     CURRENT_DELTA=$(basename "$f")
+    CURRENT_DELTA_WITHOUT_EXT="${CURRENT_DELTA%.*}"
     #CURRENT_DELTA_NUM_VERSION=$(echo $CURRENT_DELTA| cut -d'_' -f 2)
-    CURRENT_DELTA_NUM_VERSION=$(echo $CURRENT_DELTA| cut -c 7)
-    if [[ $CURRENT_DELTA_NUM_VERSION > $SHORT_LATEST_TAG || $CURRENT_DELTA_NUM_VERSION = $SHORT_LATEST_TAG || $SHORT_LATEST_TAG = '' ]]; then
-        printf "    Processing ${GREEN}$CURRENT_DELTA${NC}, num version = $CURRENT_DELTA_NUM_VERSION\n"
-        /usr/bin/psql --host $HOST --port 5432 --username "$USER" --no-password -q -d "$TESTCONFORMDB" -f $f
+    CURRENT_DELTA_NUM_VERSION=$(echo $CURRENT_DELTA_WITHOUT_EXT| cut -c 7)
+    CURRENT_DELTA_NUM_VERSION_FULL=$(echo $CURRENT_DELTA_WITHOUT_EXT| cut -d'_' -f 2)
+    if [[ $CURRENT_DELTA_NUM_VERSION > $SHORT_LATEST_TAG || $CURRENT_DELTA_NUM_VERSION == $SHORT_LATEST_TAG || $SHORT_LATEST_TAG == '' ]]; then
+        printf "    Processing ${GREEN}$CURRENT_DELTA${NC}, num version = $CURRENT_DELTA_NUM_VERSION ($CURRENT_DELTA_NUM_VERSION_FULL)\n"
+        /usr/bin/psql -v ON_ERROR_STOP=1 --host $HOST --port 5432 --username "$USER" --no-password -q -d "$TESTCONFORMDB" -f $f
+
+        printf "        Verifying num version conformity - "
+        # For each delta run on the DB, we have to check that the version number contained in the file name is the same that has been hardcoded in the DB
+        # note: delta files MUST include at their end: UPDATE qwat_sys.versions SET version = 'x.x.x';
+        OUTPUT_NUM=`/usr/bin/psql -v ON_ERROR_STOP=1 --host $HOST --port 5432 --username "$USER" --no-password -q -d "$TESTCONFORMDB" -t -c "SELECT version FROM qwat_sys.versions;"`
+        OUTPUT_NUM="$(echo -e "${OUTPUT_NUM}" | tr -d '[:space:]')"
+        if [ "$OUTPUT_NUM" != "$CURRENT_DELTA_NUM_VERSION_FULL" ]; then
+            printf " Num in DB: ${GREEN}$OUTPUT_NUM${NC} - Num in file: ${RED}$CURRENT_DELTA_NUM_VERSION_FULL${NC} => ${RED}Numbers do NOT match !${NC}\n"
+            EXITCODE=1
+            exit $EXITCODE
+        else
+            printf " Num in DB: ${GREEN}$OUTPUT_NUM${NC} - Num in file: ${RED}$CURRENT_DELTA_NUM_VERSION_FULL${NC} => ${GREEN}OK${NC}\n"
+        fi
     else
         printf "    Bypassing  ${RED}$CURRENT_DELTA${NC}, num version = $CURRENT_DELTA_NUM_VERSION\n"
     fi
 done
+
+echo "Reloading views and functions from last commit"
+export PGSERVICE=$QWATSERVICETESTCONFORM
+SRID=$SRID ./ordinary_data/views/rewrite_views.sh
+SRID=$SRID ./ordinary_data/functions/rewrite_functions.sh
 
 echo "Producing referential file for test_qwat DB (from $QWATSERVICETEST)"
 cd $DIR

@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from __future__ import absolute_import
 import yaml
 import sys
 from sql_export_view import SqlExportView
@@ -13,7 +15,12 @@ definition = yaml.load("""
 
 name: qwat_od.vw_export_valve
 
-from: qwat_od.vw_element_valve
+from: qwat_od.valve
+
+exclude_join_fields:
+  - geometry%
+  - label_1%
+  - label_2%
 
 joins:
   district:
@@ -53,5 +60,7 @@ joins:
    
 
 """)
+# fix_print_with_import
 
-print SqlExportView(pg_service, definition).sql()
+# fix_print_with_import
+print(SqlExportView(pg_service, definition).sql())

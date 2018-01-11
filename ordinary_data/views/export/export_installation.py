@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from __future__ import absolute_import
 import yaml
 import sys
 from sql_export_view import SqlExportView
@@ -14,6 +16,11 @@ definition = yaml.load("""
 name: qwat_od.vw_export_installation
 
 from: qwat_od.vw_element_installation
+
+exclude_join_fields:
+  - geometry%
+  - label_1%
+  - label_2%
 
 joins:
   district:
@@ -74,5 +81,7 @@ joins:
     table: qwat_vl.pressurecontrol_type
     fkey: fk_pressurecontrol_type
 """)
+# fix_print_with_import
 
-print SqlExportView(pg_service, definition).sql()
+# fix_print_with_import
+print(SqlExportView(pg_service, definition).sql())

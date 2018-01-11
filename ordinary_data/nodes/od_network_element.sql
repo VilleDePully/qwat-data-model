@@ -9,7 +9,7 @@
 CREATE TABLE qwat_od.network_element ();
 
 COMMENT ON TABLE qwat_od.network_element IS 'Tables for network network_elements.
-Every network_element of the network (hydrants, valves, network_element, installations, etc.) inherit from network_element which itself inherits from node.';
+Every network_element of the network (hydrants, network_element, installations, etc.) inherit from network_element which itself inherits from node.';
 
 /* COLUMNS */
 ALTER TABLE qwat_od.network_element ADD COLUMN id                  integer NOT NULL REFERENCES qwat_od.node(id) PRIMARY KEY;
@@ -27,11 +27,8 @@ ALTER TABLE qwat_od.network_element ADD COLUMN year_end            smallint CHEC
 ALTER TABLE qwat_od.network_element ADD COLUMN orientation         float default null; COMMENT ON COLUMN qwat_od.network_element.orientation IS 'orientation field aims at overwrtiting qwat_od.node._pipe_orientation which is automatically calculated from the pipes. In the editable views, orientation will be COALESCE(netwrok_element.orientation, node._pipe_orientation). Update will be forwarded to network_element.';
 ALTER TABLE qwat_od.network_element ADD COLUMN remark              text;
 
-/* SCHEMA VIEW */
-SELECT qwat_sys.fn_enable_schemaview('network_element');
-
 /* LABELS */
-SELECT qwat_sys.fn_label_create_fields('network_element');
+DO $$ BEGIN PERFORM qwat_sys.fn_label_create_fields('network_element'); END $$;
 
 
 /* CONSTRAINTS */

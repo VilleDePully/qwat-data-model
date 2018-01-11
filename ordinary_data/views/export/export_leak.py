@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from __future__ import absolute_import
 import yaml
 import sys
 from sql_export_view import SqlExportView
@@ -15,6 +17,11 @@ name: qwat_od.vw_export_leak
 
 from: qwat_od.leak
 
+exclude_join_fields:
+  - geometry%
+  - label_1%
+  - label_2%
+
 joins:
   cause:
     table: qwat_vl.leak_cause
@@ -24,5 +31,7 @@ joins:
     fkey: fk_pipe
 
 """)
+# fix_print_with_import
 
-print SqlExportView(pg_service, definition).sql()
+# fix_print_with_import
+print(SqlExportView(pg_service, definition).sql())

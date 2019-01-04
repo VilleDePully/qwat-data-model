@@ -34,12 +34,14 @@ import subprocess
 def create_dumps():
     files = []
 
+    # Create data-only dumps (with sample data)
+
     dump = 'qwat_v{version}_data_only_sample.backup'.format(
         version=os.environ['TRAVIS_TAG'])
     print('travis_fold:start:{}'.format(dump))
     print('Creating dump {}'.format(dump))
     dumpfile = '/tmp/{dump}'.format(dump=dump)
-    subprocess.call(['pg_dump',
+    subprocess.check_output(['pg_dump',
                      '--format', 'custom',
                      '--blobs',
                      '--section', 'data',
@@ -59,7 +61,7 @@ def create_dumps():
     print('Creating dump {}'.format(dump))
     dumpfile='/tmp/{dump}'.format(dump=dump)
 
-    subprocess.call(['pg_dump',
+    subprocess.check_output(['pg_dump',
                      '--format', 'plain',
                      '--blobs',
                      '--section', 'data',
@@ -72,16 +74,17 @@ def create_dumps():
     files.append(dumpfile)
     print('travis_fold:end:{}'.format(dump))
 
+    # Create data + structure dumps (with sample data)
+
     dump='qwat_v{version}_data_and_structure_sample.backup'.format(
         version=os.environ['TRAVIS_TAG'])
     print('travis_fold:start:{}'.format(dump))
     print('Creating dump {}'.format(dump))
     dumpfile='/tmp/{dump}'.format(dump=dump)
 
-    subprocess.call(['pg_dump',
+    subprocess.check_output(['pg_dump',
                      '--format', 'custom',
                      '--blobs',
-                     '--section', 'data',
                      '--compress', '5',
                      '--verbose',
                      '--file', dumpfile,
@@ -97,13 +100,86 @@ def create_dumps():
     print('Creating dump {}'.format(dump))
     dumpfile='/tmp/{dump}'.format(dump=dump)
 
-    subprocess.call(['pg_dump',
+    subprocess.check_output(['pg_dump',
                      '--format', 'plain',
                      '--blobs',
-                     '--section', 'data',
                      '--verbose',
                      '--file', dumpfile,
                      '-N', 'public',
+                     'qwat_prod']
+                    )
+    files.append(dumpfile)
+    print('travis_fold:end:{}'.format(dump))
+
+    # Create structure-only dumps
+
+    dump='qwat_v{version}_structure_only.backup'.format(
+        version=os.environ['TRAVIS_TAG'])
+    print('travis_fold:start:{}'.format(dump))
+    print('Creating dump {}'.format(dump))
+    dumpfile='/tmp/{dump}'.format(dump=dump)
+
+    subprocess.check_output(['pg_dump',
+                     '--format', 'custom',
+                     '--schema-only',
+                     '--verbose',
+                     '--file', dumpfile,
+                     '-N', 'public',
+                     'qwat_prod']
+                    )
+    files.append(dumpfile)
+    print('travis_fold:end:{}'.format(dump))
+
+    dump='qwat_v{version}_structure_only.sql'.format(
+        version=os.environ['TRAVIS_TAG'])
+    print('travis_fold:start:{}'.format(dump))
+    print('Creating dump {}'.format(dump))
+    dumpfile='/tmp/{dump}'.format(dump=dump)
+
+    subprocess.check_output(['pg_dump',
+                     '--format', 'plain',
+                     '--schema-only',
+                     '--verbose',
+                     '--file', dumpfile,
+                     '-N', 'public',
+                     'qwat_prod']
+                    )
+    files.append(dumpfile)
+    print('travis_fold:end:{}'.format(dump))
+
+    # Create value-list data only dumps (the qwat_vl schema)
+
+    dump = 'qwat_v{version}_value_list_data_only.backup'.format(
+        version=os.environ['TRAVIS_TAG'])
+    print('travis_fold:start:{}'.format(dump))
+    print('Creating dump {}'.format(dump))
+    dumpfile = '/tmp/{dump}'.format(dump=dump)
+    subprocess.check_output(['pg_dump',
+                     '--format', 'custom',
+                     '--blobs',
+                     '--compress', '5',
+                     '--data-only',
+                     '--verbose',
+                     '--file', dumpfile,
+                     '--schema', 'qwat_vl',
+                     'qwat_prod']
+                    )
+    files.append(dumpfile)
+    print('travis_fold:end:{}'.format(dump))
+
+    dump='qwat_v{version}_value_list_data_only.sql'.format(
+        version=os.environ['TRAVIS_TAG'])
+    print('travis_fold:start:{}'.format(dump))
+    print('Creating dump {}'.format(dump))
+    dumpfile='/tmp/{dump}'.format(dump=dump)
+
+    subprocess.check_output(['pg_dump',
+                     '--format', 'plain',
+                     '--blobs',
+                     '--data-only',
+                     '--verbose',
+                     '--file', dumpfile,
+                     '--schema', 'qwat_vl',
                      'qwat_prod']
                     )
     files.append(dumpfile)

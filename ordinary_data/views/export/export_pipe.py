@@ -1,17 +1,18 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
-from __future__ import print_function
-from __future__ import absolute_import
 import yaml
 import sys
 from sql_export_view import SqlExportView
 
-if len(sys.argv) > 1:
-  pg_service = sys.argv[1]
+SRID = 21781
+
+if len(sys.argv) == 1:
+    SRID = sys.argv[1]
+if len(sys.argv) > 2:
+    pg_service = sys.argv[2]
 else:
-  pg_service = "qwat_test"
+    pg_service = "qwat_test"
 
 definition = yaml.load("""
 
@@ -25,7 +26,7 @@ exclude_join_fields:
   - label_2%
 
 extra_fields:
-  geometry2d: 'ST_Force2D(pipe.geometry)'
+  geometry2d: 'ST_Force2D(pipe.geometry)::geometry(LINESTRING,{})'
   schema_visible: 'COALESCE(schema_force_visible, pipe_function.schema_visible)'
 
 joins:
@@ -70,7 +71,7 @@ joins:
     fkey: fk_node_b
 
 
-""")
+""".format(SRID))
 # fix_print_with_import
 
 # fix_print_with_import

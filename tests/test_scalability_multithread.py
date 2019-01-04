@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # coding=UTF-8
 
 """
@@ -7,7 +7,6 @@ Stress the DB by inserting, updating and deleting elements
 USAGE
     python test_scalability.py --pg_service qwat_test
 """
-from __future__ import print_function
 from builtins import str
 from builtins import range
 import threading
@@ -20,7 +19,8 @@ import psycopg2
 import psycopg2.extras
 from subprocess import call
 
-TEST_SCRIPT = 'test_scenarii_scalability.model'
+dir_path = os.path.dirname(os.path.realpath(__file__))
+TEST_SCRIPT = os.path.join(dir_path, 'test_scenarii_scalability.model')
 OUTPUT_STAT = 'scalability_stats.txt'
 OFFSET = 10  # offset in meter to create new objects
 OFFSET_ORIGIN = 2000
@@ -137,43 +137,47 @@ varsToReplace = [
 
 
 class ScalabilityThread (threading.Thread):
-    #def __init__(self, threadID, name, nbIterations, cur, conn):
+    # def __init__(self, threadID, name, nbIterations, cur, conn):
     def __init__(self, threadID, name, nbIterations, pgService):
         threading.Thread.__init__(self)
         self.threadID = threadID
         self.name = name
         self.nbIterations = nbIterations
-        self.origin = {'x': origin['x'] + threadID * OFFSET_ORIGIN, 'y': origin['y']}
+        self.origin = {'x': origin['x'] +
+                       threadID * OFFSET_ORIGIN, 'y': origin['y']}
         self.conn = psycopg2.connect("service={0}".format(pgService))
         self.cur = self.conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
     def run(self):
         # fix_print_with_import
         print("Starting " + self.name)
-        _execute_statements(self.cur, self.conn, self.name, self.threadID, self.origin, self.nbIterations)
+        _execute_statements(self.cur, self.conn, self.name,
+                            self.threadID, self.origin, self.nbIterations)
         # fix_print_with_import
         print("Exiting " + self.name)
         endTime = datetime.datetime.now().time()
         fileStats = open(OUTPUT_STAT, 'a')
-        fileStats.write("Process {p} ended at {t}\n".format(t=endTime.isoformat(), p=self.threadID))
+        fileStats.write("Process {p} ended at {t}\n".format(
+            t=endTime.isoformat(), p=self.threadID))
 
 
 def test_scalability(pgService, nbIterations):
     fileStats = open(OUTPUT_STAT, 'w')
     fileStats.write("Nb thread: {nbthreads}\n".format(nbthreads=NB_THREADS))
-    fileStats.write("Nb iterations: {nbiterations}\n".format(nbiterations=nbIterations))
+    fileStats.write("Nb iterations: {nbiterations}\n".format(
+        nbiterations=nbIterations))
     startTime = datetime.datetime.now().time()
     fileStats.write("Process started at {t}\n".format(t=startTime.isoformat()))
 
     # Create new threads
     for t in range(0, NB_THREADS):
-        newThread = ScalabilityThread(t + 1, "Thread-" + str(t + 1), nbIterations, pgService)
+        newThread = ScalabilityThread(
+            t + 1, "Thread-" + str(t + 1), nbIterations, pgService)
         threads.append(newThread)
 
     # Start Threads
     for t in range(0, NB_THREADS):
         threads[t].start()
-
 
 
 def _execute_statements(cur, conn, threadName, threadId, origin, nbIterations):
@@ -227,7 +231,8 @@ def _execute_statements(cur, conn, threadName, threadId, origin, nbIterations):
         p['id_cp'] = threadId * nbIterations + count
         p['id_node_a'] = threadId * nbIterations + count
         p['id_node_b'] = threadId * nbIterations + count
-        p['installation_id'] = "{name}_{num}".format(name=threadName, num=threadId * nbIterations + count)
+        p['installation_id'] = "{name}_{num}".format(
+            name=threadName, num=threadId * nbIterations + count)
         p['valve_id'] = threadId * nbIterations + count
 
         for statement in open(TEST_SCRIPT).read().split(";;")[:-1]:
@@ -248,7 +253,8 @@ def _execute_statements(cur, conn, threadName, threadId, origin, nbIterations):
                     # fix_print_with_import
                     print(statement)
                     # fix_print_with_import
-                    print("FAILED ### {tname} - Iteration {nb}".format(tname=threadName, nb=count))
+                    print(
+                        "FAILED ### {tname} - Iteration {nb}".format(tname=threadName, nb=count))
 
         # Don't forget to reset origin
         origin['x'] = 0

@@ -1,4 +1,4 @@
-CREATE VIEW qwat_ch_vd_sire.reservoir AS
+CREATE OR REPLACE VIEW qwat_ch_vd_sire.reservoir AS
 	SELECT
 		id AS ID_Num
 		, qwat_ext_ch_vd_sire_remarque|| remark AS Remarque
@@ -28,3 +28,7 @@ CREATE VIEW qwat_ch_vd_sire.reservoir AS
 	WHERE
 		installation_type = 'tank'
 		;
+
+GRANT SELECT, REFERENCES, TRIGGER ON TABLE qwat_ch_vd_sire.reservoir TO qwat_viewer;
+GRANT ALL ON TABLE qwat_ch_vd_sire.reservoir TO qwat_user;
+GRANT ALL ON TABLE qwat_ch_vd_sire.reservoir TO qwat_manager;

@@ -1,4 +1,4 @@
-CREATE VIEW qwat_ch_vd_sire.regulation_pression AS
+CREATE OR REPLACE VIEW qwat_ch_vd_sire.regulation_pression AS
 	SELECT
 		id AS ID_Num
 		, qwat_ext_ch_vd_sire_remarque || remark AS Remarque
@@ -55,3 +55,7 @@ CREATE VIEW qwat_ch_vd_sire.regulation_pression AS
 	FROM qwat_od.vw_export_valve
 	WHERE fk_valve_function = 6101  -- vanne régulation
 		;
+
+GRANT SELECT, REFERENCES, TRIGGER ON TABLE qwat_ch_vd_sire.regulation_pression TO qwat_viewer;
+GRANT ALL ON TABLE qwat_ch_vd_sire.regulation_pression TO qwat_user;
+GRANT ALL ON TABLE qwat_ch_vd_sire.regulation_pression TO qwat_manager;

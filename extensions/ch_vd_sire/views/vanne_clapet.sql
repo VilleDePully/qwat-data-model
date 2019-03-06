@@ -1,4 +1,4 @@
-CREATE VIEW qwat_ch_vd_sire.vanne_clapet AS
+CREATE OR REPLACE VIEW qwat_ch_vd_sire.vanne_clapet AS
 	SELECT
 		id AS ID_Num
 		, qwat_ext_ch_vd_sire_remarque|| remark AS Remarque
@@ -42,3 +42,7 @@ CREATE VIEW qwat_ch_vd_sire.vanne_clapet AS
 			OR
 			fk_valve_type = 6307  -- clapet anti-retour
 		);
+
+GRANT SELECT, REFERENCES, TRIGGER ON TABLE qwat_ch_vd_sire.vanne_clapet TO qwat_viewer;
+GRANT ALL ON TABLE qwat_ch_vd_sire.vanne_clapet TO qwat_user;
+GRANT ALL ON TABLE qwat_ch_vd_sire.vanne_clapet TO qwat_manager;

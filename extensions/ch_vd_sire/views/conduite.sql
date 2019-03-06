@@ -1,4 +1,4 @@
-CREATE VIEW qwat_ch_vd_sire.conduite AS
+CREATE OR REPLACE VIEW qwat_ch_vd_sire.conduite AS
 	SELECT
 		id AS ID_Num
 		, qwat_ext_ch_vd_sire_remarque || remark AS Remarque
@@ -27,3 +27,7 @@ CREATE VIEW qwat_ch_vd_sire.conduite AS
 	FROM qwat_od.vw_export_pipe
 	WHERE
 		pipe_function_major IS TRUE;
+
+GRANT SELECT, REFERENCES, TRIGGER ON TABLE qwat_ch_vd_sire.conduite TO qwat_viewer;
+GRANT ALL ON TABLE qwat_ch_vd_sire.conduite TO qwat_user;
+GRANT ALL ON TABLE qwat_ch_vd_sire.conduite TO qwat_manager;

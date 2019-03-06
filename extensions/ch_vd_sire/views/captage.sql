@@ -1,4 +1,4 @@
-CREATE VIEW qwat_ch_vd_sire.captage AS
+CREATE OR REPLACE VIEW qwat_ch_vd_sire.captage AS
 	SELECT
 		id AS ID_Num
 		, qwat_ext_ch_vd_sire_remarque || remark AS Remarque
@@ -30,3 +30,7 @@ CREATE VIEW qwat_ch_vd_sire.captage AS
 	WHERE
 		installation_type = 'source'
 		;
+
+GRANT SELECT, REFERENCES, TRIGGER ON TABLE qwat_ch_vd_sire.captage TO qwat_viewer;
+GRANT ALL ON TABLE qwat_ch_vd_sire.captage TO qwat_user;
+GRANT ALL ON TABLE qwat_ch_vd_sire.captage TO qwat_manager;

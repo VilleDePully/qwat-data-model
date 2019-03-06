@@ -1,6 +1,8 @@
 CREATE OR REPLACE VIEW qwat_sigip.vw_export_leak AS 
  SELECT leak.id,
     pipe.id AS pipe_id,
+    pipe.fk_distributor AS distributor,
+    pipe.fk_district,
     leak.geometry
    FROM qwat_od.leak
      LEFT JOIN qwat_od.vw_export_pipe pipe ON leak.fk_pipe = pipe.id;

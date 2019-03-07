@@ -19,6 +19,7 @@ CREATE OR REPLACE VIEW qwat_ch_vd_sire.station_pompage AS
 		, manometric_height AS H_Manometrique
 		, pump_operating_code_sire AS Fonctionnement
 		, qwat_ext_ch_vd_sire_adesafecter AS A_Desaffecter_PDDE
+		, pully_fk_chantier
 		, ST_Force2D(geometry) AS geometry
 	FROM qwat_od.vw_export_installation
 	WHERE

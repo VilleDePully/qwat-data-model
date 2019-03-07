@@ -32,16 +32,17 @@ CREATE OR REPLACE VIEW qwat_ch_vd_sire.vanne_clapet AS
 				ELSE 0
 			END AS Telecommande_Incendie
 		, 6 AS Type_Transmission
-    , ST_Force2D(geometry) AS geometry
-	FROM qwat_od.vw_export_valve
-	WHERE
-		(
-			networkseparation IS TRUE
-			OR
-			fk_valve_function = 6107  -- vanne incendie
-			OR
-			fk_valve_type = 6307  -- clapet anti-retour
-		);
+		, pully_fk_chantier
+    		, ST_Force2D(geometry) AS geometry
+			FROM qwat_od.vw_export_valve
+			WHERE
+				(
+				networkseparation IS TRUE
+				OR
+				fk_valve_function = 6107  -- vanne incendie
+				OR
+				fk_valve_type = 6307  -- clapet anti-retour
+				);
 
 GRANT SELECT, REFERENCES, TRIGGER ON TABLE qwat_ch_vd_sire.vanne_clapet TO qwat_viewer;
 GRANT ALL ON TABLE qwat_ch_vd_sire.vanne_clapet TO qwat_user;

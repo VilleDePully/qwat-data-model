@@ -24,6 +24,7 @@ CREATE OR REPLACE VIEW qwat_ch_vd_sire.station_traitement AS
 		, treatment_capacity AS Capacite_Traitement
 		, 2 AS Electricite_Fonctionnement
 		, qwat_ext_ch_vd_sire_adesafecter AS A_Desaffecter_PDDE
+		, pully_fk_chantier
 		, ST_Force2D(geometry) AS geometry
 	FROM qwat_od.vw_export_installation
 	WHERE

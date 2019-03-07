@@ -4,7 +4,7 @@ CREATE OR REPLACE VIEW qwat_sigip.vw_export_hydrant AS
     vw_element_hydrant.year AS annee,
     vw_element_hydrant.geometry AS the_geom,
     status.value_fr AS statut,
-    vw_element_installation.fk_district,
+    vw_element_hydrant.fk_district,
     district.name AS commune,
     pressurezone.name AS zonepression,
     distributor.name AS distributeur,

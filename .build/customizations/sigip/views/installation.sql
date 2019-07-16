@@ -5,6 +5,7 @@ CREATE OR REPLACE VIEW qwat_sigip.vw_export_installation AS
     vw_element_installation.name AS nom,
     vw_element_installation.installation_type,
     status.value_fr AS statut,
+    vw_element_installation.fk_district,
     district.name AS commune,
     pressurezone.name AS pressurezone_name,
     "precision".value_fr AS "precision",

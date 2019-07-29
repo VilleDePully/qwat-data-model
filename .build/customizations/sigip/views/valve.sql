@@ -9,6 +9,7 @@ CREATE OR REPLACE VIEW qwat_sigip.vw_export_valve AS
     valve_actuation.value_fr AS actionnement,
     district.name AS commune,
     valve._pipe_orientation AS orientation,
+    valve.remark AS remarque,
     valve.geometry AS the_geom
    FROM qwat_od.valve valve
      LEFT JOIN qwat_vl.status status ON valve.fk_status = status.id

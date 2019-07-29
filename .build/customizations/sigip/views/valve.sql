@@ -7,6 +7,7 @@ CREATE OR REPLACE VIEW qwat_sigip.vw_export_valve AS
     status.value_fr AS statut,
     "precision".value_fr AS "precision",
     valve_actuation.value_fr AS actionnement,
+    valve.closed AS fermee,
     district.name AS commune,
     valve._pipe_orientation AS orientation,
     valve.remark AS remarque,

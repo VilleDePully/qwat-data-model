@@ -3,6 +3,7 @@ CREATE OR REPLACE VIEW qwat_sigip.vw_export_valve AS
     valve.identification AS numero,
     distributor.name AS distributeur,
     pressurezone.name AS zonepression,
+    valve_type.value_fr AS type,
     valve_function.value_fr AS fonction,
     status.value_fr AS statut,
     "precision".value_fr AS "precision",
@@ -11,6 +12,7 @@ CREATE OR REPLACE VIEW qwat_sigip.vw_export_valve AS
     district.name AS commune,
     valve._pipe_orientation AS orientation,
     valve.remark AS remarque,
+    valve.networkseparation AS separation_reseau,
     valve.geometry AS the_geom
    FROM qwat_od.valve valve
      LEFT JOIN qwat_vl.status status ON valve.fk_status = status.id

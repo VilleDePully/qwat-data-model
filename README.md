@@ -8,13 +8,15 @@ A full web data model documentation with diagrams and relations is available [he
 
 # Model changelog ([Detailed](https://github.com/qwat/qwat-data-model/releases/))
 
+- v1.3.5 : Minors typo fixes #314 #315
+- v1.3.4 : Remove SIRE from core, add value list for valve nominal diameter
 - v1.3.3 : Support for customizations
 - v1.3.2 : SIRE extension and infrastructure enhancements
 - v1.3.1 : fix z computation logic for valves
 - v1.3.0 : Switch from custom version control to generic Postgres Update Manager
 - v1.2.8 : add hardcoded schema_visible field to pipes and valves for enhanced performance on QGIS
 - v1.2.7 : AutoPrint Mapview
-- v1.2.6 : Fixes issue 177. Pipes where not audited by audit log system.
+- v1.2.6 : Fixes issue 177. Pipes were not audited by audit log system.
 - V1.2.5 : Adds a scale field to print maps
 - v1.2.4 : Fixes bugs when deleting objects https://github.com/qwat/QWAT/issues/174
 - v1.2.2 : Integrates the new audit history system. Fixes an issue with multiple primary keys in conformity check procedure
@@ -25,3 +27,7 @@ A full web data model documentation with diagrams and relations is available [he
 - v1.0.1 : Add functionnal to vl status (meaning the object is ready to be used). This is useful to allow finer printing (print inactive but functional objects)
 - v1.0.0 : First version (3 june 2016)
 - v0.1 : Proof of concept model
+
+## Release
+
+Realeases are made using github actions when a new release is created. The tag must be of format `x.y.z`.

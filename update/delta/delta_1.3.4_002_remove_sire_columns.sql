@@ -1,3 +1,8 @@
+SELECT ();
+
+/*
+--We don't wan't that in production
+
 ALTER TABLE qwat_vl.pipe_function DROP COLUMN code_sire;
 ALTER TABLE qwat_vl.pipe_material DROP COLUMN code_sire;
 ALTER TABLE qwat_vl.precision DROP COLUMN code_sire;
@@ -10,3 +15,5 @@ ALTER TABLE qwat_vl.source_type DROP COLUMN code_sire;
 ALTER TABLE qwat_vl.status DROP COLUMN code_sire;
 ALTER TABLE qwat_vl.survey_type DROP COLUMN code_sire;
 ALTER TABLE qwat_vl.watertype DROP COLUMN code_sire;
+
+*/

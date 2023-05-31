@@ -1,4 +1,4 @@
-SELECT ();
+SELECT NULL;
 
 /*
 --We don't wan't that in production

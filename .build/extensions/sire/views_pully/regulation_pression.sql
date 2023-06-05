@@ -36,9 +36,9 @@ CREATE OR REPLACE VIEW qwat_ch_vd_sire.regulation_pression
     JOIN qwat_od.node node ON element.id = node.id
     LEFT JOIN qwat_od.pump pump ON installation.id = pump.id
     LEFT JOIN qwat_vl."precision" "precision" ON element.fk_precision = "precision".id
-    LEFT JOIN qwat_od.distributor distributor ON element.fk_distributor = distributor.id
+    LEFT JOIN qwat_od.distributor distributor ON distributor.id = ANY (node.fk_distributor)
     LEFT JOIN qwat_od.folder folder ON element.fk_folder = folder.id
-    LEFT JOIN qwat_od.pressurezone pressurezone ON node.fk_pressurezone = pressurezone.id
+    LEFT JOIN qwat_od.pressurezone pressurezone ON pressurezone.id = ANY (node.fk_pressurezone)
     LEFT JOIN qwat_vl.watertype watertype ON installation.fk_watertype = watertype.id
     LEFT JOIN qwat_od.pressurecontrol pressurecontrol ON installation.id = pressurecontrol.id
   WHERE pressurecontrol.fk_pressurecontrol_type = ANY (ARRAY[2801, 2802])

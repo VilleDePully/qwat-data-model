@@ -15,11 +15,11 @@ CREATE OR REPLACE VIEW qwat_sigip.vw_export_part AS
     LEFT JOIN qwat_od.node node ON part.id = node.id
     LEFT JOIN qwat_vl.status status ON node.fk_status = status.id
     LEFT JOIN qwat_od.district district ON node.fk_district = district.id
-    LEFT JOIN qwat_od.pressurezone pressurezone ON pressurezone.id = ANY(node.fk_pressurezone)
+    LEFT JOIN qwat_od.pressurezone pressurezone ON pressurezone.id = ANY (node.fk_pressurezone)
     LEFT JOIN qwat_vl."precision" "precision" ON ne.fk_precision = "precision".id
     LEFT JOIN qwat_vl.part_type part_type ON part.fk_part_type = part_type.id
     LEFT JOIN qwat_vl.object_reference object_reference ON ne.fk_object_reference = object_reference.id
-    LEFT JOIN qwat_od.distributor distributor ON distributor.id = ANY(node.fk_distributor)
+    LEFT JOIN qwat_od.distributor distributor ON distributor.id = ANY (node.fk_distributor)
     LEFT JOIN qwat_od.folder folder ON ne.fk_folder = folder.id
     LEFT JOIN qwat_vl.precisionalti precisionalti ON ne.fk_precisionalti = precisionalti.id;
 

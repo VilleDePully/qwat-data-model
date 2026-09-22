@@ -1,13 +1,14 @@
 # qwat-data-model
 
-[![Build Status](https://travis-ci.org/qwat/qwat-data-model.svg?branch=master)](https://travis-ci.org/qwat/qwat-data-model)
+[![Build Status](https://travis-ci.org/qwat/qwat-data-model.svg?branch=main)](https://travis-ci.org/qwat/qwat-data-model)
 
 This repository contains the definition of the data model used by [QWAT](https://github.com/qwat/QWAT) project, a module aimed at managing a water network in QGIS.
 
-A full web data model documentation with diagrams and relations is available [here](https://rawgit.com/qwat/qwat-data-model/master/diagram/index.html).
+A full web data model documentation with diagrams and relations is available in the [diagram](https://github.com/qwat/qwat-data-model/tree/main/diagram) folder of the current repository.
 
 # Model changelog ([Detailed](https://github.com/qwat/qwat-data-model/releases/))
 
+- v1.4.0 : TODO 
 - v1.3.6 : Add sia405 mapping fields for interlis Export
 - v1.3.5 : Minors typo fixes #314 #315
 - v1.3.4 : Remove SIRE from core, add value list for valve nominal diameter
@@ -40,7 +41,7 @@ Tests are run automatically on commit by github actions.
 To run them locally (please refer to `run_tests.yml` for up to date steps):
 ```sh
 # start a dev postgis server
-docker run --rm -d -p 5432:5432 -e POSTGRES_DB=qwat_test -e POSTGRES_PASSWORD=postgres --name=qwat_test_db postgis/postgis:9.6-2.5
+docker run --rm -d -p 5432:5432 -e POSTGRES_DB=qwat_test -e POSTGRES_PASSWORD=postgres --name=qwat_test_db postgis/postgis:17-3.5
 
 # include the pgservices for test database
 cat ./tests/pg_service.conf >> ~/.pg_service.conf
